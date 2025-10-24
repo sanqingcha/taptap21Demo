@@ -15,6 +15,8 @@ class INodeSplineInterface;
  */
 class ASplineVisualizeActor;
 
+//DECLARE_DELEGATE_OneParam(FOnSplinesSpawn, UNodeSplineComponent*);
+
 UCLASS()
 class TAPTAPDEMO_5_32_API USplineSpawnSystem : public UWorldSubsystem
 {
@@ -26,10 +28,10 @@ public:
 	
 	/**外部调用接口*/
 	UFUNCTION(BlueprintCallable)
-	void SpawnSpline(const FNodeConnectData& ConnectHead,const FNodeConnectData& ConnectTail);
+	UNodeSplineComponent* SpawnSpline(const FNodeConnectData& ConnectHead,const FNodeConnectData& ConnectTail);
 	/**end*/
-	
+
+	//FOnSplinesSpawn OnSplinesSpawnDelegate;
 private:
-	
 	TObjectPtr<ASplineVisualizeActor> SplineVisActor;
 };

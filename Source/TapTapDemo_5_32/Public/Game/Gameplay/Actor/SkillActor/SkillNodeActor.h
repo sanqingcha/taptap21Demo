@@ -32,6 +32,7 @@ public:
 	/**由外部调用过来*/
 	virtual void SetSpline(const FSplineConnectData& Data, uint32 Hash) override;
 	virtual void RemoveSpline(const uint32 ConnectPosHash) override;
+	UFUNCTION(BlueprintCallable)
 	void UpdateSpline();
 	/**在这里我使用链接的相对于这个Actor的中心位置偏移量计算的Hash值来对应链接的组件
 	 * GetTypeHash(FVector)

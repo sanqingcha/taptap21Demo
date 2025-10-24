@@ -6,6 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "SplineVisualizeActor.generated.h"
 
+class USplineMeshComponent;
 class UNodeSplineComponent;
 
 UCLASS()
@@ -16,10 +17,14 @@ public:
 	ASplineVisualizeActor();
 	virtual void BeginPlay() override;
 	UNodeSplineComponent* GetOrCreateSplineComponent();
+	
 protected:
 	void RemoveSplineComponent(UNodeSplineComponent* TargetNode);
 	
+	UPROPERTY(EditAnywhere,BlueprintReadOnly)
+	TObjectPtr<UStaticMesh> LineMesh;
 	TQueue<UNodeSplineComponent*> SplinePool;
 	TSet<UNodeSplineComponent*> CurrSpline;
+	
 };
 

@@ -12,7 +12,7 @@ void USplineSpawnSystem::RegisterSplineActor(ASplineVisualizeActor* inSplineVisA
 	SplineVisActor = inSplineVisActor;
 }
 
-void USplineSpawnSystem::SpawnSpline(const FNodeConnectData& ConnectHead, const FNodeConnectData& ConnectTail)
+UNodeSplineComponent* USplineSpawnSystem::SpawnSpline(const FNodeConnectData& ConnectHead, const FNodeConnectData& ConnectTail)
 {
 	check(SplineVisActor);
 
@@ -21,13 +21,15 @@ void USplineSpawnSystem::SpawnSpline(const FNodeConnectData& ConnectHead, const 
 	if ((!HeadNodeInterface) || (!TailNodeInterface))
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Actor没有实现接口，需要实现INodeSplineInterface"));
-		return;
+		return nullptr;
 	}
 	UNodeSplineComponent* NodeConnectSplineComp = SplineVisActor->GetOrCreateSplineComponent();
 	NodeConnectSplineComp->ActiveSpline(ConnectHead, ConnectTail);
 	/**使用链接点相对SkillNodeActor位置的偏移量作为Hash值记录对应的SplineComponent*/
 	HeadNodeInterface->SetSpline(FSplineConnectData(NodeConnectSplineComp,ESplineConnectType::Head),GetTypeHash(ConnectHead.ConnectOffset));
 	TailNodeInterface->SetSpline(FSplineConnectData(NodeConnectSplineComp,ESplineConnectType::Tail),GetTypeHash(ConnectHead.ConnectOffset));
+	return NodeConnectSplineComp;
 }
+
 
 

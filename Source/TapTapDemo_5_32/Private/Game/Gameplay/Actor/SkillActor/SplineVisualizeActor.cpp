@@ -17,6 +17,7 @@ void ASplineVisualizeActor::BeginPlay()
 {
 	Super::BeginPlay();
 	GetWorld()->GetSubsystem<USplineSpawnSystem>()->RegisterSplineActor(this);
+	check(LineMesh)
 }
 
 UNodeSplineComponent* ASplineVisualizeActor::GetOrCreateSplineComponent()
@@ -26,6 +27,7 @@ UNodeSplineComponent* ASplineVisualizeActor::GetOrCreateSplineComponent()
 	{
 		NewSplineComp = NewObject<UNodeSplineComponent>(this);
 		NewSplineComp->OnDeactive.BindUObject(this,&ASplineVisualizeActor::RemoveSplineComponent);
+		NewSplineComp->SplineStaticMesh = LineMesh;
 	}
 	else
 	{

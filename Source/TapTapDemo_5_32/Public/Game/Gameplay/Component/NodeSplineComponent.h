@@ -6,6 +6,7 @@
 #include "Components/SplineComponent.h"
 #include "NodeSplineComponent.generated.h"
 
+class UNodeSplineMeshComp;
 class INodeSplineInterface;
 
 UENUM(BlueprintType)
@@ -42,6 +43,7 @@ class TAPTAPDEMO_5_32_API UNodeSplineComponent : public USplineComponent
 {
 	GENERATED_BODY()
 public:
+	
 	UNodeSplineComponent();
 	virtual void BeginPlay() override;
 
@@ -53,6 +55,9 @@ private:
 	void ShowSpline();
 	/**每个线条只会有2个链接位置*/
 	TStaticArray<FNodeConnectData,2> ConnectNodeData;
+	TArray<UNodeSplineMeshComp*> SplinMeshs;
 public:
+	UPROPERTY(EditAnywhere,BlueprintReadOnly)
+	TObjectPtr<UStaticMesh> SplineStaticMesh;
 	FOnDeactive OnDeactive;
 };
