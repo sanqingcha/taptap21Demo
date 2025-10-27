@@ -3,6 +3,7 @@
 
 #include "Game/Gameplay/Character/EnemyCharacter.h"
 
+#include "Game/GameplayTags/GameTags.h"
 #include "Game/Gas/Attribute/AttributeSetBase.h"
 
 
@@ -17,6 +18,10 @@ AEnemyCharacter::AEnemyCharacter()
 void AEnemyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	if (!Tags.Contains(Game::Character::Game_Character_Enemy.GetTag().GetTagName()))
+	{
+		Tags.Add(Game::Character::Game_Character_Enemy.GetTag().GetTagName());
+	}
 }
 void AEnemyCharacter::Tick(float DeltaTime)
 {

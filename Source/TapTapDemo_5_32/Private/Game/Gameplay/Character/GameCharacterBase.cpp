@@ -2,8 +2,7 @@
 
 
 #include "Game/Gameplay/Character/GameCharacterBase.h"
-#include "AbilitySystemComponent.h"
-#include "GameplayEffectTypes.h"
+
 
 AGameCharacterBase::AGameCharacterBase()
 {

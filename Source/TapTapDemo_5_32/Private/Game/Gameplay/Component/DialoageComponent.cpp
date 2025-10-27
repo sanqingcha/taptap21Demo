@@ -26,24 +26,24 @@ void UDialoageComponent::BeginPlay()
 	
 	DialoageSys->OnDialoageTrriggerDelegate.AddUObject(this,&UDialoageComponent::OnTrriggerDialoage);
 	DialoageSys->OnDialoageBreakDelegate.AddDynamic(this,&UDialoageComponent::OnBreakDialoage);
-	DialoageAsset = DialoageSys->GetDialoageAsset();
+	//DialoageAsset = DialoageSys->GetDialoageAsset();
 	UUserWidget* DialoageWidget = GetWidget();
 	check(DialoageWidget);
-	WidgetInterface = Cast<IDialoageWidgetInterface>(DialoageWidget);
+	WidgetPtr = Cast<IDialoageWidgetInterface>(DialoageWidget);
 	//WidgetInterface.SetInterface(Cast<IDialoageWidgetInterface>(DialoageWidget));
 
 	
-	IDialoageWidgetInterface* Temp = WidgetInterface.Get();
+	IDialoageWidgetInterface* Temp = WidgetPtr.Get();
 	
 	check(Temp);
 }
 
 void UDialoageComponent::OnTrriggerDialoage(const FGameplayTag& DialoageTag, FDialoageData* DialoageData)
 {
-	WidgetInterface->NewDialoage(&DialoageData->Dialoage);
+	WidgetPtr->NewDialoage(&DialoageData->Dialoage);
 }
 
 void UDialoageComponent::OnBreakDialoage(const FGameplayTag& BreakSource, bool Force)
 {
-	WidgetInterface->NewDialoage({});
+	WidgetPtr->NewDialoage({});
 }

@@ -3,20 +3,39 @@
 
 #include "Game/Gameplay/Subsytem/GISubSystem/SoundSettingSubsystem.h"
 
-void USoundSettingSubsystem::SetAmbientVolume(float NewValoume)
+
+void UGameSettingSubsystem::SetSoundVolumeSettings(const FSoundVolumeSettings& NewValue)
+{
+	SoundSettings = NewValue;
+	GetSoundChangedDelegate().Broadcast(SoundSettings);
+}
+
+void UGameSettingSubsystem::SetAmbientVolume(float NewValoume)
 {
 	SoundSettings.AmbientVolume = NewValoume;
-	OnSoundChangedDelegate.Broadcast(SoundSettings);
+	GetSoundChangedDelegate().Broadcast(SoundSettings);
 }
 
-void USoundSettingSubsystem::SetDialogueVolume(float NewValue)
+void UGameSettingSubsystem::SetDialogueVolume(float NewValue)
 {
 	SoundSettings.DialogueVolume = NewValue;
-	OnSoundChangedDelegate.Broadcast(SoundSettings);
+	GetSoundChangedDelegate().Broadcast(SoundSettings);
 }
 
-void USoundSettingSubsystem::SetSoundEffectVolume(float NewValue)
+void UGameSettingSubsystem::SetSoundEffectVolume(float NewValue)
 {
 	SoundSettings.SoundEffectVolume = NewValue;
-	OnSoundChangedDelegate.Broadcast(SoundSettings);
+	GetSoundChangedDelegate().Broadcast(SoundSettings);
+}
+
+void UGameSettingSubsystem::SetPlayerControlSettings(const FPlayerControlSettings& NewValue)
+{
+	PlayerControlSettings = NewValue;
+	GetPlayerControlChangedDelegate().Broadcast(PlayerControlSettings);
+}
+
+void UGameSettingSubsystem::SetCameraDelaySpeed(float NewValue)
+{
+	PlayerControlSettings.CameraDelaySpeed = NewValue;
+	GetPlayerControlChangedDelegate().Broadcast(PlayerControlSettings);
 }

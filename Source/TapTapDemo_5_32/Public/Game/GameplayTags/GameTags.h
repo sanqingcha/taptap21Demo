@@ -17,4 +17,16 @@ namespace  Game
 		UE_DECLARE_GAMEPLAY_TAG_EXTERN(Game_Input_JumpBlock)
 		UE_DECLARE_GAMEPLAY_TAG_EXTERN(Game_Input_AttackBlock)
 	}
+
+	namespace Actor
+	{
+		UE_DECLARE_GAMEPLAY_TAG_EXTERN(Game_Actor_SkillNode)
+	}
+
+	namespace Camera
+	{
+		UE_DECLARE_GAMEPLAY_TAG_EXTERN(Game_Camera_Block)
+		UE_DECLARE_GAMEPLAY_TAG_EXTERN(Game_Camera_Player)
+		UE_DECLARE_GAMEPLAY_TAG_EXTERN(Game_Camera_BuildSpace)
+	}
 }

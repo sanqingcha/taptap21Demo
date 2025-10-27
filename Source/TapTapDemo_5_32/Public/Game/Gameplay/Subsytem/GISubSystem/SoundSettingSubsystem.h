@@ -13,36 +13,62 @@ USTRUCT(BlueprintType)
 struct FSoundVolumeSettings
 {
 	GENERATED_BODY()
+	UPROPERTY(BlueprintReadOnly)
 	float AmbientVolume = 1.f;
+	UPROPERTY(BlueprintReadOnly)
 	float DialogueVolume = 1.f;
+	UPROPERTY(BlueprintReadOnly)
 	float SoundEffectVolume = 1.f;
 };
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSoundChanged , const FSoundVolumeSettings& ,SoundSetting);
+USTRUCT(BlueprintType)
+struct FPlayerControlSettings
+{
+	GENERATED_BODY()
+	UPROPERTY(BlueprintReadOnly)
+	float CameraDelaySpeed = 10.f;
+	
+};
+
+
+
+DECLARE_MULTICAST_DELEGATE_OneParam(FOnSoundChanged , const FSoundVolumeSettings&);
+DECLARE_MULTICAST_DELEGATE_OneParam(FOnPlayerControlChanged , const FPlayerControlSettings&);
 
 
 UCLASS()
-class TAPTAPDEMO_5_32_API USoundSettingSubsystem : public UGameInstanceSubsystem
+class TAPTAPDEMO_5_32_API UGameSettingSubsystem : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
 public:
-	UFUNCTION(BlueprintCallable,Category="SoundSetting")
+	/**音量*/
+	UFUNCTION(BlueprintCallable,Category="SoundSetting|GameSettings")
 	const FSoundVolumeSettings& GetSoundSettings(){return SoundSettings;};
-	UFUNCTION(BlueprintCallable,Category="SoundSetting")
-	FSoundVolumeSettings& GetMutSoundSettings(){return SoundSettings;};
-	UFUNCTION(BlueprintCallable,Category="SoundSetting")
-	void SetSoundVolumeSettings(const FSoundVolumeSettings& NewValue){SoundSettings = NewValue;};
-	UFUNCTION(BlueprintCallable,Category="SoundSetting")
+	UFUNCTION(BlueprintCallable,Category="SoundSetting|GameSettings")
+	void SetSoundVolumeSettings(const FSoundVolumeSettings& NewValue);
+	UFUNCTION(BlueprintCallable,Category="SoundSetting|GameSettings")
 	void SetAmbientVolume(float NewValoume)	;
-	UFUNCTION(BlueprintCallable,Category="SoundSetting")
+	UFUNCTION(BlueprintCallable,Category="SoundSetting|GameSettings")
 	void SetDialogueVolume(float NewValue)	;
-	UFUNCTION(BlueprintCallable,Category="SoundSetting")
+	UFUNCTION(BlueprintCallable,Category="SoundSetting|GameSettings")
 	void SetSoundEffectVolume(float NewValue);
-
+	/**end*/
+	/**PlayerControl*/
+	UFUNCTION(BlueprintCallable,Category="PlayerSetting|GameSettings")
+	const FPlayerControlSettings& GetPlayerControlSettings(){return PlayerControlSettings;};
+	UFUNCTION(BlueprintCallable,Category="PlayerSetting|GameSettings")
+	void SetPlayerControlSettings(const FPlayerControlSettings& NewValue);
+	UFUNCTION(BlueprintCallable,Category="SoundSetting|GameSettings")
+	void SetCameraDelaySpeed(float NewValue);
+	/**end*/
 	
-	UPROPERTY(BlueprintAssignable,BlueprintReadWrite)
-	FOnSoundChanged	OnSoundChangedDelegate;
+	FOnSoundChanged& GetSoundChangedDelegate(){return OnSoundChangedDelegate;};
+	FOnPlayerControlChanged& GetPlayerControlChangedDelegate(){return OnPlayerControlChangedDelegate;};
+
 private:
-	/**环境音量*/
+	FOnSoundChanged OnSoundChangedDelegate;
+	FOnPlayerControlChanged OnPlayerControlChangedDelegate;
+	
 	FSoundVolumeSettings SoundSettings;
+	FPlayerControlSettings PlayerControlSettings;
 };

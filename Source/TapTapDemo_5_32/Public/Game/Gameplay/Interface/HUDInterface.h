@@ -20,4 +20,5 @@ class TAPTAPDEMO_5_32_API IHUDInterface
 	GENERATED_BODY()
 public:
 	virtual void InitialHUD(UPlayerBaseData* BaseData) = 0;
+	virtual void RegisterBuildSpaceAction_Interface() = 0;
 };

@@ -29,4 +29,25 @@ namespace  Game
 			"Game.Input.AttackBlock",
 			"Tag for PlayerInput");
 	}
+
+	namespace Actor
+	{
+		UE_DEFINE_GAMEPLAY_TAG_COMMENT(Game_Actor_SkillNode,
+			"Game.Actor.SkillNode",
+			"Tag for Mark SkillNodeActor")
+	}
+
+	namespace Camera
+	{
+		UE_DEFINE_GAMEPLAY_TAG_COMMENT(Game_Camera_Block,
+			"Game.Camera.Block",
+			"Tag for Block CameraSwitch")
+		
+		UE_DEFINE_GAMEPLAY_TAG_COMMENT(Game_Camera_Player,
+			"Game.Camera.Player",
+			"Tag for Mark Camera")
+		UE_DEFINE_GAMEPLAY_TAG_COMMENT(Game_Camera_BuildSpace,
+			"Game.Camera.BuildSpace",
+			"Tag for Mark Camera")
+	}
 }

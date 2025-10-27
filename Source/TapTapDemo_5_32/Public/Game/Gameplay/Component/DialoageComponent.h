@@ -25,6 +25,6 @@ public:
 	
 	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Dialoage")
 	TObjectPtr<UDialoageAsset> DialoageAsset;
-	UPROPERTY()
-	TObjectPtr<IDialoageWidgetInterface> WidgetInterface;
+	//UPROPERTY(Transient)
+	TObjectPtr<IDialoageWidgetInterface> WidgetPtr;
 };

@@ -13,6 +13,15 @@ void UPlayerAttribute::PostGameplayEffectExecute(const struct FGameplayEffectMod
 		SetHealth(FMath::Clamp(GetHealth(), 0.f, GetMaxHealth()));
 		UE_LOG(LogTemp, Error, TEXT("Player Health Changed Once"));
 	}
+	if (Data.EvaluatedData.Attribute==GetMaxHealthAttribute())
+	{
+		OnHPPercentChangeDelegate.Broadcast(GetHPPercent());
+	}
+}
+
+const float UPlayerAttribute::GetHPPercent()
+{
+	return FMath::Clamp(GetHealth()/GetMaxHealth(),0.f,1.f);
 }
 
 void UEnemyAttribute::PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData& Data)

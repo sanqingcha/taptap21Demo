@@ -19,6 +19,7 @@ public class TapTapDemo_5_32 : ModuleRules
 			"Puerts" ,
 			"EnhancedInput",
 			"NavigationSystem",
+			"AIModule"
 		});
 		PrivateDependencyModuleNames.AddRange(new string[] {});
 

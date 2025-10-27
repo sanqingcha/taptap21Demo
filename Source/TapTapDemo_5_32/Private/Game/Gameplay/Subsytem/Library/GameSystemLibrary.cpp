@@ -10,6 +10,7 @@
 
 #include "AbilitySystemComponent.h"
 #include "AbilitySystemInterface.h"
+#include "Kismet/GameplayStatics.h"
 
 #ifdef NEED_DEBUG
 #include "Kismet/KismetSystemLibrary.h"
@@ -40,6 +41,12 @@ bool UGameSystemLibrary::ApplyEffectToActor(AActor* Source, AActor* TargetActor,
 	const FGameplayEffectSpecHandle SpecHandle = ASC->MakeOutgoingSpec(GameplayEffectClass, level, ContextHandle);
 	ASC->ApplyGameplayEffectSpecToTarget(*SpecHandle.Data.Get(), ASC);
 	return true;
+}
+
+void UGameSystemLibrary::Game_GetAllActorsOfClass(UObject* WorldContext, TSubclassOf<AActor> ActorClass,
+	TArray<AActor*>& OutActors)
+{
+	UGameplayStatics::GetAllActorsOfClass(WorldContext, ActorClass, OutActors);
 }
 
 

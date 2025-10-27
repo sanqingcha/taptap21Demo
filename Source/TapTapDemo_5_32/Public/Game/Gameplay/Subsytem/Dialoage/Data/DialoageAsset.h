@@ -7,6 +7,7 @@
 #include "Engine/DataAsset.h"
 #include "DialoageAsset.generated.h"
 
+class UDialoageTrriggerEventBase;
 struct FGameplayTagContainer;
 struct FGameplayTag;
 /**
@@ -23,10 +24,15 @@ struct FOnceDialoageData
 	FString Dialoage;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly,Category = "Dialoage")
 	TSoftObjectPtr<USoundBase> SoundSoft;
-
+	UPROPERTY(EditAnywhere, BlueprintReadOnly,Category = "Dialoage")
+	TArray<TSubclassOf<UDialoageTrriggerEventBase>> TrriggerEvent;
+	/**触发事件在对话刚开始就会触发，加个延时来处理时间触发*/
+	UPROPERTY(EditAnywhere, BlueprintReadOnly,Category = "Dialoage")
+	float EventDelay = 1.f;
 	
 	UPROPERTY()
 	TObjectPtr<USoundBase> SoundSource;
+	
 };
 
 

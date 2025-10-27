@@ -19,6 +19,7 @@ GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)
  * 
  */
 
+DECLARE_MULTICAST_DELEGATE_OneParam(FOnHPPercentChange,float);
 
 UCLASS()
 class TAPTAPDEMO_5_32_API UAttributeSetBase : public UAttributeSet
@@ -45,7 +46,9 @@ class TAPTAPDEMO_5_32_API UPlayerAttribute : public UAttributeSet
 	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category = "PlayerAttribute")
 	FGameplayAttributeData Level;
 	ATTRIBUTE_ACCESSORS(UPlayerAttribute, Level);
-	
+
+	FOnHPPercentChange OnHPPercentChangeDelegate;
+	const float GetHPPercent();
 };
 
 UCLASS()

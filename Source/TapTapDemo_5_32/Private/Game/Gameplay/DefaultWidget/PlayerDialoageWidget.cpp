@@ -5,7 +5,9 @@
 
 #include "Components/AudioComponent.h"
 #include "Game/Gameplay/DefaultWidget/SingleTextWidget.h"
+#include "Game/Gameplay/Player/SuperPlayerController.h"
 #include "Game/Gameplay/Subsytem/Dialoage/Data/DialoageAsset.h"
+#include "Game/Gameplay/Subsytem/Dialoage/Data/DialoageTrriggerEventBase.h"
 #include "Game/Gameplay/Subsytem/GISubSystem/SoundSettingSubsystem.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -13,8 +15,9 @@ void UPlayerDialoageWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 	OnReadOverOnceDelegate.AddDynamic(this,&UPlayerDialoageWidget::ReadOverCallback);
-	SoundSettingSubsys = GetGameInstance()->GetSubsystem<USoundSettingSubsystem>();
-	check(SoundSettingSubsys);
+	GameSettingSubsys = GetGameInstance()->GetSubsystem<UGameSettingSubsystem>();
+	check(GameSettingSubsys);
+	GameSettingSubsys->GetSoundChangedDelegate().AddUObject(this,&UPlayerDialoageWidget::OnSoundChaned);
 }
 
 void UPlayerDialoageWidget::NewDialoage(TArray<FOnceDialoageData>* Dialoage)
@@ -42,6 +45,25 @@ void UPlayerDialoageWidget::ReadOnce()
 		Delegate.BindLambda([Data,this]()
 		{
 			ReadOncePlayAnim((Data->Dialoage));
+			
+			FTimerHandle TimerHandle;
+			FTimerDelegate Delegate;
+			
+			Delegate.BindLambda([Data,this]()
+			{
+				for (auto& i: Data->TrriggerEvent)
+				{
+					
+					NewObject<UDialoageTrriggerEventBase>(GameSettingSubsys,i)->OnTrrigger(ASuperPlayerController::PlayerData_Static);
+				}
+			});
+			GetWorld()->GetTimerManager().SetTimer(
+						TimerHandle,
+						Delegate,
+						Data->EventDelay,
+						false);
+			
+			
 			if (Data->SoundSource!=nullptr)
 			{
 				if (LastSound)
@@ -49,7 +71,10 @@ void UPlayerDialoageWidget::ReadOnce()
 					LastSound->Stop();
 					LastSound->MarkAsGarbage();
 				}
-				LastSound = UGameplayStatics::SpawnSound2D(GetWorld(),Data->SoundSource,SoundSettingSubsys->GetSoundSettings().DialogueVolume);
+				LastSound = UGameplayStatics::SpawnSound2D(
+					GetWorld(),
+					Data->SoundSource,
+					GameSettingSubsys->GetSoundSettings().DialogueVolume);
 			}
 			CurrIndex++;
 			isDelaying = false;
@@ -98,7 +123,7 @@ void UPlayerDialoageWidget::ReadOneText()
 		if (!isLast) return;
 	}
 	/**在if中没有return，或者没有进入if里面，没有字符需要生成了，就直接中断计时器*/
-	UE_LOG(LogTemp,Error,TEXT("Read Over Text Once"));
+	//UE_LOG(LogTemp,Error,TEXT("Read Over Text Once"));
 	GetWorld()->GetTimerManager().PauseTimer(ReadTimerHandle);
 }
 
@@ -108,6 +133,16 @@ void UPlayerDialoageWidget::CreateOneText(const FString& Text, bool isLast)
 	USingleTextWidget* SingleText = CreateWidget<USingleTextWidget>(this,TextWidgetClass.LoadSynchronous());
 	SingleText->SetText(Text,isLast,this);
 	CreateOneTextBP(SingleText);
+}
+
+void UPlayerDialoageWidget::OnSoundChaned(const FSoundVolumeSettings& SoundSetting)
+{
+	//UKismetSystemLibrary::PrintString(GetWorld(),FString::Printf(TEXT("GetinOnChaned")),true,false,FLinearColor::Red,10.f);
+	if (LastSound!=nullptr)
+	{
+		//UKismetSystemLibrary::PrintString(GetWorld(),FString::Printf(TEXT("havedSet")),true,false,FLinearColor::Red,10.f);
+		LastSound->SetVolumeMultiplier(SoundSetting.DialogueVolume);
+	}
 }
 
 

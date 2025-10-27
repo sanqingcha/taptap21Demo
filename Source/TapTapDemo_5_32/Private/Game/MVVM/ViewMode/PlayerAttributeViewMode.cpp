@@ -11,8 +11,7 @@
 void UPlayerAttributeViewMode::InitialViewModel(UPlayerBaseData* inBaseData)
 {
 	Super::InitialViewModel(inBaseData);
-	check(BaseData);
-
+	if (!ensure(BaseData))return;
 	const UPlayerAttribute* PlayerAS = Cast<UPlayerAttribute>(BaseData->ASC->GetAttributeSet(UAttributeSet::StaticClass()));
 
 	

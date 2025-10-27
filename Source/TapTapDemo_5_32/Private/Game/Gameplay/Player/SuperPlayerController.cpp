@@ -12,19 +12,58 @@
 #include "Game/GameplayTags/GameTags.h"
 #include "Game/Gas/Attribute/AttributeSetBase.h"
 #include "Game/Gameplay/Player/Data/SkillInputAsset.h"
+#include "Game/Gameplay/Subsytem/GISubSystem/MapSteamLoadSystem.h"
 
+UPlayerBaseData* ASuperPlayerController::PlayerData_Static = nullptr;
 
 ASuperPlayerController::ASuperPlayerController()
 {
+	
 }
 
 void ASuperPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-
+	
 	CheckResource();
 	InitialHUD();
 	InitialPawn();
+	intialControl();
+}
+
+void ASuperPlayerController::intialControl()
+{
+	check(PlayerData)
+	/*
+	 *UAbilitySystemComponent* ASC = PlayerData->ASC;
+	 *FGameplayTagContainer BlockInputGameplayTags;
+	 *BlockInputGameplayTags.AddTag(Game::Input::Game_Input_AttackBlock);
+	 *BlockInputGameplayTags.AddTag(Game::Input::Game_Input_JumpBlock);
+	 *BlockInputGameplayTags.AddTag(Game::Input::Game_Input_MoveBlock);
+	 *BlockInputGameplayTags.AddTag(Game::Input::Game_Input_RotateBlock);
+	 *ASC->AddLooseGameplayTags(BlockInputGameplayTags);
+	 *@Param :: MappingContext :: 直接使用Mapping的注册来控制玩家输入
+	 */
+	UMapSteamLoadSystem::GetOnStreamLoadOverDelegate().AddDynamic(this,&ASuperPlayerController::OnMapOpen);
+}
+
+void ASuperPlayerController::OnMapOpen()
+{
+	UMapSteamLoadSystem::GetOnStreamLoadOverDelegate().RemoveDynamic(this,&ASuperPlayerController::OnMapOpen);
+	SetShowMouseCursor(false);
+	check(PlayerData)
+	PlayerData->EnhancedInputSys->AddMappingContext(GameInputContext, 0);
+	
+	/*UAbilitySystemComponent* ASC = PlayerData->ASC;
+	 *FGameplayTagContainer BlockInputGameplayTags;
+	 *BlockInputGameplayTags.AddTag(Game::Input::Game_Input_AttackBlock);
+	 *BlockInputGameplayTags.AddTag(Game::Input::Game_Input_JumpBlock);
+	 *BlockInputGameplayTags.AddTag(Game::Input::Game_Input_MoveBlock);
+	 *BlockInputGameplayTags.AddTag(Game::Input::Game_Input_RotateBlock);
+	 *ASC->RemoveLooseGameplayTags(BlockInputGameplayTags);
+	 *@Param :: MappingContext :: 直接使用Mapping的注册来控制玩家输入
+	 */
+
 }
 
 
@@ -38,13 +77,22 @@ void ASuperPlayerController::CheckResource()
 
 void ASuperPlayerController::InitialPawn()
 {
-	UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
-	if (Subsystem)
-	{
-		Subsystem->AddMappingContext(GameInputContext, 0);
-	}
+	SetControlRotation(initRotator);
 	PlayerPawnInterface = Cast<IPlayerPawnInterface> (GetPawn());
 	check(PlayerPawnInterface);
+	PlayerPawnInterface->GetInputChangedDelegate().BindUObject(this,&ASuperPlayerController::OnPlayerInputMappingChanged);
+}
+
+void ASuperPlayerController::OnPlayerInputMappingChanged(bool Activate)
+{
+	if (Activate)
+	{
+		PlayerData->EnhancedInputSys->AddMappingContext(GameInputContext, 0);
+	}
+	else
+	{
+		PlayerData->EnhancedInputSys->RemoveMappingContext(GameInputContext);
+	}
 }
 
 void ASuperPlayerController::InitialHUD()
@@ -53,9 +101,12 @@ void ASuperPlayerController::InitialHUD()
 	if (!ensure(AbilityInterface)){return;}
 	AbilitySysComp = AbilityInterface->GetAbilitySystemComponent();
 	IHUDInterface* HUDInterface = Cast<IHUDInterface>(GetHUD());
+	UEnhancedInputLocalPlayerSubsystem* EnhanceSubSys = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
+	UEnhancedInputComponent* EnhancedInputComp = Cast<UEnhancedInputComponent>(InputComponent); 
 	check(HUDInterface);
-	PlayerData = NewObject<UPlayerBaseData>();
-	PlayerData->SetData(this,GetPlayerState<APlayerState>(),AbilitySysComp);
+	PlayerData = NewObject<UPlayerBaseData>(this);
+	PlayerData->SetData(this,GetPlayerState<APlayerState>(),AbilitySysComp,EnhanceSubSys,EnhancedInputComp);
+	PlayerData_Static = PlayerData;
 	HUDInterface->InitialHUD(PlayerData);
 }
 
@@ -75,7 +126,7 @@ void ASuperPlayerController::SetupInputComponent()
 			for (auto& i : SkillActionsData->SkillInputData)
 			{
 				EnhancedInputComp->BindAction(i.Value.SkillInputAction, i.Value.TrriggerType, this, &ThisClass::TryUseSkill,i.Key);
-				//TODO::初始化技能头模块数量以及映射到技能模块
+				//TODO::初始化技能头模块数量以及映射到技能模块,使用Tag标记每个创建开始模块;
 			}
 		}
 		
@@ -120,3 +171,4 @@ void ASuperPlayerController::TryUseSkill(FGameplayTag Tag)
 	unimplemented();
 	UE_LOG(LogTemp,Warning,TEXT("TryUseSkill :: Tag = %s"), * Tag.ToString());
 }
+

@@ -34,10 +34,22 @@
 			"Enabled": true
 		},
 		{
-            "Name": "PuerTSExpand",
-            "Enabled": true,
-            "Optional": true,
-            "EnabledByDefault": false
-        }
+			"Name": "PuerTSExpand",
+			"Enabled": true,
+			"Optional": true,
+			"EnabledByDefault": false
+		},
+		{
+			"Name": "Water",
+			"Enabled": true
+		},
+		{
+			"Name": "Landmass",
+			"Enabled": true
+		},
+		{
+			"Name": "NiagaraFluids",
+			"Enabled": true
+		}
 	]
 }

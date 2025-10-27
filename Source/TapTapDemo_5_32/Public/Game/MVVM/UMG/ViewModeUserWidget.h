@@ -4,8 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "Components/Image.h"
 #include "ViewModeUserWidget.generated.h"
 
+struct FOnAttributeChangeData;
+class UTextBlock;
 class UPlayerBaseData;
 class UUMGViewModelBase;
 /**
@@ -16,7 +19,7 @@ class TAPTAPDEMO_5_32_API UViewModeUserWidget : public UUserWidget
 {
 	GENERATED_BODY()
 public:
-	virtual void Initial(UPlayerBaseData* inBaseData){BaseData = inBaseData;};
+	virtual void Initial(UPlayerBaseData* inBaseData);
 	UFUNCTION(BlueprintImplementableEvent)
 	void InitialBP();
 protected:
@@ -25,14 +28,44 @@ protected:
 };
 
 UCLASS()
-class TAPTAPDEMO_5_32_API UPlayerAttributeWidget : public UUserWidget
+class TAPTAPDEMO_5_32_API UPlayerWidget : public UViewModeUserWidget
 {
 	GENERATED_BODY()
-};
-
-UCLASS()
-class TAPTAPDEMO_5_32_API UEnemyAttributeWidget : public UUserWidget
-{
-	GENERATED_BODY()
+public:
+	virtual void Initial(UPlayerBaseData* inBaseData) override;
+	UFUNCTION(BlueprintCallable)
+	void IntialImagemat(UMaterialInterface* BloodMatTemplate,UMaterialInterface* SkillMatTemplate);
+	UFUNCTION()
+	void OnBloodUpdate (float Percent);
+	void OnSkill1Update();
+	void OnSkill2Update();
+	void OnSkill3Update();
+	void OnSkill4Update();
+	
+	UPROPERTY()
+	UMaterialInstanceDynamic* BloodDyMat;
+	UPROPERTY()
+	UMaterialInstanceDynamic* Skill1DyMat;
+	UPROPERTY()
+	UMaterialInstanceDynamic* Skill2DyMat;
+	UPROPERTY()
+	UMaterialInstanceDynamic* Skill3DyMat;
+	UPROPERTY()
+	UMaterialInstanceDynamic* Skill4DyMat;
+	
+	
+	UPROPERTY(meta = (BindWidget))
+	UImage* Blood_Image;
+	UPROPERTY(meta = (BindWidget))
+	UTextBlock* EnemyCount_Text;
+	UPROPERTY(meta = (BindWidget))
+	UImage* Skill1_Image;
+	UPROPERTY(meta = (BindWidget))
+	UImage* Skill2_Image;
+	UPROPERTY(meta = (BindWidget))
+	UImage* Skill3_Image;
+	UPROPERTY(meta = (BindWidget))
+	UImage* Skill4_Image;
+	
 };
 

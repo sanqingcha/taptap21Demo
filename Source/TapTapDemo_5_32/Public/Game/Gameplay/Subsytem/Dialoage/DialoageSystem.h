@@ -44,6 +44,8 @@ public:
 	void BreakAllDialoage();
 
 	UDialoageAsset* GetDialoageAsset(){return DialoageAsset;}
+
+	
 private:
 	UPROPERTY()
 	TObjectPtr<UDialoageAsset> DialoageAsset;

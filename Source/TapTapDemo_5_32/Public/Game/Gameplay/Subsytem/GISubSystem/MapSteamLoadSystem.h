@@ -3,12 +3,13 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GameplayTagContainer.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "MapSteamLoadSystem.generated.h"
 
-/**
- * 
- */
+
+class IInputMappingInterface;
+
 UENUM(BlueprintType)
 enum class EMapLoadType :uint8
 {
@@ -28,6 +29,9 @@ struct FStreamMapInfo
 	ULevelStreaming*  StreamingLevel = nullptr;
 };
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnStreamLoadOver);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnStreamLoadOver_BP);
+
 UCLASS()
 class TAPTAPDEMO_5_32_API UMapSteamLoadSystem : public UGameInstanceSubsystem
 {
@@ -35,11 +39,33 @@ class TAPTAPDEMO_5_32_API UMapSteamLoadSystem : public UGameInstanceSubsystem
 public:
 	UFUNCTION(BlueprintCallable,category="MapSteamLoadSystem",meta = (Keywords = "Load,Stream,Open"))
 	FStreamMapInfo& PreLoadLevel(const TSoftObjectPtr<UWorld> Level);
-	
+	UFUNCTION()
+	void CompleteOpenMap();
 	UFUNCTION(BlueprintCallable,category="MapSteamLoadSystem",meta = (RemovePrevMap = "true",Keywords = "Load,Stream,Open",AdvancedDisplay = "RemovePrevMap,LoadType"))
 	void OpenMapBySys(const TSoftObjectPtr<UWorld> Level,bool RemovePrevMap, EMapLoadType LoadType);
 	UFUNCTION(BlueprintCallable,category="MapSteamLoadSystem",meta = (Keywords = "Load,Stream,Close"))
 	void ForceRemoveMap(const TSoftObjectPtr<UWorld> Level);
+	UFUNCTION(BlueprintCallable,category="MapSteamLoadSystem")
+	void BroadcastOpenLevel();
 
+	static FOnStreamLoadOver& GetOnStreamLoadOverDelegate();
+
+
+	UPROPERTY(BlueprintAssignable,BlueprintReadWrite)
+	FOnStreamLoadOver_BP OnStreamLoadOverDelegate_BP;
 	TMap<TSoftObjectPtr<UWorld>,FStreamMapInfo> StreamingLevelMap;
+
+
+	UFUNCTION(BlueprintCallable)
+	void RegisterCamera(const FGameplayTag& Tag,AActor* CameraActor);
+
+	UFUNCTION(BlueprintCallable)
+	void SwitchCamera(APlayerController* PC,const FGameplayTag& Tag,float BlendTime, EViewTargetBlendFunction BlendFunc, float BlendExp, bool bLockOutgoing);
+	void SetCurrentCamera(IInputMappingInterface* inCurrentCamera){CurrentCamera = inCurrentCamera;}
+
+	UFUNCTION(BlueprintCallable)
+	ULevelStreaming* GetCurrentWorldbySoftRef(const TSoftObjectPtr<UWorld> Level);
+private:
+	IInputMappingInterface* CurrentCamera;
+	TMap<FGameplayTag,AActor* > PlayerCameraMap;
 };

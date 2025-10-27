@@ -7,7 +7,8 @@
 #include "Game/Gameplay/Interface/DialoageWidgetInterface.h"
 #include "PlayerDialoageWidget.generated.h"
 
-class USoundSettingSubsystem;
+struct FSoundVolumeSettings;
+class UGameSettingSubsystem;
 class USingleTextWidget;
 /**
  * 
@@ -40,7 +41,9 @@ public:
 	void CreateOneText(const FString& Text,bool isLast);
 	UFUNCTION(BlueprintImplementableEvent)
 	void CreateOneTextBP(USingleTextWidget* TextWodget);
-
+	UFUNCTION()
+	void OnSoundChaned(const FSoundVolumeSettings& SoundSetting);
+	
 	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="DialoageWidgetSettings")
 	float ReadSpeed = 0.05;
 	UPROPERTY(EditAnywhere,BlueprintReadOnly)
@@ -54,5 +57,7 @@ protected:
 	int32 CurrTextIndex;
 	bool isDelaying = false;
 	UAudioComponent* LastSound = nullptr;
-	USoundSettingSubsystem* SoundSettingSubsys;
+	UGameSettingSubsystem* GameSettingSubsys;
+
+	
 };

@@ -5,13 +5,16 @@
 #include "CoreMinimal.h"
 #include "Game/Gameplay/Component/NodeSplineComponent.h"
 #include "Game/Gameplay/Interface/NodeSplineInterface.h"
+#include "Game/Gameplay/Interface/SkillNodeInteractInterface.h"
 #include "GameFramework/Actor.h"
 #include "SkillNodeActor.generated.h"
 
+class ISkillNodeWidgetInterface;
+class UWidgetComponent;
 class USkillNode;
 
 UCLASS()
-class TAPTAPDEMO_5_32_API ASkillNodeActor : public AActor , public INodeSplineInterface
+class TAPTAPDEMO_5_32_API ASkillNodeActor : public AActor , public INodeSplineInterface , public ISkillNodeInteractInterface
 {
 	GENERATED_BODY()
 	
@@ -20,14 +23,14 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
-
+	
 private:
 	UPROPERTY()
 	TObjectPtr<USkillNode> LogicalNode;
 
 	UPROPERTY()
 	int32 HashID;
-
+	
 public:
 	/**由外部调用过来*/
 	virtual void SetSpline(const FSplineConnectData& Data, uint32 Hash) override;
@@ -42,4 +45,17 @@ public:
 	 */
 	//TODO::在移动这个SkillNodeActor的时候调用UpdateSpline函数
 	TMap<uint32, FSplineConnectData> Splines;
+	UPROPERTY(EditAnywhere,BlueprintReadOnly)
+	TObjectPtr<USceneComponent> RootSceneComp;
+	UPROPERTY(EditAnywhere,BlueprintReadOnly)
+	TObjectPtr<UWidgetComponent> DetialWidgetComp;
+	//ISkillNodeWidgetInterface* DetialWidget;
+	
+	virtual void StartTouching() override;
+	virtual void EndTouching() override;
+	virtual void StartHolding() override;
+	virtual void EndHolding() override;
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void MouseTouch(bool Touch);
 };

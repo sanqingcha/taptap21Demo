@@ -62,8 +62,9 @@ void UNodeSplineComponent::UpdateSplineForConnect()
 					//UE_LOG(LogTemp,Error,TEXT("NewNum = %d"),SplinMeshs.Num()-(Path.Num()-1))
 					PoolManager->GET_OR_CREATE_PTR(NewMeshComp,SplineOwner,UNodeSplineMeshComp);
 					SplinMeshs.Add(NewMeshComp);
-					NewMeshComp->SetStaticMesh(SplineStaticMesh);
+					
 				}
+				NewMeshComp->SetStaticMesh(SplineStaticMesh);
 				FVector StartPos;;
 				FVector StartTan;
 				GetLocationAndTangentAtSplinePoint(i,StartPos,StartTan,ESplineCoordinateSpace::Local);

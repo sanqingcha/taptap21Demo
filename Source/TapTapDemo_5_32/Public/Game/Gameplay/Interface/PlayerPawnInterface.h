@@ -6,6 +6,8 @@
 #include "UObject/Interface.h"
 #include "PlayerPawnInterface.generated.h"
 
+DECLARE_DELEGATE_OneParam(FOnInputChanged,bool Activate);
+
 class USpringArmComponent;
 // This class does not need to be modified.
 UINTERFACE(MinimalAPI,BlueprintType)
@@ -22,4 +24,6 @@ public:
 	USpringArmComponent* GetSpringArmComponent();
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void CallJump();
+
+	virtual FOnInputChanged& GetInputChangedDelegate() = 0;
 };
