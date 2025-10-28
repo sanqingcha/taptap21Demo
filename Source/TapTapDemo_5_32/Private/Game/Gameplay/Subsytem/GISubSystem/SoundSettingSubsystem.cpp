@@ -39,3 +39,12 @@ void UGameSettingSubsystem::SetCameraDelaySpeed(float NewValue)
 	PlayerControlSettings.CameraDelaySpeed = NewValue;
 	GetPlayerControlChangedDelegate().Broadcast(PlayerControlSettings);
 }
+
+void UGameSettingSubsystem::SetCheckTime(float NewValue)
+{
+	PlayerControlSettings.CheckTime = NewValue;
+	if (GetCheckTimeDelegate().IsBound())
+	{
+		GetCheckTimeDelegate().Execute(NewValue);
+	}
+}

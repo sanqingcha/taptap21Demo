@@ -6,11 +6,14 @@
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "GameSystemLibrary.generated.h"
 
+class UPlayerBaseData;
 class UGameplayEffect;
 struct FGameplayAttribute;
+
 /**
  * 
  */
+
 UCLASS()
 class TAPTAPDEMO_5_32_API UGameSystemLibrary : public UBlueprintFunctionLibrary
 {
@@ -21,4 +24,7 @@ class TAPTAPDEMO_5_32_API UGameSystemLibrary : public UBlueprintFunctionLibrary
 
 	UFUNCTION(BlueprintCallable,Category="GameLibrary" ,meta = (Keywords = "GetActor"))
 	static void Game_GetAllActorsOfClass(UObject* WorldContext, TSubclassOf<AActor> ActorClass, TArray<AActor*>& OutActors);
+
+	UFUNCTION(BlueprintPure,Category="GameLibrary" ,meta = (Keywords = "Player"))
+	static UPlayerBaseData* GetPlayerData();
 };

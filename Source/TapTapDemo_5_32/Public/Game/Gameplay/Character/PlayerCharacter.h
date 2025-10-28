@@ -28,7 +28,9 @@ public:
 	virtual USpringArmComponent* GetSpringArmComponent_Implementation() override;
 	virtual void CallJump_Implementation() override;
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override{return PlayerAbilitySysComp;};
-	virtual void Die_Implementation() override{};
+	virtual void Die_Implementation() override;
+	
+	
 	UFUNCTION()
 	virtual void OnPlayerControlSettingChanged(const FPlayerControlSettings& NewSettings); 
 	virtual void ActivateCamera(UPlayerBaseData* inPlayerData) override;

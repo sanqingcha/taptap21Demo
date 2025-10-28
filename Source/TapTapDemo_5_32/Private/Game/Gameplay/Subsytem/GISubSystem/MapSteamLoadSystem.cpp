@@ -89,6 +89,8 @@ void UMapSteamLoadSystem::RegisterCamera(const FGameplayTag& Tag, AActor* Camera
 
 void UMapSteamLoadSystem::SwitchCamera(APlayerController* PC,const FGameplayTag& Tag,float BlendTime, EViewTargetBlendFunction BlendFunc, float BlendExp, bool bLockOutgoing)
 {
+	const FGameplayTag* TagPtr = &Tag;
+	if (!ensure(TagPtr))return;
 	auto TargetCamera = *PlayerCameraMap.Find(Tag);
 	if (TargetCamera == nullptr)return;
 

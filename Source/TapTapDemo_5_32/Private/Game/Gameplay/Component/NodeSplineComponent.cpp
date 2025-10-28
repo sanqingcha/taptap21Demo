@@ -5,10 +5,9 @@
 #include "Game/Gameplay/Component/SkillComponent/NodeSplineMeshComp.h"
 #include "NavigationPath.h"
 #include "NavigationSystem.h"
-#include "Game/Gameplay/Interface/NodeSplineInterface.h"
+#include "Game/Gameplay/Interface/SkillNodeInteractInterface.h"
 #include "Game/Gameplay/Subsytem/Manager/PoolManager.h"
-#include "Kismet/KismetSystemLibrary.h"
-#include "Virtualization/VirtualizationTypes.h"
+#include "Game/Gameplay/Subsytem/Skill/SkillsManagerSubsystem.h"
 
 
 UNodeSplineComponent::UNodeSplineComponent()
@@ -25,14 +24,23 @@ void UNodeSplineComponent::UpdateSplineForConnect()
 {
 	check(SplineStaticMesh);
 	
-	UNavigationPath* Result = UNavigationSystemV1::FindPathToLocationSynchronously(
+	/*UNavigationPath* Result = UNavigationSystemV1::FindPathToLocationSynchronously(
 	GetWorld(),
-	ConnectNodeData[0].ConnectActor->GetActorLocation()+ConnectNodeData[0].ConnectOffset,
-	ConnectNodeData[1].ConnectActor->GetActorLocation()+ConnectNodeData[1].ConnectOffset
-	);
-	if (ensure(Result))
+	ConnectNodeData[0]->GetTailConnectPos(),
+	ConnectNodeData[1]->GetHeadConnectPos()
+	);*/
+
+	/*UE_LOG(LogTemp,Error,TEXT("ConnectPosHeadHead = %s,ConnectPosTail = %s"),
+		*(ConnectNodeData[0]->GetTailConnectPos().ToString()),
+		*(ConnectNodeData[1]->GetHeadConnectPos().ToString())
+		);*/
+	
+	if (/***ensure(Result)||*/true)
 	{
-		const TArray<FVector>Path = Result->PathPoints;
+		
+		//const TArray<FVector>Path = Result->PathPoints;
+		const TArray<FVector> Path  = {	ConnectNodeData[0]->GetTailConnectPos(),
+	ConnectNodeData[1]->GetHeadConnectPos()};
 		SetSplinePoints(Path,ESplineCoordinateSpace::Local);
 		/*for (auto& i:Path)
 		{
@@ -90,10 +98,15 @@ void UNodeSplineComponent::UpdateSplineForConnect()
 	}
 }
 
-void UNodeSplineComponent::ActiveSpline(const FNodeConnectData& Head, const FNodeConnectData& Tail)
+void UNodeSplineComponent::ActiveSpline(ISkillNodeInteractInterface* Head, ISkillNodeInteractInterface* Tail)
 {
 	ConnectNodeData[0] = Head;
 	ConnectNodeData[1] = Tail;
+	
+	/**技能逻辑已被链接并且判断可以连接了，这里直接把可视化线条的部分链接上*/
+	
+	/***/
+	ShowSpline();
 	UpdateSplineForConnect();
 }
 
@@ -101,35 +114,48 @@ void UNodeSplineComponent::DeactiveSpline()
 {
 	if (ensure( OnDeactive.IsBound()))
 	{
-		OnDeactive.Execute(this);
-		HideSpline();
-		INodeSplineInterface* HeadNodeInterface = Cast<INodeSplineInterface>(ConnectNodeData[0].ConnectActor);
-		INodeSplineInterface* TailNodeInterface = Cast<INodeSplineInterface>(ConnectNodeData[1].ConnectActor);
-		if ((!HeadNodeInterface) || (!TailNodeInterface))
-		{
-			UE_LOG(LogTemp, Error, TEXT("UNodeSplineComponent::DeactiveSpline::InterfaceCastFaild"));
-			check(0);
-			return;
-		}
-		HeadNodeInterface->RemoveSpline(GetTypeHash(ConnectNodeData[0].ConnectOffset));
-		TailNodeInterface->RemoveSpline(GetTypeHash(ConnectNodeData[1].ConnectOffset));
+		OnDeactive.Execute(this); /**通知对象回收对象*/
 
-		ConnectNodeData[0].ConnectActor =nullptr;
-		ConnectNodeData[1].ConnectActor =nullptr;
+		if (ConnectNodeData[0]&&ConnectNodeData[1])
+		{
+			USkillsManagerSubsystem* Skillmanager = USkillsManagerSubsystem::Get(GetWorld());
+			//TODO::Skillmanager->DisconnectNode(ConnectNodeData[0]->GetSkillNode(),ConnectNodeData[1]->GetSkillNode());
+			ConnectNodeData[0]->OnlyRemoveSplineData(GetTypeHash(this));
+			ConnectNodeData[1]->OnlyRemoveSplineData(GetTypeHash(this));
+		}
+		HideSpline();
 	}
+}
+
+void UNodeSplineComponent::HideSplineOnStartMove()
+{
+	HideSpline();
+}
+
+void UNodeSplineComponent::VisibleSplineOnEndMove()
+{
+	ShowSpline();
 }
 
 void UNodeSplineComponent::HideSpline()
 {
 	//TODO::
-	UE_LOG(LogTemp, Warning, TEXT("HideSpline::Nothing::NeedTodo"));
+	//UE_LOG(LogTemp, Warning, TEXT("HideSpline::Nothing::NeedTodo"));
 	SetVisibility(false);
+	for (auto& i: SplinMeshs)
+	{
+		i->SetVisibility(false);
+	}
 }
 
 void UNodeSplineComponent::ShowSpline()
 {
 	//TODO::
-	UE_LOG(LogTemp, Warning, TEXT("HideSpline::Nothing::NeedTodo"));
+	//UE_LOG(LogTemp, Warning, TEXT("HideSpline::Nothing::NeedTodo"));
 	SetVisibility(true);
+	for (auto& i: SplinMeshs)
+	{
+		i->SetVisibility(true);
+	}
 }
 

@@ -7,6 +7,7 @@
 #include "GameFramework/Actor.h"
 #include "SingleCameraActor.generated.h"
 
+class ISkillNodeInteractInterface;
 class UCameraRegisterComponent;
 class UCameraComponent;
 class USpringArmComponent;
@@ -46,6 +47,8 @@ public:
 	TObjectPtr<UInputAction> IA_Zoom;
 	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Action|CameraInput",DisplayName="HouldAction")
 	TObjectPtr<UInputAction> IA_Hold;
+	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Action|CameraInput",DisplayName="HouldAction")
+	TObjectPtr<UInputAction> IA_Shift_Modifier;
 	/**相对于Actor开始时候的位置的最大距离*/
 	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Move|CameraInput",DisplayName = "MoveRange")
 	float MoveRangeQuare = 300.f;
@@ -57,14 +60,17 @@ public:
 	float MinSpringLenhth = 600;
 	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Move|CameraInput")
 	float ZoomSpeed = 0.1f;
-
+	
+	
 	float SpringLengthTarget;
 	
 	void Move_Action(const FInputActionValue& Value);
 	void Zoom_Action(const FInputActionValue& Value);
-	void Hold_Action(const FInputActionValue& Value);
-	void Holding_Action(const FInputActionValue& Value);
+	void Pressed_Action(const FInputActionValue& Value);
 	void Release_Action(const FInputActionValue& Value);
+
+	void ToHoldingNodeActor();
+	void ToReleaseNodeAction();
 	
 	void UpdateInputControl(float DeltaTime);
 	void MouseFloatingAction(float DeltaTime);
@@ -74,13 +80,26 @@ public:
 	virtual void DeactivateCamera(UPlayerBaseData* inPlayerData) override;
 	UFUNCTION()
 	void BindMapping(bool isActivate);
-	
+	void ShiftModifier(const FInputActionValue& Value, bool Pressed) {ShiftPressed=Pressed;};
 	FOnActivateInput OnActivateInputDelegate;
 private:
 	bool isActive = false;
 	UPlayerBaseData* PlayerData;
 	
-	AActor* HoldingNode;
+	AActor* CurrMouseNode;//当前鼠标下的Actor，为nullptr就是没有；
+	ISkillNodeInteractInterface* FollowNodeInterface;
+	uint8 isHolding : 1 = false;
+	uint8 ReleasedIsVaild : 1 = false;
+	uint8 PressedIsVaild : 1 = false;
+	uint8 ShiftPressed :1 = false;
+	FTimerHandle HoldTimerHandle;
+	FVector CurrNodePos = FVector(0, 0, 0);/**节点位置快照，用于重叠返回*/
+	
+	void NodeFollowing();
+	void DelayCheck();
+	
+	ISkillNodeInteractInterface* SelectHead = nullptr;
+	ISkillNodeInteractInterface* SelectTail = nullptr;
 
-	bool isHolding = false;
+	float CheckTime = 0.1f;	
 };

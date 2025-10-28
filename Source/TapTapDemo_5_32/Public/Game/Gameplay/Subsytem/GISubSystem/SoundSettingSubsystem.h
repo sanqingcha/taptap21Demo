@@ -27,14 +27,15 @@ struct FPlayerControlSettings
 	GENERATED_BODY()
 	UPROPERTY(BlueprintReadOnly)
 	float CameraDelaySpeed = 10.f;
-	
+	UPROPERTY(BlueprintReadOnly)
+	float CheckTime = 0.1f;
 };
 
 
 
 DECLARE_MULTICAST_DELEGATE_OneParam(FOnSoundChanged , const FSoundVolumeSettings&);
 DECLARE_MULTICAST_DELEGATE_OneParam(FOnPlayerControlChanged , const FPlayerControlSettings&);
-
+DECLARE_DELEGATE_OneParam(FOnCheckTimeChanged,float NewCheckTime);
 
 UCLASS()
 class TAPTAPDEMO_5_32_API UGameSettingSubsystem : public UGameInstanceSubsystem
@@ -61,14 +62,19 @@ public:
 	UFUNCTION(BlueprintCallable,Category="SoundSetting|GameSettings")
 	void SetCameraDelaySpeed(float NewValue);
 	/**end*/
-	
+	/**BuildSpace的点击/拖拽的检测时间*/
+	UFUNCTION(BlueprintCallable,Category="SoundSetting|GameSettings")
+	void SetCheckTime(float NewValue);
+	UFUNCTION(BlueprintCallable,Category="SoundSetting|GameSettings")
+	const float GetCheckTime(){return PlayerControlSettings.CheckTime;}; 
+	/***/
 	FOnSoundChanged& GetSoundChangedDelegate(){return OnSoundChangedDelegate;};
 	FOnPlayerControlChanged& GetPlayerControlChangedDelegate(){return OnPlayerControlChangedDelegate;};
-
+	FOnCheckTimeChanged& GetCheckTimeDelegate(){return OnCheckTimeDelegate;};
 private:
 	FOnSoundChanged OnSoundChangedDelegate;
 	FOnPlayerControlChanged OnPlayerControlChangedDelegate;
-	
+	FOnCheckTimeChanged OnCheckTimeDelegate;
 	FSoundVolumeSettings SoundSettings;
 	FPlayerControlSettings PlayerControlSettings;
 };

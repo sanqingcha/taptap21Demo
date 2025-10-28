@@ -39,9 +39,12 @@ public:
 	UButton* Menu_Button;
 	UPROPERTY(BlueprintReadWrite,meta=(BindWidget))
 	UButton* Exit_Button;
+	UPROPERTY(BlueprintReadWrite,meta = (BindWidget))
+	USlider* CheckTime_Slider;
 	
 	FOnReturnButtonPressed OnReturnButtonDelegate;
-	
+	UFUNCTION()
+	void OnCheckTimeSliderChanged(float Percent);
 	
 	
 	/**SoundVolume*/
@@ -59,6 +62,7 @@ public:
 	UPROPERTY(BlueprintReadWrite,meta = (BindWidget))
 	USlider* SoundEffectVolume_Slider;
 
+	
 	/**PlayerControl*/
 	UFUNCTION()
 	void AddCameraLagSpeed_Bt_Pressed();

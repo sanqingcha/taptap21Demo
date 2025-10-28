@@ -11,6 +11,8 @@
 #include "Game/Gameplay/Component/CameraRegisterComponent.h"
 #include "Game/Gameplay/Interface/SkillNodeInteractInterface.h"
 #include "Game/Gameplay/Player/Data/PlayerBaseData.h"
+#include "Game/Gameplay/Subsytem/GISubSystem/SoundSettingSubsystem.h"
+#include "Game/Gameplay/Subsytem/Skill/SplineSpawnSystem.h"
 #include "Game/GameplayTags/GameTags.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Kismet/GameplayStatics.h"
@@ -33,10 +35,13 @@ ASingleCameraActor::ASingleCameraActor()
 void ASingleCameraActor::BeginPlay()
 {
 	Super::BeginPlay();
-
+	
 	SpringLengthTarget = SpringArmComp->TargetArmLength;
 	check(!CheckObjectTypes.IsEmpty());
-	
+
+	UGameSettingSubsystem* GameSettingSubsystem = GetGameInstance()->GetSubsystem<UGameSettingSubsystem>();
+	CheckTime = GameSettingSubsystem->GetCheckTime();
+	GameSettingSubsystem->GetCheckTimeDelegate().BindLambda([this](float Newvalue){CheckTime = Newvalue;});
 }
 void ASingleCameraActor::Tick(float DeltaTime)
 {
@@ -87,53 +92,158 @@ void ASingleCameraActor::Zoom_Action(const FInputActionValue& Value)
 	}
 }
 
-void ASingleCameraActor::Hold_Action(const FInputActionValue& Value)
+void ASingleCameraActor::Pressed_Action(const FInputActionValue& Value)
 {
+	if (CurrMouseNode)
+	{
+		CurrNodePos = GetActorLocation();
+		FollowNodeInterface = Cast<ISkillNodeInteractInterface>(CurrMouseNode);
+	}
 	if (!isActive)return;
-	/*UAbilitySystemComponent* AbilitySysComp = PlayerData->ASC;
-	if (AbilitySysComp&&AbilitySysComp->HasMatchingGameplayTag(Game::Input::Game_Input_MoveBlock)){return;}
+	PressedIsVaild = false;
+	ReleasedIsVaild = false;
+	FTimerHandle PressedCheckTimer;
+	GetWorld()->GetTimerManager().SetTimer(
+			PressedCheckTimer,
+			this,
+			&ASingleCameraActor::DelayCheck,
+			CheckTime,
+			false);
+}
 
+void ASingleCameraActor::NodeFollowing()
+{
 	UWorld* mWorld = GetWorld();
-	FVector2D ViewPos =  UWidgetLayoutLibrary::GetMousePositionOnViewport(mWorld)*UWidgetLayoutLibrary::GetViewportScale(mWorld);
+	const FVector2D ViewPos =  UWidgetLayoutLibrary::GetMousePositionOnViewport(mWorld)*UWidgetLayoutLibrary::GetViewportScale(mWorld);
 	FVector WorldPos = FVector::ZeroVector;
 	FVector WorldDirection = FVector::ZeroVector;
 	UGameplayStatics::DeprojectScreenToWorld(PlayerData->PC,ViewPos,WorldPos,WorldDirection);
-
-	FHitResult OutHit;
-	
-	if ( UKismetSystemLibrary::LineTraceSingle(
-		mWorld,
-		WorldPos,
-		WorldDirection*10000,
-		TraceTypeQuery1,
-		false,
-		{},
-		EDrawDebugTrace::ForDuration,
-		OutHit,
-		true,
-		FLinearColor::Red,
-		FLinearColor::Green,
-		GetWorld()->GetDeltaSeconds()
-		))
+	float Z = GetActorLocation().Z;
+	const FVector NewPos = FVector(WorldPos.X+(WorldDirection.X*(Z-WorldPos.Z))/WorldDirection.Z,WorldPos.Y+(WorldDirection.Y*(Z-WorldPos.Z))/WorldDirection.Z,Z);
+	if (FollowNodeInterface->CanPlay(NewPos))
 	{
-		//UKismetSystemLibrary::PrintString(GetWorld(),FString::Printf(TEXT("Name = %s"),*OutHit.GetActor()->GetName()),true,false,FLinearColor::Red,GetWorld()->GetDeltaSeconds());
-		FString HasLog = OutHit.GetActor()->ActorHasTag(Game::Actor::Game_Actor_SkillNode.GetTag().GetTagName())?"True" : "false";
-		//UKismetSystemLibrary::PrintString(GetWorld(),FString::Printf(TEXT("HasSkillTag = %s"),*HasLog),true,false,FLinearColor::Red,GetWorld()->GetDeltaSeconds());
-	}*/
+		CurrNodePos = NewPos;
+	}
+	FollowNodeInterface->SetPos(NewPos);
 }
 
-void ASingleCameraActor::Holding_Action(const FInputActionValue& Value)
+void ASingleCameraActor::DelayCheck()
 {
-	if (!isActive)return;
-	if (HoldingNode)
+	if (!ReleasedIsVaild)
 	{
-		
-	}
+		ToHoldingNodeActor();
+		PressedIsVaild = true;
+	};
 }
 
 void ASingleCameraActor::Release_Action(const FInputActionValue& Value)
 {
-	HoldingNode = nullptr;
+	ReleasedIsVaild = true;
+	if (PressedIsVaild)
+	{
+		ToReleaseNodeAction();
+	}
+	else
+	{
+		//TODO::Click
+		
+		AActor* SelectNode = CurrMouseNode;
+		ISkillNodeInteractInterface* SkillNode = Cast<ISkillNodeInteractInterface>(SelectNode);
+
+		if (!SkillNode)return;
+		
+		if (ShiftPressed)
+		{
+			SkillNode->BreakHead();
+			return;
+		}
+		
+		bool NeedConnect = false;
+		if (SelectHead==nullptr)
+		{
+			SelectHead = SkillNode;
+			SelectHead->SelectNode();
+		}
+		else
+		{
+			do
+			{
+				if (SelectHead==SkillNode)
+				{
+					SelectHead->UnSelectNode();
+					SelectHead=nullptr;
+					break;
+				}
+				if (SelectTail==nullptr)
+				{
+					SelectTail=SkillNode;
+					SelectTail->SelectNode();
+					NeedConnect = true;
+					break;
+				}
+				if (SelectTail==SkillNode)
+				{
+					/**这个分支应该不会被调用*/ //TODO::
+					SelectTail->UnSelectNode();
+					SelectTail=nullptr;
+					break;
+				}
+				
+			}while(false);
+		}
+		if (NeedConnect)
+		{
+			USplineSpawnSystem* SplineSysComp = GetWorld()->GetSubsystem<USplineSpawnSystem>();
+			bool SuccessSpawn = false;
+			SplineSysComp->TryConnect(SelectHead,SelectTail,SuccessSpawn);
+			SelectHead->UnSelectNode();
+			SelectTail->UnSelectNode();
+			if (!SuccessSpawn)
+			{
+				SelectHead->ConnectFaildTips();
+				SelectTail->ConnectFaildTips();
+			}
+			SelectHead = nullptr;
+			SelectTail=nullptr;
+		}
+	}
+}
+
+void ASingleCameraActor::ToHoldingNodeActor()
+{
+	//TODO::停止检测节点信息，并且node开始跟随;
+	if (FollowNodeInterface)
+	{
+		isHolding= true;
+		//FollowNodeInterface = NodeInterface;
+		FollowNodeInterface->EndTouching();
+		FollowNodeInterface->StartHolding();
+		if (HoldTimerHandle.IsValid())
+		{
+			GetWorld()->GetTimerManager().UnPauseTimer(HoldTimerHandle);
+		}
+		else
+		{
+			GetWorld()->GetTimerManager().SetTimer(
+				HoldTimerHandle,
+				this,
+				&ASingleCameraActor::NodeFollowing,
+				0.02,
+				true);
+		}
+	}
+}
+
+void ASingleCameraActor::ToReleaseNodeAction()
+{
+	GetWorld()->GetTimerManager().PauseTimer(HoldTimerHandle);
+	if (FollowNodeInterface)
+	{
+		FollowNodeInterface->SetPos(CurrNodePos);
+		FollowNodeInterface->EndHolding();
+	}
+	isHolding = false;
+	//TODO::node停止跟随actor，并且开始检测节点信息
 }
 
 void ASingleCameraActor::UpdateInputControl(float DeltaTime)
@@ -175,18 +285,18 @@ void ASingleCameraActor::MouseFloatingAction(float DeltaTime)
 		{
 			AActor* HitActor = OutHit.GetActor();
 			if (!HitActor)return;
-			if (HitActor!=HoldingNode && HitActor->ActorHasTag(Game::Actor::Game_Actor_SkillNode.GetTag().GetTagName()))
+			if (HitActor!=CurrMouseNode && HitActor->ActorHasTag(Game::Actor::Game_Actor_SkillNode.GetTag().GetTagName()))
 			{
-				if (HitActor==HoldingNode)return;
-				if (HoldingNode)
+				if (HitActor==CurrMouseNode)return;
+				if (CurrMouseNode)
 				{
-					if ( ISkillNodeInteractInterface* Node =  Cast<ISkillNodeInteractInterface>(HoldingNode))
+					if ( ISkillNodeInteractInterface* Node =  Cast<ISkillNodeInteractInterface>(CurrMouseNode))
 					{
 						Node ->EndTouching();
 					}
 				}
-				HoldingNode = HitActor;
-				if (ISkillNodeInteractInterface* Node =  Cast<ISkillNodeInteractInterface>(HoldingNode))
+				CurrMouseNode = HitActor;
+				if (ISkillNodeInteractInterface* Node =  Cast<ISkillNodeInteractInterface>(CurrMouseNode))
 				{
 					Node ->StartTouching();
 				}
@@ -194,12 +304,12 @@ void ASingleCameraActor::MouseFloatingAction(float DeltaTime)
 		}
 		else
 		{
-			if (HoldingNode)
+			if (CurrMouseNode)
 			{
-				if (ISkillNodeInteractInterface* Node =  Cast<ISkillNodeInteractInterface>(HoldingNode))
+				if (ISkillNodeInteractInterface* Node =  Cast<ISkillNodeInteractInterface>(CurrMouseNode))
 				{
 					Node ->EndTouching();
-					HoldingNode = nullptr;
+					CurrMouseNode = nullptr;
 				}
 			}
 		}
@@ -235,10 +345,14 @@ void ASingleCameraActor::BindMapping(bool isActivate)
 	OnActivateInputDelegate.RemoveDynamic(this,&ASingleCameraActor::BindMapping);
 	PlayerData->EnhancedInputComp->BindAction(IA_Move, ETriggerEvent::Triggered, this, &ASingleCameraActor::Move_Action);
 	PlayerData->EnhancedInputComp->BindAction(IA_Zoom, ETriggerEvent::Triggered, this, &ASingleCameraActor::Zoom_Action);
-	PlayerData->EnhancedInputComp->BindAction(IA_Hold, ETriggerEvent::Started, this, &ASingleCameraActor::Hold_Action);
-	PlayerData->EnhancedInputComp->BindAction(IA_Hold, ETriggerEvent::Triggered, this, &ASingleCameraActor::Holding_Action);
+	PlayerData->EnhancedInputComp->BindAction(IA_Hold, ETriggerEvent::Started, this, &ASingleCameraActor::Pressed_Action);
 	PlayerData->EnhancedInputComp->BindAction(IA_Hold, ETriggerEvent::Completed, this, &ASingleCameraActor::Release_Action);
 	PlayerData->EnhancedInputComp->BindAction(IA_Hold, ETriggerEvent::Canceled, this, &ASingleCameraActor::Release_Action);
+	PlayerData->EnhancedInputComp->BindAction(IA_Shift_Modifier, ETriggerEvent::Started, this, &ASingleCameraActor::ShiftModifier,true);
+	PlayerData->EnhancedInputComp->BindAction(IA_Shift_Modifier, ETriggerEvent::Canceled, this, &ASingleCameraActor::ShiftModifier,false);
+	PlayerData->EnhancedInputComp->BindAction(IA_Shift_Modifier, ETriggerEvent::Completed, this, &ASingleCameraActor::ShiftModifier,false);
 	
 }
+
+
 

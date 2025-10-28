@@ -26,4 +26,5 @@ public:
 	void CallJump();
 
 	virtual FOnInputChanged& GetInputChangedDelegate() = 0;
+	
 };

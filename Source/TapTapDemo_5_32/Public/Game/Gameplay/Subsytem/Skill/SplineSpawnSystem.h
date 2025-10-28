@@ -6,6 +6,7 @@
 #include "Subsystems/WorldSubsystem.h"
 #include "SplineSpawnSystem.generated.h"
 
+class ISkillNodeInteractInterface;
 struct FNodeConnectData;
 enum class ESplineConnectType : uint8;
 class UNodeSplineComponent;
@@ -26,9 +27,10 @@ public:
 	void RegisterSplineActor(ASplineVisualizeActor* inSplineVisActor);
 	/**end*/
 	
-	/**外部调用接口*/
-	UFUNCTION(BlueprintCallable)
-	UNodeSplineComponent* SpawnSpline(const FNodeConnectData& ConnectHead,const FNodeConnectData& ConnectTail);
+	UNodeSplineComponent* TryConnect(ISkillNodeInteractInterface* Head,ISkillNodeInteractInterface* Tail,bool& Success);
+private:
+	void ConnectNode();
+public:
 	/**end*/
 
 	//FOnSplinesSpawn OnSplinesSpawnDelegate;

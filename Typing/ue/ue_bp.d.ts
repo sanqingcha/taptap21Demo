@@ -47,21 +47,6 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: 2B55B854404A9F62B40945AAF3A21641
-    namespace Game.Game.GameMap.Blueprint.Player.BP_ThirdPersonGameMode {
-        class BP_ThirdPersonGameMode_C extends UE.GameModeBase {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            DefaultSceneRoot: UE.SceneComponent;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): BP_ThirdPersonGameMode_C;
-            static Load(InName: string): BP_ThirdPersonGameMode_C;
-        
-            __tid_BP_ThirdPersonGameMode_C_0__: boolean;
-        }
-        
-    }
-
-// __TYPE_DECL_END
 // __TYPE_DECL_START: 772AB25542D24177E7B56A80ADFDE215
     namespace Engine.EditorResources.FieldNodes.Linear_Velocity_for_Cloth {
         class Linear_Velocity_for_Cloth_C extends UE.FieldSystemActor {
@@ -10466,6 +10451,76 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
+// __TYPE_DECL_START: ASSOCIATION
+    namespace Engine.PythonTypes {
+        class OnCameraUnderwaterStateChanged__PythonCallable extends UE.PythonCallableForDelegate {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): OnCameraUnderwaterStateChanged__PythonCallable;
+            static Load(InName: string): OnCameraUnderwaterStateChanged__PythonCallable;
+        
+            __tid_OnCameraUnderwaterStateChanged__PythonCallable_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: ASSOCIATION
+    namespace Engine.PythonTypes {
+        class OnPontoonEnteredWater__PythonCallable extends UE.PythonCallableForDelegate {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): OnPontoonEnteredWater__PythonCallable;
+            static Load(InName: string): OnPontoonEnteredWater__PythonCallable;
+        
+            __tid_OnPontoonEnteredWater__PythonCallable_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: ASSOCIATION
+    namespace Engine.PythonTypes {
+        class OnPontoonExitedWater__PythonCallable extends UE.PythonCallableForDelegate {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): OnPontoonExitedWater__PythonCallable;
+            static Load(InName: string): OnPontoonExitedWater__PythonCallable;
+        
+            __tid_OnPontoonExitedWater__PythonCallable_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: ASSOCIATION
+    namespace Engine.PythonTypes {
+        class OnStreamLoadOver__PythonCallable extends UE.PythonCallableForDelegate {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): OnStreamLoadOver__PythonCallable;
+            static Load(InName: string): OnStreamLoadOver__PythonCallable;
+        
+            __tid_OnStreamLoadOver__PythonCallable_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: ASSOCIATION
+    namespace Engine.PythonTypes {
+        class OnWaterScalabilityChanged__PythonCallable extends UE.PythonCallableForDelegate {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): OnWaterScalabilityChanged__PythonCallable;
+            static Load(InName: string): OnWaterScalabilityChanged__PythonCallable;
+        
+            __tid_OnWaterScalabilityChanged__PythonCallable_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
 // __TYPE_DECL_START: 39609A434878985EEBF2CE96734F69A8
     namespace Game.Game.GameMap.Blueprint.Enemy.BT_Task.BTT_FindPatrolLocation {
         class BTT_FindPatrolLocation_C extends UE.BTTask_BlueprintBase {
@@ -10516,11 +10571,13 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: DF454CFB44A496AFC84C4A954F0FD1F6
+// __TYPE_DECL_START: 010071094D048908474AB2968EBD3A23
     namespace Game.Debug.Test.Test {
         class Test_C extends UE.Actor {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
             UberGraphFrame: UE.PointerToUberGraphFrame;
+            Spline: UE.SplineComponent;
+            SplineMesh: UE.SplineMeshComponent;
             Sphere: UE.SphereComponent;
             DefaultSceneRoot: UE.SceneComponent;
             ["Gameplay Effect Class"]: UE.Class;
@@ -10537,7 +10594,7 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: 5E9D6A1741CA15AE9AE170BDC11E4E28
+// __TYPE_DECL_START: F9A7E4C4463FE5AD7F07B4B91E2CE0C7
     namespace Game.Game.GameMap.Blueprint.Player.BP_HUD {
         class BP_HUD_C extends UE.SuperHUD {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
@@ -10548,6 +10605,7 @@ declare module "ue" {
              *蓝图重载初始化，被InitialHUD调用
              */
             InitialHUD_BP() : void;
+            OnGameStart() : void;
             static StaticClass(): Class;
             static Find(OrigInName: string, Outer?: Object): BP_HUD_C;
             static Load(InName: string): BP_HUD_C;
@@ -10558,10 +10616,21 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: 687C667F4B97DA49D77C219EB8B061D1
+// __TYPE_DECL_START: 30D0CFC74C4BB53319E491803C2A6A19
     namespace Game.Game.GameMap.Blueprint.Player.BP_PC {
         class BP_PC_C extends UE.SuperPlayerController {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ExecuteUbergraph_BP_PC(EntryPoint: number) : void;
+            OnInputTouchBegin_Event(FingerIndex: UE.ETouchIndex, TouchedActor: $Nullable<UE.Actor>) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
             static StaticClass(): Class;
             static Find(OrigInName: string, Outer?: Object): BP_PC_C;
             static Load(InName: string): BP_PC_C;
@@ -10592,7 +10661,7 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: 4F4FB5AD4A220CDA4DF9A984D4DBF89C
+// __TYPE_DECL_START: D2DA3439420C8B3FC5D3EBBBC560E252
     namespace Game.Game.GameMap.Blueprint.Enemy.BP_BugEgg.BP_BugEgg {
         class BP_BugEgg_C extends UE.Game.Game.GameMap.Blueprint.Characters.BP_EnemyBase.BP_EnemyBase_C {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
@@ -10615,16 +10684,16 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: B034126E4D7840C120A89D8AA8E1A1A8
+// __TYPE_DECL_START: 3B6979784E63FB20303E17A725D2F736
     namespace Game.Game.GameMap.DataAsset.DT.S_Enemy {
         class S_Enemy {
             constructor();
-            constructor(MaxHealth: number, Health: number, Level: number, AttackPower: number, AttackCoolDown: number, MaxSpeed: number, BulletSpeed: number, JumpMaxHigh: number, FlyMaxHigh: number, DetectRadius: number, ProjectileMaxSpeed: number, AttackRadiu: number, AlertDistance: number, ttest: number);
+            constructor(MaxHealth: number, Health: number, Level: number, AttackPower: number, ACD: number, MaxSpeed: number, BulletSpeed: number, JumpMaxHigh: number, FlyMaxHigh: number, DetectRadius: number, ProjectileMaxSpeed: number, AttackRadiu: number, AlertDistance: number);
             MaxHealth: number;
             Health: number;
             Level: number;
             AttackPower: number;
-            AttackCoolDown: number;
+            ACD: number;
             MaxSpeed: number;
             BulletSpeed: number;
             JumpMaxHigh: number;
@@ -10633,7 +10702,6 @@ declare module "ue" {
             ProjectileMaxSpeed: number;
             AttackRadiu: number;
             AlertDistance: number;
-            ttest: number;
             /**
              * @deprecated use StaticStruct instead.
              */
@@ -10664,20 +10732,13 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: 44F54DFF46014C838F0342849FF1119F
+// __TYPE_DECL_START: C1B4A6694453421B58F879B104983165
     namespace Game.Game.GameMap.Blueprint.UMG.WB_PlayerUI {
-        class WB_PlayerUI_C extends UE.ViewModeUserWidget {
+        class WB_PlayerUI_C extends UE.PlayerWidget {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
             UberGraphFrame: UE.PointerToUberGraphFrame;
-            PlayerAttributeViewMode: UE.PlayerAttributeViewMode;
-            ProgressBar_Heath: UE.ProgressBar;
-            /*
-             *Called after the underlying slate widget is constructed.  Depending on how the slate object is used
-             *this event may be called multiple times due to adding and removing from the hierarchy.
-             *If you need a true called-once-when-created event, use OnInitialized.
-             */
-            Construct() : void;
             ExecuteUbergraph_WB_PlayerUI(EntryPoint: number) : void;
+            InitialBP() : void;
             static StaticClass(): Class;
             static Find(OrigInName: string, Outer?: Object): WB_PlayerUI_C;
             static Load(InName: string): WB_PlayerUI_C;
@@ -10753,27 +10814,6 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: ASSOCIATION
-    namespace Game.Debug.Test.TestMap {
-        class TestMap_C extends UE.LevelScriptActor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            NewVar: UE.AmbientSound;
-            ExecuteUbergraph_TestMap(EntryPoint: number) : void;
-            /*
-             *Event when play begins for this actor.
-             */
-            ReceiveBeginPlay() : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): TestMap_C;
-            static Load(InName: string): TestMap_C;
-        
-            __tid_TestMap_C_0__: boolean;
-        }
-        
-    }
-
-// __TYPE_DECL_END
 // __TYPE_DECL_START: DC4EC58E4B4B21B457C3BAAD46D79DA7
     namespace Game.Game.GameMap.Blueprint.Enemy.BT_Decorator.BTD_IsAtTarget {
         class BTD_IsAtTarget_C extends UE.BTDecorator_BlueprintBase {
@@ -10808,17 +10848,11 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: 3F4E7D534EAE2EF1783E969E75FA0729
+// __TYPE_DECL_START: 72C9BE5940E6476B74DE11AE504861BD
     namespace Game.Game.GameMap.Blueprint.Characters.Protagonist.BP_PlayerCharacter {
         class BP_PlayerCharacter_C extends UE.PlayerCharacter {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
             UberGraphFrame: UE.PointerToUberGraphFrame;
-            Arrow1: UE.ArrowComponent;
-            DebugArrowControlRotation: UE.ArrowComponent;
-            DebugArrowWidgetRotation: UE.ArrowComponent;
-            SpringDirF: UE.ArrowComponent;
-            SpringDirR: UE.ArrowComponent;
-            DebugArrow: UE.SceneComponent;
             FollowTimeline_Line_1BC933B54059F7984F6080B8FB1AE837: number;
             FollowTimeline__Direction_1BC933B54059F7984F6080B8FB1AE837: UE.ETimelineDirection;
             FollowTimeline: UE.TimelineComponent;
@@ -10847,13 +10881,14 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: 9CEFD8014FAE43AF8136C7BA410A3A2C
+// __TYPE_DECL_START: 156C24F84F80C486B77CDC8A959DCF55
     namespace Game.Game.GameMap.Blueprint.Enemy.BP_Enemy {
         class BP_Enemy_C extends UE.Character {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
             UberGraphFrame: UE.PointerToUberGraphFrame;
             DataTableName: string;
             DataTable: UE.Game.Game.GameMap.DataAsset.DT.S_Enemy.S_Enemy;
+            ["Key Name"]: string;
             ExecuteUbergraph_BP_Enemy(EntryPoint: number) : void;
             InitBlackBoardValue(BlackBoard: $Nullable<UE.BlackboardComponent>, DataTabel: UE.Game.Game.GameMap.DataAsset.DT.S_Enemy.S_Enemy) : void;
             /*
@@ -10870,9 +10905,9 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: F32ACF764143E68E23A778AD391680F2
+// __TYPE_DECL_START: 78AFA23D4711C294DC8BCDB8383102F6
     namespace Game.Game.GameMap.Blueprint.Enemy.BP_BugEggShooter.BP_BugEggShooter {
-        class BP_BugEggShooter_C extends UE.Game.Game.GameMap.Blueprint.Enemy.BP_Enemy.BP_Enemy_C {
+        class BP_BugEggShooter_C extends UE.Game.Game.GameMap.Blueprint.Characters.BP_EnemyBase.BP_EnemyBase_C {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
             UberGraphFrame: UE.PointerToUberGraphFrame;
             ExecuteUbergraph_BP_BugEggShooter(EntryPoint: number) : void;
@@ -10945,10 +10980,24 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: 808D483F46845AB073EF10A58D9C4547
+// __TYPE_DECL_START: 58791022495DFAA737C52596AE93B492
     namespace Game.Game.GameMap.Blueprint.Characters.BP_EnemyBase {
         class BP_EnemyBase_C extends UE.EnemyCharacter {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            AIPerception: UE.AIPerceptionComponent;
+            DataTableName: string;
+            DataTable: UE.Game.Game.GameMap.DataAsset.DT.S_Enemy.S_Enemy;
+            ["Key Name"]: string;
+            IsInBuildSpace: string;
+            BndEvt__BP_EnemyBase_AIPerception_K2Node_ComponentBoundEvent_0_ActorPerceptionUpdatedDelegate__DelegateSignature(Actor: $Nullable<UE.Actor>, Stimulus: UE.AIStimulus) : void;
+            EnterBuildSpace(Bool: boolean) : void;
+            ExecuteUbergraph_BP_EnemyBase(EntryPoint: number) : void;
+            InitBlackBoardValue(BlackBoard: $Nullable<UE.BlackboardComponent>, DataTabel: UE.Game.Game.GameMap.DataAsset.DT.S_Enemy.S_Enemy) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
             static StaticClass(): Class;
             static Find(OrigInName: string, Outer?: Object): BP_EnemyBase_C;
             static Load(InName: string): BP_EnemyBase_C;
@@ -10959,7 +11008,7 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: E1122FF840BEDE7ECD1D1481E553E65A
+// __TYPE_DECL_START: E9A424AF4F59D02B833E988A70E4EFAC
     namespace Game.Debug.Test.TestActor {
         class TestActor_C extends UE.Actor {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
@@ -10995,7 +11044,7 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: D230AD1844EA5675B77AA8AA7DF3200E
+// __TYPE_DECL_START: 257FA4864CA02D98A6B7A8BD2986B9BB
     namespace Game.Game.GameMap.Blueprint.Gas.GE.BP_EnemyDefaultAttack {
         class BP_EnemyDefaultAttack_C extends UE.GameplayEffect {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
@@ -11004,6 +11053,3204 @@ declare module "ue" {
             static Load(InName: string): BP_EnemyDefaultAttack_C;
         
             __tid_BP_EnemyDefaultAttack_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 6E679D5F4C3DF47BD504E2BAF98AB878
+    namespace Game.Game.GameMap.Blueprint.Enemy.BP_BugEggJumper.BP_BugEggJumper {
+        class BP_BugEggJumper_C extends UE.Game.Game.GameMap.Blueprint.Characters.BP_EnemyBase.BP_EnemyBase_C {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ExecuteUbergraph_BP_BugEggJumper(EntryPoint: number) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_BugEggJumper_C;
+            static Load(InName: string): BP_BugEggJumper_C;
+        
+            __tid_BP_BugEggJumper_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 008629CD4C55607262C8E7B6FD40DAF3
+    namespace Game.Game.GameMap.Blueprint.Enemy.BP_BugEggJumper.AIC_BugEggJumper {
+        class AIC_BugEggJumper_C extends UE.AIController {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ExecuteUbergraph_AIC_BugEggJumper(EntryPoint: number) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): AIC_BugEggJumper_C;
+            static Load(InName: string): AIC_BugEggJumper_C;
+        
+            __tid_AIC_BugEggJumper_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: FD625FE149EA0D2708F02F98379CDAC7
+    namespace Game.Game.GameMap.Blueprint.Enemy.BT_Service.BTS_DiscreteJump {
+        class BTS_DiscreteJump_C extends UE.BTService_BlueprintBase {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            JumpMaxHeight: UE.BlackboardKeySelector;
+            JumpInterval: number;
+            IntervalRandomOffset: number;
+            JumpTime: number;
+            bShowDebug: boolean;
+            ReceiveActivationAI(OwnerController: $Nullable<UE.AIController>, ControlledPawn: $Nullable<UE.Pawn>) : void;
+            ReceiveDeactivationAI(OwnerController: $Nullable<UE.AIController>, ControlledPawn: $Nullable<UE.Pawn>) : void;
+            ReceiveTickAI(OwnerController: $Nullable<UE.AIController>, ControlledPawn: $Nullable<UE.Pawn>, DeltaSeconds: number) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BTS_DiscreteJump_C;
+            static Load(InName: string): BTS_DiscreteJump_C;
+        
+            __tid_BTS_DiscreteJump_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 3205546F4B03EB70ED13E98C7A62AD57
+    namespace Game.Debug.Test.TestSpatialPathFinding {
+        class TestSpatialPathFinding_C extends UE.Pawn {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            SpatialPathFinding: UE.SpatialPathFinding;
+            SphereMesh: UE.StaticMeshComponent;
+            Sphere: UE.SphereComponent;
+            FloatingPawnMovement: UE.FloatingPawnMovement;
+            DefaultSceneRoot: UE.SceneComponent;
+            Target: UE.Actor;
+            Speed: UE.Vector;
+            ExecuteUbergraph_TestSpatialPathFinding(EntryPoint: number) : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): TestSpatialPathFinding_C;
+            static Load(InName: string): TestSpatialPathFinding_C;
+        
+            __tid_TestSpatialPathFinding_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: D5C270A04953A8B474890ABE39ABB92B
+    namespace Game.Game.GameMap.Blueprint.Player.BP_GameMode {
+        class BP_GameMode_C extends UE.GameModeBase {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            DefaultSceneRoot: UE.SceneComponent;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_GameMode_C;
+            static Load(InName: string): BP_GameMode_C;
+        
+            __tid_BP_GameMode_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: A7D888BC4FFD0A52BC36DAB2B1949C44
+    namespace Landmass.Landscape.BlueprintBrushes.Libraries.LandscapeBrushLibrary {
+        class LandscapeBrushLibrary_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): LandscapeBrushLibrary_C;
+            static Load(InName: string): LandscapeBrushLibrary_C;
+        
+            __tid_LandscapeBrushLibrary_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: C946D81042A4CC1B71D072A988BF77AB
+    namespace Game.Game.GameMap.Blueprint.Actor.BP_SkillNodeActor {
+        class BP_SkillNodeActor_C extends UE.SkillNodeActor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            Sphere2: UE.SphereComponent;
+            Connect3: UE.SceneComponent;
+            Sphere1: UE.SphereComponent;
+            Sphere: UE.SphereComponent;
+            Connect1: UE.SceneComponent;
+            Connect2: UE.SceneComponent;
+            Cube: UE.StaticMeshComponent;
+            NeedUpdate: boolean;
+            ExecuteUbergraph_BP_SkillNodeActor(EntryPoint: number) : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_SkillNodeActor_C;
+            static Load(InName: string): BP_SkillNodeActor_C;
+        
+            __tid_BP_SkillNodeActor_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 646211B145CC9F9CEE288AB0E15083E4
+    namespace Game.Game.GameMap.Blueprint.Actor.BP_VisSplineActor {
+        class BP_VisSplineActor_C extends UE.SplineVisualizeActor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            DefaultSceneRoot: UE.SceneComponent;
+            Node1: UE.Game.Game.GameMap.Blueprint.Actor.BP_SkillNodeActor.BP_SkillNodeActor_C;
+            Node2: UE.Game.Game.GameMap.Blueprint.Actor.BP_SkillNodeActor.BP_SkillNodeActor_C;
+            Node3: UE.Game.Game.GameMap.Blueprint.Actor.BP_SkillNodeActor.BP_SkillNodeActor_C;
+            Node4: UE.Game.Game.GameMap.Blueprint.Actor.BP_SkillNodeActor.BP_SkillNodeActor_C;
+            ExecuteUbergraph_BP_VisSplineActor(EntryPoint: number) : void;
+            InpActEvt_F_K2Node_InputDebugKeyEvent_0(Key: UE.Key, ActionValue: UE.InputActionValue) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_VisSplineActor_C;
+            static Load(InName: string): BP_VisSplineActor_C;
+        
+            __tid_BP_VisSplineActor_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 9EC1F2F4437292F9B4455FB271C856AC
+    namespace NiagaraFluids.Enums.ENiagaraTurbulenceMaskChannels {
+        enum ENiagaraTurbulenceMaskChannels { Density, Temperature, ENiagaraTurbulenceMaskChannels_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 0FA3457D473A01AA54A1DA8EDEFCF7B0
+    namespace NiagaraFluids.Enums.ENiagaraSourcingCompModes {
+        enum ENiagaraSourcingCompModes { Add, Max, Set, ENiagaraSourcingCompModes_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: D72AEB2D49F16E24B08502AA27669F82
+    namespace NiagaraFluids.Enums.ENiagaraSDFSmoothingMethodMethod {
+        enum ENiagaraSDFSmoothingMethodMethod { Gaussian, Box, Triangle, ENiagaraSDFSmoothingMethodMethod_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 7490A4B94B57636A981E7AB32765B033
+    namespace NiagaraFluids.Enums.ENiagaraSDFModifyMethod {
+        enum ENiagaraSDFModifyMethod { Dilate, Erode, Invert, ENiagaraSDFModifyMethod_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 8FD16B5948D6A157B9032DB4F25B962E
+    namespace NiagaraFluids.Enums.ENiagaraSDFCombineMethod {
+        enum ENiagaraSDFCombineMethod { Union, Intersection, Subtract, ENiagaraSDFCombineMethod_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: A61F514849739C343BBF188313F7E52A
+    namespace NiagaraFluids.Enums.ENiagaraScalabilityQualityLevels {
+        enum ENiagaraScalabilityQualityLevels { Low, Medium, High, Epic, Cinematic, ENiagaraScalabilityQualityLevels_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: EBB38F02494AA021CA19F5BD6E69DA3F
+    namespace NiagaraFluids.Enums.ENiagaraParticleSourceType {
+        enum ENiagaraParticleSourceType { Off, Emitter, "Data Channel (Experimental)", ENiagaraParticleSourceType_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 147B86BB45BD525E8D0BA1B6A09DD24E
+    namespace NiagaraFluids.Enums.ENiagaraParticleSourceAttributeList {
+        enum ENiagaraParticleSourceAttributeList { Density, Temperature, Velocity, Divergence, RGBA, ENiagaraParticleSourceAttributeList_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 29531C6F43340481D25DD8A1C4534CBB
+    namespace NiagaraFluids.Enums.ENiagaraInterpolationMethod {
+        enum ENiagaraInterpolationMethod { Linear, Cubic, ENiagaraInterpolationMethod_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 90D08E0D4E4BAA932CC45292A280F011
+    namespace NiagaraFluids.Enums.ENiagaraImplicitType {
+        enum ENiagaraImplicitType { Sphere, Box, Capsule, Plane, Cylinder, ENiagaraImplicitType_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 90EAE2304E7787AFB2AB8AB871AE719E
+    namespace NiagaraFluids.Enums.ENiagaraGrid3DVolumePlane {
+        enum ENiagaraGrid3DVolumePlane { XY, YZ, XZ, ENiagaraGrid3DVolumePlane_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 94FF0E5F455F5AEE20E34583839D30C9
+    namespace NiagaraFluids.Enums.ENiagaraGrid3DVolTexMode {
+        enum ENiagaraGrid3DVolTexMode { "Alpha = Density", "Alpha = Temperature", "Alpha = Packed (Density + Temperature)", ENiagaraGrid3DVolTexMode_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 748BF0FD40F225AA6A4EE5A335829FB6
+    namespace NiagaraFluids.Enums.ENiagaraGrid2DResolution {
+        enum ENiagaraGrid2DResolution { Independent, "Max Axis", "World Cell Size", "Other Grid", VolumeTexture, ENiagaraGrid2DResolution_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: A2CA886F42FE736D3548A184B653C24C
+    namespace NiagaraFluids.Enums.ENiagaraGrid2DRasterizationMethod {
+        enum ENiagaraGrid2DRasterizationMethod { Gather, "Gather With NeighborGrid", "Scatter Variable Radius", "Scatter Constant Radius", "Scattter Single Cell", ENiagaraGrid2DRasterizationMethod_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 0C2D965F41B7A0C8C6625F9EB64194E4
+    namespace NiagaraFluids.Enums.ENiagaraGrid2DParticleCollisionMethod {
+        enum ENiagaraGrid2DParticleCollisionMethod { "Project Along Z", "Ray Trace With Camera", "Intersect Plane", ENiagaraGrid2DParticleCollisionMethod_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 685FFE4345031AB1492AB8B7643CF519
+    namespace NiagaraFluids.Enums.ENiagaraGasValue {
+        enum ENiagaraGasValue { Density, Temperature, ENiagaraGasValue_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: AFE06584486F824BD94DA4A6539259C2
+    namespace NiagaraFluids.Enums.ENiagaraGasTurbulenceMaskType {
+        enum ENiagaraGasTurbulenceMaskType { Band, Ramp, ENiagaraGasTurbulenceMaskType_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 45C0ED384880FD8F9BA1AEAB35031ADF
+    namespace NiagaraFluids.Enums.ENiagaraGasTemperatureRenderTypes {
+        enum ENiagaraGasTemperatureRenderTypes { None, "Black Body", Curve, ENiagaraGasTemperatureRenderTypes_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 3809E7334292E427BCEF6680F6795175
+    namespace NiagaraFluids.Enums.ENiagaraGasTemperatureOpacityRenderTypes {
+        enum ENiagaraGasTemperatureOpacityRenderTypes { Linear, Curve, ENiagaraGasTemperatureOpacityRenderTypes_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 3E13D985405A073A7486B49C714F1268
+    namespace NiagaraFluids.Enums.ENiagaraGasDensityRenderTypes {
+        enum ENiagaraGasDensityRenderTypes { None, Linear, Curve, ENiagaraGasDensityRenderTypes_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: D8CBCD7D42AFAFCBC037D9B6484A69E7
+    namespace NiagaraFluids.Enums.ENiagaraFluidRTFormat {
+        enum ENiagaraFluidRTFormat { ENiagaraFluidRTFormat_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 4CEE3F0541B3832B6E07F9A512B25F71
+    namespace NiagaraFluids.Enums.ENiagaraFluidAttributeListReduced {
+        enum ENiagaraFluidAttributeListReduced { Density, Temperature, Pressure, SimFloat, Velocity, Divergence, RGBA, SolidVelocity_Boundary, Density_Temperature, StartVelocity, Velocity_Divergence, ENiagaraFluidAttributeListReduced_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 32F1D7C8496ED6EC5E6F159A943AD36B
+    namespace NiagaraFluids.Enums.ENiagaraFluidAttributeList {
+        enum ENiagaraFluidAttributeList { Density, Temperature, Boundary, Pressure, SimFloat, Red, Green, Blue, Velocity, SolidVelocity, RGB, Float1, Float2, Vector1, Vector2, Alpha, Divergence, RGBA, SolidVelocity_Boundary, Density_Temperature, StartVelocity, ENiagaraFluidAttributeList_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 2200E0E24172E44EEFF6058F83385574
+    namespace NiagaraFluids.Enums.ENiagaraDebugVectorMode {
+        enum ENiagaraDebugVectorMode { Off, "Seed Turbulence", "Turbulence 1", "Turbulence 2", "Small Scale Force", "Simulation Velocity", ENiagaraDebugVectorMode_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: A3E0C51A4B7EB000291FCBA18922019C
+    namespace NiagaraFluids.Enums.ENiagaraDebugVectorAttributeList {
+        enum ENiagaraDebugVectorAttributeList { Off, Velocity, Turbulence, "Small Scale Force", "Collision Velocity", ENiagaraDebugVectorAttributeList_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 6F85A5B743EB306533106AAD43FB73C5
+    namespace NiagaraFluids.Enums.ENiagaraDebugSliceAttributeList {
+        enum ENiagaraDebugSliceAttributeList { Off, Density, Temperature, Collisions, Pressure, Velocity, "Collision Velocity", RGBA, ENiagaraDebugSliceAttributeList_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 5687976844EC3EC3A1DB3494603D3D39
+    namespace NiagaraFluids.Enums.ENiagaraCompositingMethod {
+        enum ENiagaraCompositingMethod { Add, Max, ENiagaraCompositingMethod_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 65AEDD25417D1B8695112C9D84A072E2
+    namespace NiagaraFluids.Enums.ENiagaraAdvectionMethod {
+        enum ENiagaraAdvectionMethod { "Semi Lagranian", RK2, RK3, ENiagaraAdvectionMethod_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 085E32134AC7DFC77140E5BD14B9715F
+    namespace Water.FluidSimulation.Blueprints.Enums.FluidTerrainModes {
+        enum FluidTerrainModes { "Constant Water Depth", "Terrain Water Depth Only", "Terrain with Elevation", "Use Scene Capture Depth", FluidTerrainModes_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: AC67EAD54B93113FA703188607E133A2
+    namespace Water.FluidSimulation.Blueprints.Enums.FluidSimSolverMode {
+        enum FluidSimSolverMode { "Ripple Solver", "Shallow Water", FluidSimSolverMode_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 8A7D9FC340FF0E7F9B129CB4A545CABD
+    namespace Water.FluidSimulation.Blueprints.Enums.FluidDynamicForceMeshType {
+        enum FluidDynamicForceMeshType { "Component Location", "Skeletal Mesh Sockets", FluidDynamicForceMeshType_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 4685AE0F4C1211AF3CF189A12A280ABE
+    namespace Water.FluidSimulation.Blueprints.Enums.FluidBoundary {
+        enum FluidBoundary { Wrap, Reflect, FluidBoundary_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 1D4546134D8FD8297E1480B6DA887BB5
+    namespace Water.Caustics.Blueprints.Enums.RTMipGenerationSettings {
+        enum RTMipGenerationSettings { Average, Min, Max, RTMipGenerationSettings_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 9A9D822B474CEFB980794B8E65D02F0C
+    namespace Water.Caustics.Blueprints.Enums.CausticPreviewModes {
+        enum CausticPreviewModes { "Pool Box", "Island and Ocean", CausticPreviewModes_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 5F986E48464A0F7FFF1AE8A9E2A53385
+    namespace Water.Caustics.Blueprints.Enums.CausticGeneratorOutputModes {
+        enum CausticGeneratorOutputModes { "Render Single Frame Only", "Render Animation using Time", "Render Animation using Depth", CausticGeneratorOutputModes_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: C2AD5B784F46E1E300D4A39BDEC738BE
+    namespace Landmass.Landscape.BP.Enums.ShapeDrawingMode {
+        enum ShapeDrawingMode { "Landmass Outline", Mountain, "Road Spline", "River Spline", "Weightmap Shape", ShapeDrawingMode_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 6448E5F042E7243DC27297B7FE085F7C
+    namespace Landmass.Landscape.BP.Enums.SectionSizeOptions {
+        enum SectionSizeOptions { SectionSizeOptions_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 99E9A9DA4EC09172032A568CB903C5E7
+    namespace Landmass.Landscape.BP.Enums.ErosionMode {
+        enum ErosionMode { "Free Particles", "Shallow Water", "Scatter-Gather", "Simple Water Levelling", ErosionMode_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 010A775B41FB9635FFC155BEF5E29D7F
+    namespace Landmass.Landscape.BP.Enums.BrushTypes {
+        enum BrushTypes { "Landmass Outline", "Spline Mesh", "Single Mesh", "Material Only", BrushTypes_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 2274DF53421C6415817701A149CBABA9
+    namespace Landmass.Landscape.BP.Enums.BrushFalloffMode {
+        enum BrushFalloffMode { Angle, Width, BrushFalloffMode_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 69CE546C43642377830863A7D4898E4E
+    namespace Landmass.Landscape.BP.Brushes.BrushBlendType {
+        enum BrushBlendType { "Alpha Blend", Min, Max, Additive, BrushBlendType_MAX, __typeKeyDoNoAccess}
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 282C6DC94473C1C6FF413AA993DAEC70
+    namespace Game.Game.GameMap.Blueprint.UMG.WB_Setting {
+        class WB_Setting_C extends UE.SettingUserWidget {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            AddCameraLagSpeed_Bt: UE.Button;
+            CameraLagSpeed_Text: UE.TextBlock;
+            CameraLagSpeed_Text_1: UE.TextBlock;
+            Exit_Button: UE.Button;
+            Menu_Button: UE.Button;
+            Option_Button: UE.Button;
+            ReduceCameraLagSpeed_Bt: UE.Button;
+            Return_Button: UE.Button;
+            Slider_3: UE.Slider;
+            Slider_4: UE.Slider;
+            TextBlock_152: UE.TextBlock;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): WB_Setting_C;
+            static Load(InName: string): WB_Setting_C;
+        
+            __tid_WB_Setting_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: D28958E749104C4643E34BB085D491E6
+    namespace Game.Game.GameMap.Blueprint.UMG.WB_WinIcon {
+        class WB_WinIcon_C extends UE.UserWidget {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            Drap: UE.WidgetAnimation;
+            Image: UE.Image;
+            TextBlock_54: UE.TextBlock;
+            TextContent: string;
+            Texture: UE.Texture2D;
+            ExecuteUbergraph_WB_WinIcon(EntryPoint: number) : void;
+            PlayDrapAnim() : void;
+            /*
+             *Called by both the game and the editor.  Allows users to run initial setup for their widgets to better preview
+             *the setup in the designer and since generally that same setup code is required at runtime, it's called there
+             *as well.
+             *
+             ***WARNING**
+             *This is intended purely for cosmetic updates using locally owned data, you can not safely access any game related
+             *state, if you call something that doesn't expect to be run at editor time, you may crash the editor.
+             *
+             *In the event you save the asset with blueprint code that causes a crash on evaluation.  You can turn off
+             *PreConstruct evaluation in the Widget Designer settings in the Editor Preferences.
+             */
+            PreConstruct(IsDesignTime: boolean) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): WB_WinIcon_C;
+            static Load(InName: string): WB_WinIcon_C;
+        
+            __tid_WB_WinIcon_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 3CF6F2D044B4EAE61426B9B445655F3F
+    namespace Game.Game.GameMap.Blueprint.UMG.WB_Window {
+        class WB_Window_C extends UE.MainMenuWidget {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ClickAnim: UE.WidgetAnimation;
+            GridPanel_84: UE.GridPanel;
+            Image: UE.Image;
+            Overlay_33: UE.Overlay;
+            TextBlock_54: UE.TextBlock;
+            WB_WinIcon: UE.Game.Game.GameMap.Blueprint.UMG.WB_WinIcon.WB_WinIcon_C;
+            WB_WinIcon_1: UE.Game.Game.GameMap.Blueprint.UMG.WB_WinIcon.WB_WinIcon_C;
+            WB_WinIcon_2: UE.Game.Game.GameMap.Blueprint.UMG.WB_WinIcon.WB_WinIcon_C;
+            WB_WinIcon_3: UE.Game.Game.GameMap.Blueprint.UMG.WB_WinIcon.WB_WinIcon_C;
+            WB_WinIcon_4: UE.Game.Game.GameMap.Blueprint.UMG.WB_WinIcon.WB_WinIcon_C;
+            WB_WinIcon_5: UE.Game.Game.GameMap.Blueprint.UMG.WB_WinIcon.WB_WinIcon_C;
+            WB_WinIcon_6: UE.Game.Game.GameMap.Blueprint.UMG.WB_WinIcon.WB_WinIcon_C;
+            Icon: TArray<UE.Game.Game.GameMap.Blueprint.UMG.WB_WinIcon.WB_WinIcon_C>;
+            TestFloat: number;
+            /*
+             *Called after the underlying slate widget is constructed.  Depending on how the slate object is used
+             *this event may be called multiple times due to adding and removing from the hierarchy.
+             *If you need a true called-once-when-created event, use OnInitialized.
+             */
+            Construct() : void;
+            ExecuteUbergraph_WB_Window(EntryPoint: number) : void;
+            Image_78_Event(Image_78: $Nullable<UE.Image>) : void;
+            Image_78_Event_0(Image_78: $Nullable<UE.Image>) : void;
+            onPress() : void;
+            SequenceEvent__ENTRYPOINTWB_Window(Image_78: $Nullable<UE.Image>) : void;
+            SequenceEvent__ENTRYPOINTWB_Window_0(Image_78: $Nullable<UE.Image>) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): WB_Window_C;
+            static Load(InName: string): WB_Window_C;
+        
+            __tid_WB_Window_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 3589DF8E483F2B768819C498714A3D4F
+    namespace Game.Debug.StreamLoad.DebugGM {
+        class DebugGM_C extends UE.GameModeBase {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            DefaultSceneRoot: UE.SceneComponent;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): DebugGM_C;
+            static Load(InName: string): DebugGM_C;
+        
+            __tid_DebugGM_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: F149802A4E5CD40581DD9389C49BE6A6
+    namespace Game.Debug.Test.SplineNode {
+        class SplineNode_C extends UE.SkillNodeActor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            Sphere1: UE.StaticMeshComponent;
+            Sphere: UE.StaticMeshComponent;
+            DefaultSceneRoot: UE.SceneComponent;
+            Condition: boolean;
+            Condition_0: boolean;
+            ExecuteUbergraph_SplineNode(EntryPoint: number) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            Update() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): SplineNode_C;
+            static Load(InName: string): SplineNode_C;
+        
+            __tid_SplineNode_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 45F83B0A48F0F065EFDAE88CCC8048AC
+    namespace Game.Debug.Test.sPLINEmESH {
+        class sPLINEmESH_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            SplineMesh: UE.SplineMeshComponent;
+            DefaultSceneRoot: UE.SceneComponent;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): sPLINEmESH_C;
+            static Load(InName: string): sPLINEmESH_C;
+        
+            __tid_sPLINEmESH_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 5A40315A48D33E72336891BF0828BCAA
+    namespace Game.Debug.Test.NewWidgetBlueprint1 {
+        class NewWidgetBlueprint1_C extends UE.UserWidget {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            Slider_27: UE.Slider;
+            /*
+             *Called after the underlying slate widget is constructed.  Depending on how the slate object is used
+             *this event may be called multiple times due to adding and removing from the hierarchy.
+             *If you need a true called-once-when-created event, use OnInitialized.
+             */
+            Construct() : void;
+            ExecuteUbergraph_NewWidgetBlueprint1(EntryPoint: number) : void;
+            P(Value: number) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): NewWidgetBlueprint1_C;
+            static Load(InName: string): NewWidgetBlueprint1_C;
+        
+            __tid_NewWidgetBlueprint1_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 24CDBD1D4EF4F662DE5B88AFFC1502A0
+    namespace Game.Debug.Test.Connect {
+        class Connect_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            Billboard: UE.BillboardComponent;
+            DefaultSceneRoot: UE.SceneComponent;
+            ACtorOnce: UE.Game.Debug.Test.SplineNode.SplineNode_C;
+            ACtorTwo: UE.Game.Debug.Test.SplineNode.SplineNode_C;
+            Condition: boolean;
+            NewVar: number;
+            ExecuteUbergraph_Connect(EntryPoint: number) : void;
+            InpActEvt_One_K2Node_InputDebugKeyEvent_0(Key: UE.Key, ActionValue: UE.InputActionValue) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): Connect_C;
+            static Load(InName: string): Connect_C;
+        
+            __tid_Connect_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: E6A3BD824579EDD0867B96980F55F623
+    namespace Game.Debug.Test.BPSplineMeshTest {
+        class BPSplineMeshTest_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            DefaultSceneRoot: UE.SceneComponent;
+            ExecuteUbergraph_BPSplineMeshTest(EntryPoint: number) : void;
+            Spawn() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BPSplineMeshTest_C;
+            static Load(InName: string): BPSplineMeshTest_C;
+        
+            __tid_BPSplineMeshTest_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: B16832A143EC2A282A9309824DB99E63
+    namespace Game.Debug.Test.BP_SplineVisualActor {
+        class BP_SplineVisualActor_C extends UE.SplineVisualizeActor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            Billboard: UE.BillboardComponent;
+            DefaultSceneRoot: UE.SceneComponent;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_SplineVisualActor_C;
+            static Load(InName: string): BP_SplineVisualActor_C;
+        
+            __tid_BP_SplineVisualActor_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: F6D578254EA435A1829D4F912C0A0E45
+    namespace NiagaraFluids.Blueprints.BP_WaterRenderer {
+        class BP_WaterRenderer_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            Plane: UE.StaticMeshComponent;
+            DefaultSceneRoot: UE.SceneComponent;
+            Render_mtl_mid: UE.MaterialInstanceDynamic;
+            System: UE.NiagaraActor;
+            debug: boolean;
+            SurfaceMaterial: UE.MaterialInstance;
+            SimTexture_RT: UE.TextureRenderTarget2D;
+            FoamTexture_RT: UE.TextureRenderTarget2D;
+            RTToSaveTo: UE.TextureRenderTarget2D;
+            UseFoam: boolean;
+            UseProfileBuffer: boolean;
+            ProfileBuffer_RT: UE.TextureRenderTarget2D;
+            Ac: boolean;
+            NormalTexture_RT: UE.TextureRenderTarget2D;
+            ExecuteUbergraph_BP_WaterRenderer(EntryPoint: number) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            WriteData() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_WaterRenderer_C;
+            static Load(InName: string): BP_WaterRenderer_C;
+        
+            __tid_BP_WaterRenderer_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: B80F7C984F762DEB9CD80790D1FAEB3F
+    namespace NiagaraFluids.Blueprints.BP_ImplicitSource {
+        class BP_ImplicitSource_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            StaticMesh1: UE.StaticMeshComponent;
+            StaticMesh: UE.StaticMeshComponent;
+            DefaultSceneRoot: UE.SceneComponent;
+            Density: number;
+            Temperature: number;
+            Velocity: UE.Vector;
+            VelocityMagnitude: number;
+            RadialVelocity: number;
+            NoiseGain: number;
+            NoiseFrequency: number;
+            NoiseSpeed: number;
+            NoiseExponent: number;
+            PrevPos: UE.Vector;
+            ActorVel: UE.Vector;
+            InheritVelocity: number;
+            ExecuteUbergraph_BP_ImplicitSource(EntryPoint: number) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_ImplicitSource_C;
+            static Load(InName: string): BP_ImplicitSource_C;
+        
+            __tid_BP_ImplicitSource_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: B5A85E154E510B088D8D8D8F41391372
+    namespace Landmass.DistanceFields.Blueprints.JumpFlood_Component2D {
+        class JumpFlood_Component2D_C extends UE.ActorComponent {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            JumpStepMID: UE.MaterialInstanceDynamic;
+            FindEdgesMID: UE.MaterialInstanceDynamic;
+            BlurEdgesMID: UE.MaterialInstanceDynamic;
+            FixBandMID: UE.MaterialInstanceDynamic;
+            Resolution: number;
+            RequiredPasses: number;
+            CompletedPasses: number;
+            TextureSize: UE.Vector2D;
+            RTA: UE.TextureRenderTarget2D;
+            RTB: UE.TextureRenderTarget2D;
+            UseBlur: boolean;
+            BlurPasses: number;
+            CompletedBlurPasses: number;
+            PingPongOffset: number;
+            ["Assign RenderTargets"](RTA: $Nullable<UE.TextureRenderTarget2D>, RTB: $Nullable<UE.TextureRenderTarget2D>) : void;
+            ExecuteUbergraph_JumpFlood_Component2D(EntryPoint: number) : void;
+            FindEdges(SeedRT: $Nullable<UE.TextureRenderTarget2D>, CaptureZ: number, Curl: UE.LinearColor, UseDepth: boolean, ZLocation: number, ResultRT: $Ref<UE.TextureRenderTarget2D>) : void;
+            FindEdges_Debug(SeedRT: $Nullable<UE.TextureRenderTarget2D>, CaptureZ: number, Curl: UE.LinearColor, DestRT: $Nullable<UE.TextureRenderTarget2D>, ZOffset: number) : void;
+            JumpFlood(SeedRT: $Nullable<UE.TextureRenderTarget2D>, SceneCaptureZ: number, Curl: UE.LinearColor, UseDepth: boolean, ZLocation: number) : void;
+            SingleBlurStep(ResultRT: $Ref<UE.TextureRenderTarget2D>) : void;
+            SingleJumpStep(ResultRT: $Ref<UE.TextureRenderTarget2D>) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): JumpFlood_Component2D_C;
+            static Load(InName: string): JumpFlood_Component2D_C;
+        
+            __tid_JumpFlood_Component2D_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 5F193F03477FFFDC67007F91FBBCBAF9
+    namespace Landmass.Landscape.BlueprintBrushes.SplineMeshChild {
+        class SplineMeshChild_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            DefaultSceneRoot: UE.SceneComponent;
+            Components: TArray<UE.SplineMeshComponent>;
+            ["Total Spine Length"]: number;
+            Idx: number;
+            SplineRef: UE.SplineComponent;
+            Material: UE.MaterialInterface;
+            Mesh: UE.StaticMesh;
+            Scale: UE.Vector;
+            ["Segment Length"]: number;
+            Info: string;
+            ["Setup Spline Mesh Components"]() : void;
+            ["Update Values"](Spline: $Nullable<UE.SplineComponent>, Mat: $Nullable<UE.MaterialInterface>, Mesh: $Nullable<UE.StaticMesh>, Scale: UE.Vector, SegmentLength: number) : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): SplineMeshChild_C;
+            static Load(InName: string): SplineMeshChild_C;
+        
+            __tid_SplineMeshChild_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 88D5756D46AD1F8398805FBF50688A54
+    namespace Landmass.Landscape.BlueprintBrushes.LandmassBrushManager {
+        class LandmassBrushManager_C extends UE.LandmassActor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ["Drawing Debug"]: UE.StaticMeshComponent;
+            SceneCaptureComponent2D: UE.SceneCaptureComponent2D;
+            JumpFlood_Component2D: UE.Landmass.DistanceFields.Blueprints.JumpFlood_Component2D.JumpFlood_Component2D_C;
+            ["Heightmap RT"]: UE.TextureRenderTarget2D;
+            ["Landscape Quads"]: UE.IntPoint;
+            ["Landscape RT Res"]: UE.IntPoint;
+            ["Jump Flood RT A"]: UE.TextureRenderTarget2D;
+            ["Jump Flood RT B"]: UE.TextureRenderTarget2D;
+            ["Depth and Shape RT A"]: UE.TextureRenderTarget2D;
+            ["World Size"]: UE.Vector;
+            ["Weightmap RT"]: UE.TextureRenderTarget2D;
+            ["File Path"]: string;
+            Filename: string;
+            ["LS Transform"]: UE.Transform;
+            ["Force Tick Perf Test"]: boolean;
+            ["Drawing Mode"]: boolean;
+            PreviouslyDrawing: boolean;
+            ["Debug MID"]: UE.MaterialInstanceDynamic;
+            ["New Shape Type"]: UE.Landmass.Landscape.BP.Enums.ShapeDrawingMode.ShapeDrawingMode;
+            CurCustomBrush: UE.Landmass.Landscape.BlueprintBrushes.CustomBrush_Landmass.CustomBrush_Landmass_C;
+            ["Drawing Plane Z"]: number;
+            ["Instructions:"]: string;
+            ["New Road Spline Mesh"]: UE.StaticMesh;
+            ["Road Material"]: UE.MaterialInterface;
+            ["New River Spline Mesh"]: UE.StaticMesh;
+            ["River Material"]: UE.MaterialInterface;
+            ["Weightmap Layer Name"]: string;
+            ["Enable DistanceField Brushes"]: boolean;
+            ["Allocate RTs"]() : void;
+            ["Begin Shape"]() : void;
+            ["Capture Mesh Depth"](Primitive: $Ref<TArray<UE.PrimitiveComponent>>) : void;
+            ["Complete Shape"]() : void;
+            ["Create or Update RT"](RT: $Ref<UE.TextureRenderTarget2D>, Size: UE.IntPoint, Format: UE.ETextureRenderTargetFormat) : void;
+            CustomTick(DeltaSeconds: number) : void;
+            /**
+             * @deprecated Unsupported super overloads.
+             */
+            CustomTick_EditorOnly(DeltaSeconds: number) : void;
+            ExecuteUbergraph_LandmassBrushManager(EntryPoint: number) : void;
+            ["Export RT"]() : void;
+            ["Set MPC Params"]() : void;
+            ["Single Jump Step"]() : void;
+            ["Update Transform"]() : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): LandmassBrushManager_C;
+            static Load(InName: string): LandmassBrushManager_C;
+        
+            __tid_LandmassBrushManager_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 45E817E540053FC3D320588B2DC72A3A
+    namespace Landmass.Landscape.BlueprintBrushes.CustomBrush_MaterialOnly {
+        class CustomBrush_MaterialOnly_C extends UE.LandscapeBlueprintBrush {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            Spline: UE.SplineComponent;
+            ["Brush Mesh"]: UE.StaticMeshComponent;
+            BrushManager: UE.Landmass.Landscape.BlueprintBrushes.LandmassBrushManager.LandmassBrushManager_C;
+            ["Distance Field Cache"]: UE.TextureRenderTarget2D;
+            DrawBrushMID: UE.MaterialInstanceDynamic;
+            ["Brush Type"]: UE.Landmass.Landscape.BP.Enums.BrushTypes.BrushTypes;
+            ["Blend Mode"]: UE.Landmass.Landscape.BP.Brushes.BrushBlendType.BrushBlendType;
+            ["Use Z Depth"]: boolean;
+            ["Invert Shape"]: boolean;
+            ["Brush Material"]: UE.MaterialInterface;
+            ["Static Mesh"]: UE.StaticMesh;
+            ["Blur Shape"]: boolean;
+            ["Blur Size"]: number;
+            ["Curl 1 Strength"]: number;
+            ["Use Elevation Curve"]: boolean;
+            ["Displacement Height"]: number;
+            ["Inner Smooth Threshold"]: number;
+            ["Outer Smooth Threshold"]: number;
+            ["Curl 2 Strength"]: number;
+            ["Curl 1 Tiling"]: number;
+            ["Curl 2 Tiling"]: number;
+            ["A list of Effects that alter the Brush."]: UE.Landmass.Landscape.BP.Structs.ProcMeshData.ProcMeshData;
+            ["Terrace Alpha"]: number;
+            ["Terrace Spacing"]: number;
+            ["Terrace Smoothness"]: number;
+            ["Mask Length"]: number;
+            ["Mask Start Offset"]: number;
+            ["Displacement Tiling"]: number;
+            ["Displacement Texture"]: UE.Texture2D;
+            Midpoint: number;
+            Channel: UE.LinearColor;
+            ["Elevation Curve Asset"]: UE.CurveFloat;
+            ["Curve RT"]: UE.TextureRenderTarget2D;
+            ["Curve Bottom Offset"]: number;
+            ["Curve Z Length"]: number;
+            SplineMeshes: TArray<UE.SplineMeshComponent>;
+            SplineMeshesForRender: TArray<UE.SplineMeshComponent>;
+            CurveTextureRendered: boolean;
+            CanvasUVTris: TArray<UE.CanvasUVTri>;
+            DistanceFieldIsCached: boolean;
+            ShapeMID: UE.MaterialInstanceDynamic;
+            DynamicPreviewPoint: UE.LinearColor;
+            Curlparams: UE.LinearColor;
+            path: string;
+            name: string;
+            WeightmapMID: UE.MaterialInstanceDynamic;
+            HeightmapRender: boolean;
+            ["Weightmap Influence"]: number;
+            Tiling: number;
+            ["Elevation Scale"]: number;
+            ["Elevation Pre-Offset"]: number;
+            Seed: number;
+            Invert: boolean;
+            Octaves: number;
+            Persistence: number;
+            ["Custom Parameters"]: UE.Landmass.Landscape.BP.Structs.ProcMeshData.ProcMeshData;
+            ["Custom Scalar Params"]: TMap<string, number>;
+            ["Custom Vector Params"]: TMap<string, UE.LinearColor>;
+            ["Custom Texture Params"]: TMap<string, UE.Texture2D>;
+            ["Brush Material Weightmap"]: UE.MaterialInterface;
+            ApplyCustomParams() : void;
+            ["Brush Setup"](LandscapeRT: $Nullable<UE.TextureRenderTarget2D>) : void;
+            ["Draw Brush Material"]() : void;
+            ["Draw Custom Shape"]() : void;
+            DrawCanvasShape() : void;
+            ExecuteUbergraph_CustomBrush_MaterialOnly(EntryPoint: number) : void;
+            ["Export RT"]() : void;
+            ForceUpdate() : void;
+            Initialize(InLandscapeTransform: UE.Transform, InLandscapeSize: UE.IntPoint, InLandscapeRenderTargetSize: UE.IntPoint) : void;
+            RenderLayer(InParameters: UE.LandscapeBrushParameters) : UE.TextureRenderTarget2D;
+            ["Update Curves"]() : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): CustomBrush_MaterialOnly_C;
+            static Load(InName: string): CustomBrush_MaterialOnly_C;
+        
+            __tid_CustomBrush_MaterialOnly_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 97905183423B3333104F0DBE2CD84B93
+    namespace Landmass.Landscape.BlueprintBrushes.CustomBrush_Landmass_River {
+        class CustomBrush_Landmass_River_C extends UE.Landmass.Landscape.BlueprintBrushes.CustomBrush_Landmass.CustomBrush_Landmass_C {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): CustomBrush_Landmass_River_C;
+            static Load(InName: string): CustomBrush_Landmass_River_C;
+        
+            __tid_CustomBrush_Landmass_River_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 66106D944359C683B02302BF3E3D6D18
+    namespace Landmass.Landscape.BlueprintBrushes.CustomBrush_Landmass {
+        class CustomBrush_Landmass_C extends UE.LandscapeBlueprintBrush {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            Spline: UE.SplineComponent;
+            ["Brush Mesh"]: UE.StaticMeshComponent;
+            BrushManager: UE.Landmass.Landscape.BlueprintBrushes.LandmassBrushManager.LandmassBrushManager_C;
+            ["Distance Field Cache"]: UE.TextureRenderTarget2D;
+            CopyRTMID: UE.MaterialInstanceDynamic;
+            ["Render Distance Field MID"]: UE.MaterialInstanceDynamic;
+            DrawBrushMID: UE.MaterialInstanceDynamic;
+            ["Brush Type"]: UE.Landmass.Landscape.BP.Enums.BrushTypes.BrushTypes;
+            ["Blend Mode"]: UE.Landmass.Landscape.BP.Brushes.BrushBlendType.BrushBlendType;
+            ["Use Z Depth"]: boolean;
+            ["Invert Shape"]: boolean;
+            ["Cap Shape"]: boolean;
+            ["Falloff Angle"]: number;
+            ["Falloff Mode"]: UE.Landmass.Landscape.BP.Enums.BrushFalloffMode.BrushFalloffMode;
+            ["Falloff Width"]: number;
+            ["Brush Material"]: UE.MaterialInterface;
+            ["Static Mesh"]: UE.StaticMesh;
+            ["Custom Override Material"]: UE.MaterialInterface;
+            ["Override Material"]: boolean;
+            ["Spline Mesh"]: UE.StaticMesh;
+            ["Edge Width Offset"]: number;
+            ["Z Offset"]: number;
+            ["Blur Shape"]: boolean;
+            ["Blur Size"]: number;
+            ["Curl 1 Strength"]: number;
+            ["Use Curve Channel"]: boolean;
+            ["Displacement Height"]: number;
+            ["Inner Smooth Threshold"]: number;
+            ["Outer Smooth Threshold"]: number;
+            ["Curl 2 Strength"]: number;
+            ["Curl 1 Tiling"]: number;
+            ["Curl 2 Tiling"]: number;
+            ["A list of Effects that alter the Brush."]: UE.Landmass.Landscape.BP.Structs.ProcMeshData.ProcMeshData;
+            ["Custom Scalar Params"]: TMap<string, number>;
+            ["Custom Vector Params"]: TMap<string, UE.LinearColor>;
+            ["Custom Texture Params"]: TMap<string, UE.Texture2D>;
+            ["Terrace Alpha"]: number;
+            ["Terrace Spacing"]: number;
+            ["Terrace Smoothness"]: number;
+            ["Mask Length"]: number;
+            ["Mask Start Offset"]: number;
+            ["Displacement Tiling"]: number;
+            ["Displacement Texture"]: UE.Texture2D;
+            Midpoint: number;
+            Channel: UE.LinearColor;
+            ["Elevation Curve Asset"]: UE.CurveFloat;
+            ["Curve RT"]: UE.TextureRenderTarget2D;
+            ["Channel Edge Offset"]: number;
+            ["Curve Channel Depth"]: number;
+            UsedMaterial: UE.MaterialInterface;
+            SplineMeshes: TArray<UE.SplineMeshComponent>;
+            ["Flatten Mesh"]: UE.StaticMesh;
+            ["Show Flatten Mesh"]: boolean;
+            ["Show Splines"]: boolean;
+            SplineMeshesForRender: TArray<UE.SplineMeshComponent>;
+            ["Spline Material"]: UE.MaterialInterface;
+            ["Spline Mesh Scale"]: UE.Vector;
+            CurveTextureRendered: boolean;
+            CanvasUVTris: TArray<UE.CanvasUVTri>;
+            DistanceFieldIsCached: boolean;
+            ShapeMID: UE.MaterialInstanceDynamic;
+            DynamicPreviewPoint: UE.LinearColor;
+            Curlparams: UE.LinearColor;
+            path: string;
+            name: string;
+            WeightmapMID: UE.MaterialInstanceDynamic;
+            HeightmapRender: boolean;
+            ["Weightmap Influence"]: number;
+            T: boolean;
+            ["Curve Ramp Width"]: number;
+            LSTransform: UE.Transform;
+            ["LS Size"]: UE.IntPoint;
+            ["RT Res"]: UE.IntPoint;
+            ["Flatten Mesh Scale"]: UE.Vector;
+            ["Default Mesh Length"]: number;
+            ["Spline Mesh Array"]: TArray<UE.Landmass.Landscape.BP.Structs.SplineMeshInfo.SplineMeshInfo>;
+            Meshes: number;
+            Mul: number;
+            ["Spline Length"]: number;
+            ["Paint Layer Target Settings"]: TMap<string, UE.Landmass.Landscape.BP.Structs.BPWaterBodyWeightmapSettings.BPWaterBodyWeightmapSettings>;
+            CurPaintLayer: string;
+            SplineMeshBP: UE.Landmass.Landscape.BlueprintBrushes.SplineMeshChild.SplineMeshChild_C;
+            ["Force Tick Perf Test"]: boolean;
+            ["Auto Spline Tangents"]() : void;
+            ["Brush Setup"]() : void;
+            ["Cache Distance Field"]() : void;
+            ["Center Actors On Spline Points"]() : void;
+            ["Draw Brush Material"]() : void;
+            ["Draw Custom Shape"]() : void;
+            DrawCanvasShape() : void;
+            ExecuteUbergraph_CustomBrush_Landmass(EntryPoint: number) : void;
+            ["Export RT"]() : void;
+            ForceUpdate() : void;
+            GetBlueprintRenderDependencies(OutStreamableAssets: $Ref<TArray<UE.Object>>) : void;
+            ["Hard Edge Tangents"]() : void;
+            Initialize(InLandscapeTransform: UE.Transform, InLandscapeSize: UE.IntPoint, InLandscapeRenderTargetSize: UE.IntPoint) : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            RenderLayer(InParameters: UE.LandscapeBrushParameters) : UE.TextureRenderTarget2D;
+            ["Update Curves"]() : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): CustomBrush_Landmass_C;
+            static Load(InName: string): CustomBrush_Landmass_C;
+        
+            __tid_CustomBrush_Landmass_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: E5434DDD4B12AC8516CC31ABFD3252C4
+    namespace Landmass.Landscape.BlueprintBrushes.Libraries.WaterBrushCacheContainer {
+        class WaterBrushCacheContainer_C extends UE.Object {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            Cache: UE.Landmass.Landscape.BP.Structs.WaterBrushCache.WaterBrushCache;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): WaterBrushCacheContainer_C;
+            static Load(InName: string): WaterBrushCacheContainer_C;
+        
+            __tid_WaterBrushCacheContainer_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 64E6A96F46B3A9CD4C37CBB64841D78E
+    namespace Landmass.Landscape.BP.BP_ScreenOverlay {
+        class BP_ScreenOverlay_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            PostProcess: UE.PostProcessComponent;
+            DefaultSceneRoot: UE.SceneComponent;
+            Scale: number;
+            Opacity: number;
+            Material: UE.MaterialInterface;
+            Note: string;
+            Enable: boolean;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_ScreenOverlay_C;
+            static Load(InName: string): BP_ScreenOverlay_C;
+        
+            __tid_BP_ScreenOverlay_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 5EC131814731460E6422FE875B41067A
+    namespace Landmass.Landscape.BP.BP_MeshGrids {
+        class BP_MeshGrids_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            ProceduralMesh: UE.ProceduralMeshComponent;
+            DefaultSceneRoot: UE.SceneComponent;
+            ["Proc Mesh Data"]: UE.Landmass.Landscape.BP.Structs.ProcMeshData.ProcMeshData;
+            ["Grid Verts X"]: number;
+            ["Grid Verts Y"]: number;
+            ["Grid Spacing"]: number;
+            ["Make Grid Mesh"]() : void;
+            ["Make Scatter Mesh"]() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_MeshGrids_C;
+            static Load(InName: string): BP_MeshGrids_C;
+        
+            __tid_BP_MeshGrids_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 98D8EE634D61B2B4A4D205891723A7CE
+    namespace Landmass.Landscape.BP.BP_Landmass_LayerStack {
+        class BP_Landmass_LayerStack_C extends UE.LandmassActor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            DrawingDebug: UE.StaticMeshComponent;
+            ["Actor Ticking"]: UE.TextRenderComponent;
+            ["Scatter Particles ISMC"]: UE.InstancedStaticMeshComponent;
+            ["Landscape ISMC"]: UE.InstancedStaticMeshComponent;
+            ScatterMeshSceneCapture: UE.SceneCaptureComponent2D;
+            LandscapeErosionComponent: UE.Landmass.Landscape.BP.Components.ErosionComponent.ErosionComponent_C;
+            MeshSceneCapture: UE.SceneCaptureComponent2D;
+            JumpFlood_Component2D: UE.Landmass.DistanceFields.Blueprints.JumpFlood_Component2D.JumpFlood_Component2D_C;
+            ["Terrain Seed Material"]: UE.MaterialInterface;
+            ["Show Preview Mesh"]: boolean;
+            ["Mesh Preview Material"]: UE.MaterialInterface;
+            staticmesh: UE.StaticMesh;
+            Tiling: number;
+            Seed: number;
+            ["Elevation Scale"]: number;
+            ["Elevation Pre-Offset"]: number;
+            ["Export File Path"]: string;
+            ["Export File Name"]: string;
+            ["Compute Normal Material"]: UE.MaterialInterface;
+            ["Scatter Particle Material"]: UE.MaterialInterface;
+            StackHeightIdx: number;
+            ["Ticking Erosion"]: boolean;
+            ["Cached Overall Resolution"]: UE.Vector2D;
+            StoredInstances: number;
+            CachedErosionMode: UE.Landmass.Landscape.BP.Enums.ErosionMode.ErosionMode;
+            ["Cached Elevation Scale"]: number;
+            ["Cached Elevation Pre-Offset"]: number;
+            ["Cached Ramp"]: number;
+            ["Cached Plateau"]: number;
+            ["Cached Channel"]: number;
+            ["Cached Seed"]: number;
+            ["Cached Tiling"]: number;
+            CachedOverrideSize: number;
+            ["Render Target A"]: UE.TextureRenderTarget2D;
+            ["Render Target B"]: UE.TextureRenderTarget2D;
+            ["Noise Seed  RT"]: UE.TextureRenderTarget2D;
+            ["Landscape Height RT"]: UE.TextureRenderTarget2D;
+            ["Mesh Depth RT"]: UE.TextureRenderTarget2D;
+            ["Jump Flood Target A_Vel"]: UE.TextureRenderTarget2D;
+            ["Jump Flood Target B_Vel"]: UE.TextureRenderTarget2D;
+            Normal: UE.TextureRenderTarget2D;
+            MeshPreviewMID: UE.MaterialInstanceDynamic;
+            ["Compute Normal MID"]: UE.MaterialInstanceDynamic;
+            NormalizeHeightMID: UE.MaterialInstanceDynamic;
+            SeedNoiseMID: UE.MaterialInstanceDynamic;
+            ["------   Landscape Setup   ------"]: UE.Landmass.Landscape.BP.Structs.ProcMeshData.ProcMeshData;
+            Landscape: UE.Landscape;
+            ["Component Size"]: UE.Landmass.Landscape.BP.Enums.SectionSizeOptions.SectionSizeOptions;
+            ["Sections X"]: number;
+            ["Sections Y"]: number;
+            ["Overall Resolution"]: UE.Vector2D;
+            ["Layer Weight Name"]: string;
+            ["Show Procedural Impact"]: boolean;
+            DrawingMode: boolean;
+            CurShape: UE.Landmass.Landscape.BP.Brushes.BP_LandmassBrush.BP_LandmassBrush_C;
+            ElapsedTime: number;
+            ["Show Water"]: boolean;
+            ["Velocity Debug Brightness"]: number;
+            ["Button Press Iterations"]: number;
+            ["------ Simulation Settings ------"]: UE.Landmass.Landscape.BP.Structs.ProcMeshData.ProcMeshData;
+            ["Erosion Mode"]: UE.Landmass.Landscape.BP.Enums.ErosionMode.ErosionMode;
+            ["Per Tick Iterations"]: number;
+            ["Reset Every N Interations"]: number;
+            ["Delta T"]: number;
+            ["Rain Amount"]: number;
+            Solubility: number;
+            Evaporation: number;
+            ["Start Water"]: number;
+            ["Water is Level"]: boolean;
+            ["------ Advanced Effects ------"]: UE.Landmass.Landscape.BP.Structs.ProcMeshData.ProcMeshData;
+            ["Velocity Advection Erosion"]: number;
+            ["Normal Advection Erosion"]: number;
+            ["Max Advection Slope"]: number;
+            ["Smooth Slopes Greater Than"]: number;
+            ["New Shape Type"]: UE.Landmass.Landscape.BP.Enums.ShapeDrawingMode.ShapeDrawingMode;
+            ["Starting Z Elevation"]: number;
+            ["Instructions:"]: string;
+            ["Highlight Components"]: boolean;
+            ["Perf Test Mode"]: boolean;
+            SizePerQuad: number;
+            TotalSize: UE.Vector2D;
+            Ramp: number;
+            Plateau: number;
+            Channel: number;
+            ["Override Size"]: number;
+            ["Override Resolution"]: UE.Vector2D;
+            ["New Shape Road Mesh"]: UE.StaticMesh;
+            ["New Shape River Mesh"]: UE.StaticMesh;
+            ["River Material"]: UE.MaterialInterface;
+            ["Road Material"]: UE.MaterialInterface;
+            ["Layer Stack"]: TArray<UE.Landmass.Landscape.BP.Brushes.BP_LandmassBrush.BP_LandmassBrush_C>;
+            ["Brush Info"]: boolean;
+            Weightmaps: TMap<string, UE.Landmass.Landscape.BP.Structs.RenderTargetChannels.RenderTargetChannels>;
+            ["Cached Start Water"]: number;
+            ScatterParticleMID: UE.MaterialInstanceDynamic;
+            ScatterMeshActor: UE.Landmass.Landscape.BP.Components.ChildProcMesh.ChildProcMesh_C;
+            ["Position A"]: UE.TextureRenderTarget2D;
+            ["Position B"]: UE.TextureRenderTarget2D;
+            ["Invert Noise"]: boolean;
+            CachedInvert: boolean;
+            ["Smooth Slopes Less Than"]: number;
+            ["Velocity Damping"]: number;
+            PrepRTforLSMID: UE.MaterialInstanceDynamic;
+            Octaves: number;
+            Persistence: number;
+            ["Edge Lip"]: number;
+            ["Cached Octaves"]: number;
+            ["Cached Persistence"]: number;
+            ForcedLOD: number;
+            ["Erosion Weightmap Effects"]: TArray<UE.Landmass.Landscape.BP.Structs.ErodeWeightmap.ErodeWeightmap>;
+            ["Max Iterations"]: number;
+            CombineLandscapeNoiseWaterMID: UE.MaterialInstanceDynamic;
+            ["Total Z Range Kilometers"]: number;
+            ["Landscape Actor Z Scale"]: number;
+            ["Cached Z Range km"]: number;
+            ["Raw Z Scale"]: number;
+            DebugDrawMID: UE.MaterialInstanceDynamic;
+            ["Weightmap Name"]: string;
+            ["Cached Position"]: UE.Vector;
+            ["Force Power of 2"]: boolean;
+            ["Static Asset Path Name"]: string;
+            ["RT to write to"]: UE.TextureRenderTarget2D;
+            ["Normalize Max Z"]: number;
+            PrepWeightmapforLSMID: UE.MaterialInstanceDynamic;
+            ["Always Tick for Perf Test"]: boolean;
+            ["1) Create Shape"]() : void;
+            ["1) Read Landscape Height"]() : void;
+            ["2) Complete Shape"]() : void;
+            ["2) Copy Landscape Range"]() : void;
+            ["3) Export Height to Landscape"]() : void;
+            ["4) Export Weightmaps to Landscape"]() : void;
+            ["Cache Normal"]() : void;
+            CaptureMeshDepth(Primitive: $Nullable<UE.PrimitiveComponent>) : void;
+            CaptureSplineDepth(Primitive: $Ref<TArray<UE.SplineMeshComponent>>) : void;
+            ["Config Res"]() : void;
+            Constructor() : void;
+            ["Create MIDs"]() : void;
+            ["Create Render Targets"]() : void;
+            CustomTick(DeltaSeconds: number) : void;
+            /**
+             * @deprecated Unsupported super overloads.
+             */
+            CustomTick_EditorOnly(DeltaSeconds: number) : void;
+            ["Draw Height to CB RT Asset"]() : void;
+            ExecuteUbergraph_BP_Landmass_LayerStack(EntryPoint: number) : void;
+            ["Export Height"]() : void;
+            ["Export Heightmap File"]() : void;
+            ["Export Normal File"]() : void;
+            GetSize() : void;
+            InvalidateBrushCache() : void;
+            ["Perform Iterations"]() : void;
+            ["Print Path"]() : void;
+            ["Rebind Preview Mesh RT"]() : void;
+            ["Render Seed"]() : void;
+            /*
+             *Resets the terrain by clearing, rendering seed material and then re-rendering the layer stack.
+             */
+            Reset() : void;
+            ["Set MID Params"]() : void;
+            ["Set MPC Params"]() : void;
+            ["Spawn Instance Meshes"]() : void;
+            SpawnScatterMesh() : void;
+            ["Start Tick"]() : void;
+            ["Stop Tick"]() : void;
+            Update() : void;
+            ["Update "]() : void;
+            ["Update Brushes And Normals"]() : void;
+            ["Update Height"]() : void;
+            UpdateBrushes() : void;
+            UpdateNormalAndPreviewRTAssignments(VelocityRT: $Nullable<UE.TextureRenderTarget2D>) : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            ["Write Landscape Weightmap"]() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_Landmass_LayerStack_C;
+            static Load(InName: string): BP_Landmass_LayerStack_C;
+        
+            __tid_BP_Landmass_LayerStack_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 68EA682E4083CB0DDEBE0D87B02C5573
+    namespace Landmass.Landscape.BP.Brushes.BP_LSBrush_Noise {
+        class BP_LSBrush_Noise_C extends UE.Landmass.Landscape.BP.Brushes.BP_LandmassBrush.BP_LandmassBrush_C {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_LSBrush_Noise_C;
+            static Load(InName: string): BP_LSBrush_Noise_C;
+        
+            __tid_BP_LSBrush_Noise_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 611887C24DF43182F0E0C1A5B3A98469
+    namespace Landmass.Landscape.BP.Brushes.BP_LandmassBrush {
+        class BP_LandmassBrush_C extends UE.LandmassActor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            Spline: UE.SplineComponent;
+            StaticMesh1: UE.StaticMeshComponent;
+            ["LS BP"]: UE.Landmass.Landscape.BP.BP_Landmass_LayerStack.BP_Landmass_LayerStack_C;
+            ["Terrace Alpha"]: number;
+            ["Terrace Z Spacing"]: number;
+            ["Terrace Smoothness"]: number;
+            ["Terrace Mask Length"]: number;
+            ["Displacement Mask Width"]: number;
+            ["Displacement Mask Offset"]: number;
+            ["Displacement Mask Power"]: number;
+            ["------   Input Settings   ------"]: UE.Landmass.Landscape.BP.Structs.ProcMeshData.ProcMeshData;
+            ["Brush Type"]: UE.Landmass.Landscape.BP.Enums.BrushTypes.BrushTypes;
+            BlendMode: UE.Landmass.Landscape.BP.Brushes.BrushBlendType.BrushBlendType;
+            ["Falloff Width"]: number;
+            ["Falloff Angle"]: number;
+            ["Edge Width Offset"]: number;
+            UseMeshDepth: boolean;
+            ["Invert Shape"]: boolean;
+            ["Brush MID"]: UE.MaterialInstanceDynamic;
+            SplinePoints: TArray<UE.Vector>;
+            ["Spline Tension"]: number;
+            SplineMeshes: TArray<UE.SplineMeshComponent>;
+            Size: UE.Vector;
+            Pos: UE.Vector;
+            DistanceFieldRenderMID: UE.MaterialInstanceDynamic;
+            ["Shape MID"]: UE.MaterialInstanceDynamic;
+            Tick: boolean;
+            Verts: TArray<UE.Vector>;
+            Tris: TArray<number>;
+            CanvasUVTris: TArray<UE.CanvasUVTri>;
+            ["Note: 'Use Mesh Depth' must be false"]: UE.Landmass.Landscape.BP.Structs.ProcMeshData.ProcMeshData;
+            ["Curl 1 Strength"]: number;
+            ["Curl 2 Strength"]: number;
+            ["Curl 1 Tiling"]: number;
+            ["Curl 2 Tiling"]: number;
+            Construct: boolean;
+            ["Default Material"]: UE.MaterialInterface;
+            ["Custom Override Mat"]: UE.MaterialInterface;
+            ["Use Override Mat"]: boolean;
+            ["Material Only Radius"]: number;
+            ["Z Offset"]: number;
+            ["Single Mesh"]: UE.StaticMesh;
+            ["Stack Index"]: number;
+            ["Affect Heightmap"]: boolean;
+            ChannelMask: UE.LinearColor;
+            RenderedCurveTexture: boolean;
+            ["Use Elevation Curve"]: boolean;
+            ["Note:"]: string;
+            ["Elevation Remap Curve"]: UE.CurveFloat;
+            ["Curve RT"]: UE.TextureRenderTarget2D;
+            ["Inner Blend Radius"]: number;
+            ["Outer Blend Radius"]: number;
+            ["Top Curve Power"]: number;
+            ["Bottom Curve Power"]: number;
+            ["Displacement Height"]: number;
+            ["Displacement Tiling"]: number;
+            ["Displacement Texture"]: UE.Texture2D;
+            Midpoint: number;
+            SplineMeshesForRender: TArray<UE.SplineMeshComponent>;
+            ["Spline Mesh"]: UE.StaticMesh;
+            ["Spline Material"]: UE.MaterialInterface;
+            ["Spline Mesh Scale"]: UE.Vector;
+            ["Show Splines"]: boolean;
+            ["Flatten Mesh"]: UE.StaticMesh;
+            ["Show Flatten Mesh"]: boolean;
+            ["Weightmap Target Settings"]: TArray<UE.Landmass.Landscape.BP.Structs.BrushWM.BrushWM>;
+            CachedDistance: UE.TextureRenderTarget2D;
+            DistanceIsCached: boolean;
+            DynamicPreviewPoint: UE.LinearColor;
+            ["Blur Distance Field"]: boolean;
+            ["Curve Bottom Offset"]: number;
+            ["Curve Z Length"]: number;
+            ["Custom Scalar Params"]: TMap<string, number>;
+            ["Custom Vector Params"]: TMap<string, UE.LinearColor>;
+            ["Custom Texture Params"]: TMap<string, UE.Texture2D>;
+            ["Flatten Z"]: boolean;
+            ["Terrace Start Offset"]: number;
+            ["Blur Filter Scale"]: number;
+            CachedHeightAlpha: UE.TextureRenderTarget2D;
+            HeightAlphaMID: UE.MaterialInstanceDynamic;
+            selected: boolean;
+            Channel: UE.LinearColor;
+            ["1) Move Up"]() : void;
+            ["2) Move Down"]() : void;
+            ["3) Move to Top"]() : void;
+            ["4) Move to Bottom"]() : void;
+            ActorSelectionChanged(bSelected: boolean) : void;
+            /**
+             * @deprecated Unsupported super overloads.
+             */
+            ActorSelectionChanged_EditorOnly(bSelected: boolean) : void;
+            Cache() : void;
+            ["Canvas Draw"]() : void;
+            ["Center Actor on Spline Points"]() : void;
+            Constructor() : void;
+            ["Debug Detect Edges"]() : void;
+            ["Draw Brush"]() : void;
+            ExecuteUbergraph_BP_LandmassBrush(EntryPoint: number) : void;
+            ["JumpFlood Single Step"]() : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            Refresh() : void;
+            RenderBrushToStack() : void;
+            RenderDistanceField() : void;
+            Update() : void;
+            ["Update Curves"]() : void;
+            ["Update Landscape"]() : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_LandmassBrush_C;
+            static Load(InName: string): BP_LandmassBrush_C;
+        
+            __tid_BP_LandmassBrush_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 388B22534A581DD1D8FD1D88EEC9B70E
+    namespace Landmass.Landscape.BP.Components.ErosionComponent {
+        class ErosionComponent_C extends UE.EditorUtilityActorComponent {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ["Velocity Advection Erosion"]: number;
+            ["Erosion Data"]: UE.Landmass.Landscape.BP.Structs.ErosionInterface.ErosionInterface;
+            ["Velocity Acceleration MID"]: UE.MaterialInstanceDynamic;
+            ["Advect Velocity MID"]: UE.MaterialInstanceDynamic;
+            ["Advect Height MID"]: UE.MaterialInstanceDynamic;
+            ["Normal Advection Erosion"]: number;
+            ["Slope Smooth Threshold"]: number;
+            ParentSceneCaptureRef: UE.SceneCaptureComponent2D;
+            ScatterMeshCompRef: UE.StaticMeshComponent;
+            VelocityIdx: number;
+            PositionIdx: number;
+            OwningLayerStackBP: UE.Landmass.Landscape.BP.BP_Landmass_LayerStack.BP_Landmass_LayerStack_C;
+            ["Scatter Particle Preview MID"]: UE.MaterialInstanceDynamic;
+            ["Scatter Particle Render MID"]: UE.MaterialInstanceDynamic;
+            ["Scatter Velocity MID"]: UE.MaterialInstanceDynamic;
+            ["Scatter Position MID"]: UE.MaterialInstanceDynamic;
+            ["Particle Position Seed MID"]: UE.MaterialInstanceDynamic;
+            ["Divergence Height Update MID"]: UE.MaterialInstanceDynamic;
+            ["Scatter Height Erosion MID"]: UE.MaterialInstanceDynamic;
+            WeightmapEffectsMID: UE.MaterialInstanceDynamic;
+            WaterLevelMID: UE.MaterialInstanceDynamic;
+            IterationIdx: number;
+            ["ShallowWater Advect Height Mat"]: UE.MaterialInterface;
+            ["ShallowWater Advect Velocity Mat"]: UE.MaterialInterface;
+            Constructor(ErosionData: UE.Landmass.Landscape.BP.Structs.ErosionInterface.ErosionInterface) : void;
+            ["Erosion Button Press"]() : void;
+            ["Erosion Tick"]() : void;
+            ExecuteUbergraph_ErosionComponent(EntryPoint: number) : void;
+            RenderWeightmapEffects() : void;
+            ["Seed Particle Positions"]() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): ErosionComponent_C;
+            static Load(InName: string): ErosionComponent_C;
+        
+            __tid_ErosionComponent_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: C6DC78124517F217296CAA87003236A7
+    namespace Landmass.Landscape.BP.Components.ChildProcMesh {
+        class ChildProcMesh_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            ProceduralMesh: UE.ProceduralMeshComponent;
+            DefaultSceneRoot: UE.SceneComponent;
+            ["LS BP"]: UE.Landmass.Landscape.BP.BP_Landmass_LayerStack.BP_Landmass_LayerStack_C;
+            ["Custom Verts X"]: number;
+            ["Custom Verts Y"]: number;
+            ["Custom Quad Size"]: number;
+            ["Make Custom Scatter Mesh"]() : void;
+            ["Make Scatter Mesh"](LSBP: $Nullable<UE.Landmass.Landscape.BP.BP_Landmass_LayerStack.BP_Landmass_LayerStack_C>) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): ChildProcMesh_C;
+            static Load(InName: string): ChildProcMesh_C;
+        
+            __tid_ChildProcMesh_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 01994BB34A8A4FF05454F5869359435B
+    namespace Landmass.Landscape.BP.Structs.WaterBrushCache {
+        class WaterBrushCache {
+            constructor();
+            constructor(CacheRenderTarget: UE.TextureRenderTarget2D, CacheIsValid: boolean);
+            CacheRenderTarget: UE.TextureRenderTarget2D;
+            CacheIsValid: boolean;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_WaterBrushCache_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 12F776E24BA4654EC4995CA729BF8FD1
+    namespace Landmass.Landscape.BP.Structs.SplineMeshInfo {
+        class SplineMeshInfo {
+            constructor();
+            constructor(Mesh: UE.StaticMesh, RelativeDrawscale: UE.Vector, MeshLength: number);
+            Mesh: UE.StaticMesh;
+            ["Relative Drawscale"]: UE.Vector;
+            ["Mesh Length"]: number;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_SplineMeshInfo_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: E6189187447C13D6BA2102B5558CB20A
+    namespace Landmass.Landscape.BP.Structs.SplineExt {
+        class SplineExt {
+            constructor();
+            constructor(MemberVar_0: boolean);
+            MemberVar_0: boolean;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_SplineExt_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 9E11F459471382B7BC2E899BED2F536D
+    namespace Landmass.Landscape.BP.Structs.ShapeDrawingInfo {
+        class ShapeDrawingInfo {
+            constructor();
+            constructor(______ProcMeshData______: UE.Landmass.Landscape.BP.Structs.ProcMeshData.ProcMeshData);
+            ["------   ProcMeshData   ------"]: UE.Landmass.Landscape.BP.Structs.ProcMeshData.ProcMeshData;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_ShapeDrawingInfo_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: B49356EE4C836840D702FAB0F9BB6C99
+    namespace Landmass.Landscape.BP.Structs.RenderTargetChannels {
+        class RenderTargetChannels {
+            constructor();
+            constructor(RT: UE.TextureRenderTarget2D, R: string, G: string, B: string, A: string, ResolutionDivisor: number);
+            RT: UE.TextureRenderTarget2D;
+            R: string;
+            G: string;
+            B: string;
+            A: string;
+            ["Resolution Divisor"]: number;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_RenderTargetChannels_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 5172BAC4473136D85BC50D92ADDB138B
+    namespace Landmass.Landscape.BP.Structs.ProcMeshData {
+        class ProcMeshData {
+            constructor();
+            constructor(Verts: TArray<UE.Vector>, Tris: TArray<number>, UVs: TArray<UE.Vector2D>, UV1s: TArray<UE.Vector2D>);
+            Verts: TArray<UE.Vector>;
+            Tris: TArray<number>;
+            UVs: TArray<UE.Vector2D>;
+            UV1s: TArray<UE.Vector2D>;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_ProcMeshData_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 3376388940EE4141EF48F2AA22A17C45
+    namespace Landmass.Landscape.BP.Structs.LayerStackItem {
+        class LayerStackItem {
+            constructor();
+            constructor(MoveUp: boolean, MoveDown: boolean, MovetoTop: boolean, MovetoBottom: boolean);
+            ["Move Up"]: boolean;
+            ["Move Down"]: boolean;
+            ["Move to Top"]: boolean;
+            ["Move to Bottom"]: boolean;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_LayerStackItem_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 86AE536545DB0FD6515BAEBB28F03682
+    namespace Landmass.Landscape.BP.Structs.ErosionInterface {
+        class ErosionInterface {
+            constructor();
+            constructor(HeightRTA: UE.TextureRenderTarget2D, HeightRTB: UE.TextureRenderTarget2D, FluidVelA: UE.TextureRenderTarget2D, FluidVelB: UE.TextureRenderTarget2D, SceneCaptureRT: UE.TextureRenderTarget2D, SceneCaptureComp: UE.SceneCaptureComponent2D, ScatterMeshComp: UE.ProceduralMeshComponent, PosRTA: UE.TextureRenderTarget2D, PosRTB: UE.TextureRenderTarget2D);
+            ["Height RT A"]: UE.TextureRenderTarget2D;
+            ["Height RT B"]: UE.TextureRenderTarget2D;
+            ["Fluid Vel A"]: UE.TextureRenderTarget2D;
+            ["Fluid Vel B"]: UE.TextureRenderTarget2D;
+            ["Scene Capture RT"]: UE.TextureRenderTarget2D;
+            ["Scene Capture Comp"]: UE.SceneCaptureComponent2D;
+            ScatterMeshComp: UE.ProceduralMeshComponent;
+            ["Pos RT A"]: UE.TextureRenderTarget2D;
+            ["Pos RT B"]: UE.TextureRenderTarget2D;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_ErosionInterface_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 8453224643C0B305FE81619BBA287D9D
+    namespace Landmass.Landscape.BP.Structs.ErodeWeightmap {
+        class ErodeWeightmap {
+            constructor();
+            constructor(WeightmapName: string, DepositionStrength: number, ErosionStrength: number, VelocityStrength: number);
+            ["Weightmap Name"]: string;
+            ["Deposition Strength"]: number;
+            ["Erosion Strength"]: number;
+            ["Velocity Strength"]: number;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_ErodeWeightmap_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 7E169A1E4E4AA1C3B1DB1882773DE977
+    namespace Landmass.Landscape.BP.Structs.BrushZMask {
+        class BrushZMask {
+            constructor();
+            constructor(UseZMask: boolean, MaskLength: number, ZOffset: number, UseAbsolute: boolean);
+            ["Use Z Mask"]: boolean;
+            ["Mask Length"]: number;
+            ["Z Offset"]: number;
+            ["Use Absolute"]: boolean;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_BrushZMask_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 974FDE4E48341136E3BA36972839F56D
+    namespace Landmass.Landscape.BP.Structs.BrushWM {
+        class BrushWM {
+            constructor();
+            constructor(WeightmapName: string, FalloffWidth: number, EdgeOffset: number, Texture: UE.Texture2D, TextureTiling: number, Midpoint: number, TextureInfluence: number, FinalOpacity: number, ZRangeMask: UE.Landmass.Landscape.BP.Structs.BrushZMask.BrushZMask);
+            ["Weightmap Name"]: string;
+            ["Falloff Width"]: number;
+            ["Edge Offset"]: number;
+            Texture: UE.Texture2D;
+            ["Texture Tiling"]: number;
+            Midpoint: number;
+            ["Texture Influence"]: number;
+            ["Final Opacity"]: number;
+            ["Z Range Mask"]: UE.Landmass.Landscape.BP.Structs.BrushZMask.BrushZMask;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_BrushWM_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 1BE70BDF426572A8EDC8129B6F777CA5
+    namespace Landmass.Landscape.BP.Structs.BrushSettings_SplineMesh {
+        class BrushSettings_SplineMesh {
+            constructor();
+            constructor(SplineMesh: UE.StaticMesh, TerrainFlattenMesh: UE.StaticMesh, ShowFlattenMesh_EditorOnly_: boolean, ShowSplines: boolean, Material: UE.MaterialInterface, MeshScale: UE.Vector);
+            ["Spline Mesh"]: UE.StaticMesh;
+            ["Terrain Flatten Mesh"]: UE.StaticMesh;
+            ["Show Flatten Mesh (Editor Only)"]: boolean;
+            ["Show Splines "]: boolean;
+            Material: UE.MaterialInterface;
+            ["Mesh Scale"]: UE.Vector;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_BrushSettings_SplineMesh_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: A0A398CC478F61B5C0628E8C1FE79F58
+    namespace Landmass.Landscape.BP.Structs.BrushSettings_Basic_Falloff {
+        class BrushSettings_Basic_Falloff {
+            constructor();
+            constructor(FalloffMode: UE.Landmass.Landscape.BP.Enums.BrushFalloffMode.BrushFalloffMode, FalloffAngle: number, FalloffWidth: number, Edgeoffset: number, ZOffset: number);
+            ["Falloff Mode"]: UE.Landmass.Landscape.BP.Enums.BrushFalloffMode.BrushFalloffMode;
+            ["Falloff Angle"]: number;
+            ["Falloff Width"]: number;
+            ["Edge offset"]: number;
+            ["Z Offset"]: number;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_BrushSettings_Basic_Falloff_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: B500CA4F40B60AE2A59C48ACAEF5FD33
+    namespace Landmass.Landscape.BP.Structs.BrushSettings_Basic {
+        class BrushSettings_Basic {
+            constructor();
+            constructor(BlendMode: UE.Landmass.Landscape.BP.Brushes.BrushBlendType.BrushBlendType, InvertShape: boolean, FalloffSettings: UE.Landmass.Landscape.BP.Structs.BrushSettings_Basic_Falloff.BrushSettings_Basic_Falloff, Effects: UE.Landmass.Landscape.BP.Structs.BrushEffects_List.BrushEffects_List);
+            ["Blend Mode"]: UE.Landmass.Landscape.BP.Brushes.BrushBlendType.BrushBlendType;
+            ["Invert Shape"]: boolean;
+            ["Falloff Settings"]: UE.Landmass.Landscape.BP.Structs.BrushSettings_Basic_Falloff.BrushSettings_Basic_Falloff;
+            Effects: UE.Landmass.Landscape.BP.Structs.BrushEffects_List.BrushEffects_List;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_BrushSettings_Basic_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: D7E6C756462259594FFF028C1B9F6DA5
+    namespace Landmass.Landscape.BP.Structs.BrushEffects_List_Terracing {
+        class BrushEffects_List_Terracing {
+            constructor();
+            constructor(TerraceAlpha: number, TerraceSpacing: number, TerraceSmoothness: number, MaskLength: number, MaskStartOffset: number);
+            ["Terrace Alpha"]: number;
+            ["Terrace Spacing"]: number;
+            ["Terrace Smoothness"]: number;
+            ["Mask Length"]: number;
+            ["Mask Start Offset"]: number;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_BrushEffects_List_Terracing_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 72EB883847CBF0D76A0BF38037FEF824
+    namespace Landmass.Landscape.BP.Structs.BrushEffects_List_SmoothBlending {
+        class BrushEffects_List_SmoothBlending {
+            constructor();
+            constructor(InnerSmoothDistance: number, OuterSmoothDistance: number);
+            ["Inner Smooth Distance"]: number;
+            ["Outer Smooth Distance"]: number;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_BrushEffects_List_SmoothBlending_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 694F77884D02B7FE16B07696167A0DD1
+    namespace Landmass.Landscape.BP.Structs.BrushEffects_List_Displacement {
+        class BrushEffects_List_Displacement {
+            constructor();
+            constructor(DisplacementHeight: number, DisplacementTiling: number, Texture: UE.Texture2D, Midpoint: number, Channel: UE.LinearColor, WeightmapInfluence: number);
+            ["Displacement Height"]: number;
+            ["Displacement Tiling"]: number;
+            Texture: UE.Texture2D;
+            Midpoint: number;
+            Channel: UE.LinearColor;
+            ["Weightmap Influence"]: number;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_BrushEffects_List_Displacement_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 79B05A3947EF491C8838879978AC0114
+    namespace Landmass.Landscape.BP.Structs.BrushEffects_List_Curves {
+        class BrushEffects_List_Curves {
+            constructor();
+            constructor(UseCurveChannel: boolean, ElevationCurveAsset: UE.CurveFloat, ChannelEdgeOffset: number, ChannelDepth: number, CurveRampWidth: number);
+            ["Use Curve Channel"]: boolean;
+            ["Elevation Curve Asset"]: UE.CurveFloat;
+            ["Channel Edge Offset"]: number;
+            ["Channel Depth"]: number;
+            ["Curve Ramp Width"]: number;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_BrushEffects_List_Curves_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 23A5C611442537B390602BBEA99A37E8
+    namespace Landmass.Landscape.BP.Structs.BrushEffects_List_CurlNoise {
+        class BrushEffects_List_CurlNoise {
+            constructor();
+            constructor(Curl1Amount: number, Curl2Amount: number, Curl1Tiling: number, Curl2Tiling: number);
+            ["Curl 1 Amount"]: number;
+            ["Curl 2 Amount"]: number;
+            ["Curl 1 Tiling"]: number;
+            ["Curl 2 Tiling"]: number;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_BrushEffects_List_CurlNoise_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 495F163445ED6D453FF07FA9CD4AE3DD
+    namespace Landmass.Landscape.BP.Structs.BrushEffects_List_Blurring {
+        class BrushEffects_List_Blurring {
+            constructor();
+            constructor(BlurShape: boolean, Radius: number);
+            ["Blur Shape"]: boolean;
+            Radius: number;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_BrushEffects_List_Blurring_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 94F8ACC74FAAE7268FD4F6B1EB816831
+    namespace Landmass.Landscape.BP.Structs.BrushEffects_List {
+        class BrushEffects_List {
+            constructor();
+            constructor(Blurring: UE.Landmass.Landscape.BP.Structs.BrushEffects_List_Blurring.BrushEffects_List_Blurring, CurlNoise: UE.Landmass.Landscape.BP.Structs.BrushEffects_List_CurlNoise.BrushEffects_List_CurlNoise, Displacement: UE.Landmass.Landscape.BP.Structs.BrushEffects_List_Displacement.BrushEffects_List_Displacement, SmoothBlending: UE.Landmass.Landscape.BP.Structs.BrushEffects_List_SmoothBlending.BrushEffects_List_SmoothBlending, Terracing: UE.Landmass.Landscape.BP.Structs.BrushEffects_List_Terracing.BrushEffects_List_Terracing);
+            Blurring: UE.Landmass.Landscape.BP.Structs.BrushEffects_List_Blurring.BrushEffects_List_Blurring;
+            ["Curl Noise"]: UE.Landmass.Landscape.BP.Structs.BrushEffects_List_CurlNoise.BrushEffects_List_CurlNoise;
+            Displacement: UE.Landmass.Landscape.BP.Structs.BrushEffects_List_Displacement.BrushEffects_List_Displacement;
+            ["Smooth Blending"]: UE.Landmass.Landscape.BP.Structs.BrushEffects_List_SmoothBlending.BrushEffects_List_SmoothBlending;
+            Terracing: UE.Landmass.Landscape.BP.Structs.BrushEffects_List_Terracing.BrushEffects_List_Terracing;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_BrushEffects_List_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: AC4AC69B43EF73BCB92EE1BB4FCF18DA
+    namespace Landmass.Landscape.BP.Structs.BPWaterBodyWeightmapSettings {
+        class BPWaterBodyWeightmapSettings {
+            constructor();
+            constructor(FalloffWidth: number, EdgeOffset: number, ModulationTexture: UE.Texture2D, TextureTiling: number, TextureInfluence: number, Midpoint: number, FinalOpacity: number, MaskUsingBand: boolean, BandThickness: number);
+            ["Falloff Width"]: number;
+            ["Edge Offset"]: number;
+            ["Modulation Texture"]: UE.Texture2D;
+            ["Texture Tiling"]: number;
+            ["Texture Influence"]: number;
+            Midpoint: number;
+            ["Final Opacity"]: number;
+            ["Mask Using Band"]: boolean;
+            ["Band Thickness"]: number;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_BPWaterBodyWeightmapSettings_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 585113954D4CD732C6E3E9ADEAC96682
+    namespace Landmass.TextureCreation.Blueprints.DrawMaterial {
+        class DrawMaterial_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            DefaultSceneRoot: UE.SceneComponent;
+            RT: UE.TextureRenderTarget2D;
+            Material: UE.MaterialInterface;
+            Draw() : void;
+            ExecuteUbergraph_DrawMaterial(EntryPoint: number) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): DrawMaterial_C;
+            static Load(InName: string): DrawMaterial_C;
+        
+            __tid_DrawMaterial_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: BAB9BE35449DDD0D4467D98BE7C7FCAD
+    namespace Water.Blueprints.BP_BuoyancyExample {
+        class BP_BuoyancyExample_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            StaticMesh: UE.StaticMeshComponent;
+            Buoyancy: UE.BuoyancyComponent;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_BuoyancyExample_C;
+            static Load(InName: string): BP_BuoyancyExample_C;
+        
+            __tid_BP_BuoyancyExample_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 8C739F9F44AA2190E3A515B8AD78549B
+    namespace Water.Blueprints.Debug.Debug_Landscape_Textures {
+        class Debug_Landscape_Textures_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            StaticMesh: UE.StaticMeshComponent;
+            DefaultSceneRoot: UE.SceneComponent;
+            MID: UE.MaterialInstanceDynamic;
+            ExecuteUbergraph_Debug_Landscape_Textures(EntryPoint: number) : void;
+            ["Get Water Texture"]() : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): Debug_Landscape_Textures_C;
+            static Load(InName: string): Debug_Landscape_Textures_C;
+        
+            __tid_Debug_Landscape_Textures_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: E426B8E8477F4BFF6A92919E767B03EC
+    namespace Water.Caustics.Blueprints.GenerateCausticsTextures {
+        class GenerateCausticsTextures_C extends UE.CausticsGeneratorActor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ["Photon HISMC Grid"]: UE.TextRenderComponent;
+            ["RenderTarget Preview"]: UE.TextRenderComponent;
+            WaterPreviewGrid: UE.HierarchicalInstancedStaticMeshComponent;
+            CausticParticleGrid: UE.HierarchicalInstancedStaticMeshComponent;
+            ["Water Mesh Base"]: UE.StaticMeshComponent;
+            ["Result Texture Mesh Plane"]: UE.StaticMeshComponent;
+            SceneCaptureComponent2D: UE.SceneCaptureComponent2D;
+            ["Wave Spectrum"]: UE.Water.Caustics.Blueprints.CausticsWaveSpectrumSettings.CausticsWaveSpectrumSettings;
+            ["Texture Save Path"]: string;
+            ["Texture Save Name"]: string;
+            ["Water Depth"]: number;
+            ["Water Depth End"]: number;
+            ["Texture World Size"]: number;
+            ["Chromatic Spread"]: number;
+            ["Output Mode"]: UE.Water.Caustics.Blueprints.Enums.CausticGeneratorOutputModes.CausticGeneratorOutputModes;
+            ["Caustic Mesh Resolution"]: number;
+            ["Downsample Output"]: number;
+            ["Animation Frames"]: UE.IntPoint;
+            ["SubUV Final Resolution"]: UE.IntPoint;
+            ["Frames Per Second"]: number;
+            ["Caustics Mesh Frame Mat"]: UE.MaterialInterface;
+            ["WaterSurface 2D MID"]: UE.MaterialInstanceDynamic;
+            ["WaterSurface SubUV MID"]: UE.MaterialInstanceDynamic;
+            ["Caustics Scatter MID SingleFrame"]: UE.MaterialInstanceDynamic;
+            ["Caustics Scatter MID Animation"]: UE.MaterialInstanceDynamic;
+            ["Copy SubUV Frame MID"]: UE.MaterialInstanceDynamic;
+            Tiles: number;
+            proc: UE.ProceduralMeshComponent;
+            ["Caustics Mesh Animation Mat"]: UE.MaterialInterface;
+            ["Preview Scene"]: UE.Water.Caustics.Blueprints.Enums.CausticPreviewModes.CausticPreviewModes;
+            ["Show Water Scene"]: boolean;
+            ["Show Analytical Caustics"]: boolean;
+            ["Use Light Function Caustics"]: boolean;
+            ["Show Texture Plane"]: boolean;
+            ["Freeze Time"]: boolean;
+            ["Preview Mesh Depth"]: number;
+            ["Caustics RT"]: UE.TextureRenderTarget2D;
+            ["SubUV RT"]: UE.TextureRenderTarget2D;
+            ["Current Frame"]: number;
+            AnimationFrames: number;
+            Mips: number;
+            SubUVMips: number;
+            ["Photon Scale"]: number;
+            ["Overscan Quads"]: number;
+            CausticMipRTs: TArray<UE.TextureRenderTarget2D>;
+            SubUVMipRTs: TArray<UE.TextureRenderTarget2D>;
+            ["1x1MipAverage"]: UE.TextureRenderTarget2D;
+            WaterNormal: UE.TextureRenderTarget2D;
+            ["Render Normal MID"]: UE.MaterialInstanceDynamic;
+            ["Time Accumulator"]: number;
+            CurrentWaterDepth: number;
+            ["Preview RenderTarget MID"]: UE.MaterialInstanceDynamic;
+            NormalizeLuminanceMID: UE.MaterialInstanceDynamic;
+            ModulateLuminanceMID: UE.MaterialInstanceDynamic;
+            BaseFloorMeshMID: UE.MaterialInstanceDynamic;
+            DepthPerFrame: number;
+            ["Save as HDR"]: boolean;
+            ["Preview Scene XY Scale"]: number;
+            ["Num Waves"]: number;
+            ["Random Seed"]: UE.RandomStream;
+            ["Wind Direction"]: UE.Vector2D;
+            ["Angular Spread"]: number;
+            ["Min Wavelength"]: number;
+            ["Max Wavelength"]: number;
+            ["Wavelength Falloff"]: number;
+            ["Min Amplitude"]: number;
+            ["Max Amplitude"]: number;
+            ["Amplitude Falloff"]: number;
+            ["Smale Wave Steepness"]: number;
+            ["Large Wave Steepness"]: number;
+            ["Steepness Falloff"]: number;
+            Waves: TArray<UE.GerstnerWave>;
+            ["Manual Frozen Time"]: number;
+            FarOceanMesh: UE.StaticMeshComponent;
+            ["Sea Bed Material"]: UE.MaterialInterface;
+            ["Overscan SceneCapture RT"]: UE.TextureRenderTarget2D;
+            Ticking: boolean;
+            ["Tick For Capture Only"]: boolean;
+            ["Quad Size"]: number;
+            ["Downsample MID"]: UE.MaterialInstanceDynamic;
+            SeaBedMID: UE.MaterialInstanceDynamic;
+            RemoveOverscanMID: UE.MaterialInstanceDynamic;
+            ["Dir Light"]: UE.DirectionalLight;
+            LightFunctionMID: UE.MaterialInstanceDynamic;
+            ["Caustics Average Brightness Value"]: UE.LinearColor;
+            ["Max Caustics Brightness Value"]: UE.LinearColor;
+            ["Directional Light Initial Brightness"]: number;
+            Generate: boolean;
+            ["Time Offset"]: number;
+            ["LightFunction SubUV MID"]: UE.MaterialInstanceDynamic;
+            Note: string;
+            ["Add Photon Meshes"]() : void;
+            ["Add Water Preview Meshes"]() : void;
+            ["Allocate Preview Capture RT"]() : void;
+            ["Begin Rendering"]() : void;
+            ["Copy RT"]() : void;
+            EditorTick(DeltaSeconds: number) : void;
+            /**
+             * @deprecated Unsupported super overloads.
+             */
+            EditorTick_EditorOnly(DeltaSeconds: number) : void;
+            ExecuteUbergraph_GenerateCausticsTextures(EntryPoint: number) : void;
+            ["Generate Mip Chain"](RenderTarget: $Ref<UE.TextureRenderTarget2D>, MipRTArray: $Ref<TArray<UE.TextureRenderTarget2D>>, MipMode: UE.Water.Caustics.Blueprints.Enums.RTMipGenerationSettings.RTMipGenerationSettings) : void;
+            ["Generate Spectrum"](Waves: $Ref<TArray<UE.GerstnerWave>>) : void;
+            ["Get Water Material"]() : UE.MaterialInterface;
+            Initialize() : void;
+            ["Normalize by Max Luminance"](ReCalcMips: boolean) : void;
+            ["Normalize Caustics Luminance"](ReCalcMips: boolean) : void;
+            NormalizeSubUVLuminance() : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            ["Render Wave Data"](Waves: $Ref<TArray<UE.GerstnerWave>>) : void;
+            Reset() : void;
+            ["Save Texture"]() : void;
+            ["Set Light Function Caustics"](ShowSubUV: boolean) : void;
+            ["Setup MIDs"]() : void;
+            ["Stop Rendering"]() : void;
+            TickForUpdate() : void;
+            ["Update Capture"]() : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): GenerateCausticsTextures_C;
+            static Load(InName: string): GenerateCausticsTextures_C;
+        
+            __tid_GenerateCausticsTextures_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 2F5E0D834380B165099C5A83DDD02F51
+    namespace Water.Caustics.Blueprints.EmptyLineStruct {
+        class EmptyLineStruct {
+            constructor();
+            constructor(MemberVar_0: boolean);
+            MemberVar_0: boolean;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_EmptyLineStruct_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 8FCBF278438013CB9EBDB9BD2F991DA2
+    namespace Water.Caustics.Blueprints.CausticsWaveSpectrumSettings {
+        class CausticsWaveSpectrumSettings {
+            constructor();
+            constructor(MaxWaves: number, Seed: number, MinWavelength: number, MaxWavelength: number, WavelengthFalloff: number, MinAmplitude: number, MaxAmplitude: number, AmplitudeFalloff: number, DominantWindDirection: UE.Vector2D, DirectionAngularSpread: number, SmallWaveSteepness: number, LargeWaveSteepness: number, SteepnessFalloff: number);
+            MaxWaves: number;
+            Seed: number;
+            MinWavelength: number;
+            MaxWavelength: number;
+            WavelengthFalloff: number;
+            MinAmplitude: number;
+            MaxAmplitude: number;
+            AmplitudeFalloff: number;
+            DominantWindDirection: UE.Vector2D;
+            DirectionAngularSpread: number;
+            SmallWaveSteepness: number;
+            LargeWaveSteepness: number;
+            SteepnessFalloff: number;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_CausticsWaveSpectrumSettings_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 3C201F6C4F94689F9DCAA9A3DC8EC961
+    namespace Water.Effects.Waterbody.WaterBody_Niagara_ShoreFoam {
+        class WaterBody_Niagara_ShoreFoam_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            DefaultSceneRoot: UE.SceneComponent;
+            ["Water Body"]: UE.WaterBody;
+            ["Shore RT Positions"]: UE.TextureRenderTarget2D;
+            Samples: number;
+            ["Edge Bias"]: number;
+            Niagara: UE.NiagaraActor;
+            ["Spline Length"]: number;
+            ["Shore Scale"]: number;
+            Segments: number;
+            max: number;
+            ["Niagara Grid Result"]: UE.TextureRenderTarget2D;
+            ["Display MID"]: UE.MaterialInstanceDynamic;
+            CurGrid: UE.NiagaraDataInterfaceGrid2DCollection;
+            GridName: string;
+            ["Texture Resolution"]: number;
+            ["Copy Grid"]() : void;
+            Draw() : void;
+            ExecuteUbergraph_WaterBody_Niagara_ShoreFoam(EntryPoint: number) : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): WaterBody_Niagara_ShoreFoam_C;
+            static Load(InName: string): WaterBody_Niagara_ShoreFoam_C;
+        
+            __tid_WaterBody_Niagara_ShoreFoam_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 201646C442B9498AF31DCA9667EA6E20
+    namespace Water.FluidSimulation.Blueprints.BP_FluidSim_01 {
+        class BP_FluidSim_01_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            JumpFlood_Component2D: UE.Landmass.DistanceFields.Blueprints.JumpFlood_Component2D.JumpFlood_Component2D_C;
+            SceneCaptureComponent2D: UE.SceneCaptureComponent2D;
+            WaveFoamSimComponent: UE.Water.FluidSimulation.Blueprints.Components.WaveFoamSimComponent.WaveFoamSimComponent_C;
+            ShallowWaterSimComponent: UE.Water.FluidSimulation.Blueprints.Components.ShallowWaterSimComponent.ShallowWaterSimComponent_C;
+            DefaultSceneRoot: UE.SceneComponent;
+            RippleSimMID: UE.MaterialInstanceDynamic;
+            RenderNormalsMID: UE.MaterialInstanceDynamic;
+            DisplayMID: UE.MaterialInstanceDynamic;
+            DisplayBottomMID: UE.MaterialInstanceDynamic;
+            CrossSectionMID: UE.MaterialInstanceDynamic;
+            ["Composite DistanceField MID"]: UE.MaterialInstanceDynamic;
+            RippleRTs: TArray<UE.TextureRenderTarget2D>;
+            ["Show Simulation Mesh"]: boolean;
+            ["Display Material"]: UE.MaterialInterface;
+            Solver: UE.Water.FluidSimulation.Blueprints.Enums.FluidSimSolverMode.FluidSimSolverMode;
+            ["Virtual FPS"]: number;
+            Passes: number;
+            TimeAccumulator: number;
+            FixedStep: number;
+            Damping: number;
+            Enabled: boolean;
+            ["Simulation World Size"]: number;
+            Resolution: number;
+            ["Boundary Condition"]: UE.Water.FluidSimulation.Blueprints.Enums.FluidBoundary.FluidBoundary;
+            ["Travel Speed"]: number;
+            NormalRT: UE.TextureRenderTarget2D;
+            CutPos: UE.Vector;
+            PrevLoc: UE.Vector;
+            PrecLoc2: UE.Vector;
+            PrevOffset: UE.Vector;
+            PrevOffset2: UE.Vector;
+            GridCenter: UE.Vector;
+            TempRT: UE.TextureRenderTarget2D;
+            ForcesRT: UE.TextureRenderTarget2D;
+            ApplyForces: number;
+            ["Renders Per Frame"]: number;
+            ["Show Cross Section"]: boolean;
+            ["Perf Test Mode"]: boolean;
+            PerfRT: UE.TextureRenderTarget2D;
+            ImpulseForces: TArray<UE.Water.FluidSimulation.Blueprints.Structs.FluidForceImpulsePerInstanceData.FluidForceImpulsePerInstanceData>;
+            DynamicForces: TMap<UE.ActorComponent, UE.Water.FluidSimulation.Blueprints.Structs.FluidForceDynamicPerInstanceData.FluidForceDynamicPerInstanceData>;
+            ForceParentAndMIDMap: TMap<UE.MaterialInterface, UE.MaterialInstanceDynamic>;
+            ["Fluid Display Mesh"]: UE.StaticMeshComponent;
+            ["Cross Section Mesh"]: UE.StaticMeshComponent;
+            FluidSizeSquared: number;
+            LocalPawnRef: boolean;
+            ["Debug Text"]: boolean;
+            ["Pawn Check Every N Frames"]: number;
+            ProjectileForces: TMap<UE.ActorComponent, UE.Water.FluidSimulation.Blueprints.Structs.FluidForceDynamicPerInstanceData.FluidForceDynamicPerInstanceData>;
+            ["Follow Player "]: boolean;
+            ["Frames Since Last Active Force"]: number;
+            ["Default Water Depth"]: number;
+            ["Fixed Time Step"]: boolean;
+            ["Frames until Simulation Idle"]: number;
+            LandscapeWaterTexture: UE.Texture;
+            ["Simulate Wave Foam"]: boolean;
+            WaveFoamDiffuseIdx: number;
+            ["Wave Sim World Size"]: number;
+            ["Wave Foam Resolution"]: number;
+            Fading: number;
+            ["Wave Time Offset"]: number;
+            DepthCaptureRT: UE.TextureRenderTarget2D;
+            EdgeMaskRT: UE.TextureRenderTarget2D;
+            JumpFloodA: UE.TextureRenderTarget2D;
+            JumpFloodB: UE.TextureRenderTarget2D;
+            ["Generate SceneCapture DistanceField"]: boolean;
+            WaterBody: UE.WaterBody;
+            EdgeMaskMID: UE.MaterialInstanceDynamic;
+            ComputeDistanceMID: UE.MaterialInstanceDynamic;
+            VoronoiDistance_RefCopy: UE.TextureRenderTarget2D;
+            ["Terrain Mode"]: UE.Water.FluidSimulation.Blueprints.Enums.FluidTerrainModes.FluidTerrainModes;
+            Landscape: UE.Landscape;
+            ["Wave Threshold"]: number;
+            ["Allocate RTs"]() : void;
+            ["Apply Fluid Force Impulse"](ImpulseSettings: UE.Water.FluidSimulation.Blueprints.Structs.FluidForceImpulse.FluidForceImpulse) : void;
+            ["Capture Height and DF"]() : void;
+            ["Clear RTs"]() : void;
+            ["Clear Sim from Waterbody MIDs"]() : void;
+            ["Convert Force Position"](ForceLocation: UE.Vector, SineBob: number, UVLocation: $Ref<UE.Vector>) : void;
+            ["Cycle Render Targets"](CurrentTarget: $Ref<UE.TextureRenderTarget2D>) : void;
+            ["Draw Dynamic Force"](Canvas: $Ref<UE.Canvas>, CanvasSize: $Ref<UE.Vector2D>, DynamicForceSettings: $Ref<UE.Water.FluidSimulation.Blueprints.Structs.FluidForceDynamicPerInstanceData.FluidForceDynamicPerInstanceData>) : void;
+            ["Draw Impulse Force"](Canvas: $Nullable<UE.Canvas>, CanvasSize: UE.Vector2D, ImpulseSettings: UE.Water.FluidSimulation.Blueprints.Structs.FluidForceImpulsePerInstanceData.FluidForceImpulsePerInstanceData) : void;
+            ExecuteUbergraph_BP_FluidSim_01(EntryPoint: number) : void;
+            FluidGridDebug() : void;
+            ["Get Force MID"](Parent: $Ref<UE.MaterialInterface>, MID: $Ref<UE.MaterialInstanceDynamic>) : void;
+            ["Get Frames Since Last Active Force"]() : void;
+            ["Get LandscapeWaterInfo"]() : void;
+            ["Get Wave Spectrum"]() : void;
+            GetLocalPawn(Pawn: $Ref<UE.Pawn>) : void;
+            GetPlayerPawnForces() : void;
+            GridMovement() : void;
+            ["Initialize In Editor"]() : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            ReCheckScalability() : void;
+            ["Register Dynamic Force"](DynamicFluidForce: UE.Water.FluidSimulation.Blueprints.Structs.FluidForceDynamic.FluidForceDynamic, TrackedComponent: $Nullable<UE.SceneComponent>, WaterLevel: number) : void;
+            ["Register Projectile Force"](DynamicFluidForce: UE.Water.FluidSimulation.Blueprints.Structs.FluidForceDynamic.FluidForceDynamic, TrackedComponent: $Nullable<UE.SceneComponent>) : void;
+            ["Release RTs"]() : void;
+            ["Remove Dynamic Force"](Component: $Nullable<UE.ActorComponent>) : void;
+            ["Remove Projectile Force"](Component: $Nullable<UE.ActorComponent>) : void;
+            ["Set Waterbody MID Params"]() : void;
+            ["Setup SimMID and MPC Values"]() : void;
+            SetupDisplayMIDs() : void;
+            ["Tick Custom"]() : void;
+            ["Update Dynamic Forces"]() : void;
+            ["Update Impulse Lifetimes"]() : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            ["Validate RTs"](RTsAllValid: $Ref<boolean>) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_FluidSim_01_C;
+            static Load(InName: string): BP_FluidSim_01_C;
+        
+            __tid_BP_FluidSim_01_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: F631CCA24A75CE2EDE0099A58A7E2B49
+    namespace Water.FluidSimulation.Blueprints.Components.WaveFoamSimComponent {
+        class WaveFoamSimComponent_C extends UE.ActorComponent {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ["Foam RT A"]: UE.TextureRenderTarget2D;
+            ["Foam RT B"]: UE.TextureRenderTarget2D;
+            ["Wave RT"]: UE.TextureRenderTarget2D;
+            ["DrawWave MID"]: UE.MaterialInstanceDynamic;
+            ["FoamDiffuse MID"]: UE.MaterialInstanceDynamic;
+            FoamToneMapMID: UE.MaterialInstanceDynamic;
+            Res: number;
+            Fade: number;
+            ["Time Bias"]: number;
+            Freeze: boolean;
+            ["Simulation World Size"]: number;
+            idx: number;
+            WaveCopy: TArray<UE.GerstnerWave>;
+            ShallowWater: UE.Water.FluidSimulation.Blueprints.Components.ShallowWaterSimComponent.ShallowWaterSimComponent_C;
+            ["Allocate RTs"]() : void;
+            ["Create MIDs"]() : void;
+            ExecuteUbergraph_WaveFoamSimComponent(EntryPoint: number) : void;
+            InitializeWaveFoamSim(Res: number, WorldSize: number, Fading: number, TimeBias: number, WaterBody: $Nullable<UE.WaterBody>, ShallowWater: $Nullable<UE.Water.FluidSimulation.Blueprints.Components.ShallowWaterSimComponent.ShallowWaterSimComponent_C>) : void;
+            ["Release Foam Sim RTs"]() : void;
+            ["Render Waves to RT"](NewParam: $Ref<TArray<UE.GerstnerWave>>) : void;
+            ["Wave Simulation Step"]() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): WaveFoamSimComponent_C;
+            static Load(InName: string): WaveFoamSimComponent_C;
+        
+            __tid_WaveFoamSimComponent_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 885C2EF14DBD08C5E7C4C393101E6E2B
+    namespace Water.FluidSimulation.Blueprints.Components.ShallowWaterSimComponent {
+        class ShallowWaterSimComponent_C extends UE.ActorComponent {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ["Height RT A"]: UE.TextureRenderTarget2D;
+            ["Height RT B"]: UE.TextureRenderTarget2D;
+            ["Velocity RT A"]: UE.TextureRenderTarget2D;
+            ["Velocity RT B"]: UE.TextureRenderTarget2D;
+            ["Velocity Force RT"]: UE.TextureRenderTarget2D;
+            ["Height Idx"]: number;
+            ["Velocity Idx"]: number;
+            ["Advect Height MID"]: UE.MaterialInstanceDynamic;
+            ["Advect Velocity MID"]: UE.MaterialInstanceDynamic;
+            ["Height Divergence Update MID"]: UE.MaterialInstanceDynamic;
+            ["Gravity Acceleration MID"]: UE.MaterialInstanceDynamic;
+            SimMIDS: TArray<UE.MaterialInstanceDynamic>;
+            SimResolution: UE.IntPoint;
+            SimWorldSize: UE.Vector2D;
+            TexelWorldSize: UE.Vector2D;
+            SimLocation: UE.Vector;
+            DeltaT: number;
+            ["Seed Water MID"]: UE.MaterialInstanceDynamic;
+            WaterVelocityTexture: UE.Texture;
+            Res: number;
+            ["Use SceneCapture"]: boolean;
+            TerrainMode: UE.Water.FluidSimulation.Blueprints.Enums.FluidTerrainModes.FluidTerrainModes;
+            SubSteps: number;
+            ["Manual Advect Material"]: UE.MaterialInterface;
+            ["Manual Advect Velocity Material"]: UE.MaterialInterface;
+            ["Clear RTs"](DefaultWaterDepth: number) : void;
+            ["Create RTs"]() : void;
+            ["Create Sim MIDs"]() : void;
+            ExecuteUbergraph_ShallowWaterSimComponent(EntryPoint: number) : void;
+            ["Initialize ShallowWaterSim"](Res: number, TerrainMode: UE.Water.FluidSimulation.Blueprints.Enums.FluidTerrainModes.FluidTerrainModes, Forces: $Nullable<UE.Texture>, TerrainTexture: $Nullable<UE.Texture>, DefaultWaterDepth: number) : void;
+            ["PingPong-Height"](ReadRT: $Ref<UE.TextureRenderTarget2D>, WriteRT: $Ref<UE.TextureRenderTarget2D>) : void;
+            ["PingPong-Velocity"](ReadRT: $Ref<UE.TextureRenderTarget2D>, WriteRT: $Ref<UE.TextureRenderTarget2D>) : void;
+            ["Release Shallow Water Sim RTs"]() : void;
+            ["Seed Water"]() : void;
+            ["Set Sim MID Params"](Forces: $Nullable<UE.Texture>, Terrain: $Nullable<UE.Texture>) : void;
+            ["Simulation Step"](HeightRT: $Ref<UE.TextureRenderTarget2D>) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): ShallowWaterSimComponent_C;
+            static Load(InName: string): ShallowWaterSimComponent_C;
+        
+            __tid_ShallowWaterSimComponent_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 6C5CC470429F21F4AC32EA8F30A0F50B
+    namespace Water.FluidSimulation.Blueprints.Examples.BP_WaterSim_TickInEditorTest {
+        class BP_WaterSim_TickInEditorTest_C extends UE.WaterLandscapeBrush {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ["Tick in Editor"]: boolean;
+            ExecuteUbergraph_BP_WaterSim_TickInEditorTest(EntryPoint: number) : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            ["Start Tick"]() : void;
+            ["Stop Tick"]() : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_WaterSim_TickInEditorTest_C;
+            static Load(InName: string): BP_WaterSim_TickInEditorTest_C;
+        
+            __tid_BP_WaterSim_TickInEditorTest_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: FDA315B149CF1A68F77B52B7061F2BE8
+    namespace Water.FluidSimulation.Blueprints.Examples.BP_GetSimRenderTargets_Material {
+        class BP_GetSimRenderTargets_Material_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            S_WaterPlane_512_LOD0: UE.StaticMeshComponent;
+            DefaultSceneRoot: UE.SceneComponent;
+            Sim: UE.Water.FluidSimulation.Blueprints.BP_FluidSim_01.BP_FluidSim_01_C;
+            MID: UE.MaterialInstanceDynamic;
+            ["Material to Use"]: UE.MaterialInterface;
+            ["Static Mesh"]: UE.StaticMesh;
+            ExecuteUbergraph_BP_GetSimRenderTargets_Material(EntryPoint: number) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_GetSimRenderTargets_Material_C;
+            static Load(InName: string): BP_GetSimRenderTargets_Material_C;
+        
+            __tid_BP_GetSimRenderTargets_Material_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: F33B450A4FC3E0CAE5F424887ADA4F33
+    namespace Water.FluidSimulation.Blueprints.Examples.BP_Fluid_Impulse_Repeating {
+        class BP_Fluid_Impulse_Repeating_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            DefaultSceneRoot: UE.SceneComponent;
+            accum: number;
+            Sim: UE.Water.FluidSimulation.Blueprints.BP_FluidSim_01.BP_FluidSim_01_C;
+            ["Impulse Every N Seconds"]: number;
+            ["Imulse Settings"]: UE.Water.FluidSimulation.Blueprints.Structs.FluidForceImpulse.FluidForceImpulse;
+            ExecuteUbergraph_BP_Fluid_Impulse_Repeating(EntryPoint: number) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            Trigger() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_Fluid_Impulse_Repeating_C;
+            static Load(InName: string): BP_Fluid_Impulse_Repeating_C;
+        
+            __tid_BP_Fluid_Impulse_Repeating_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 179F69094285E02726C9C0963AB07FEC
+    namespace Water.FluidSimulation.Blueprints.Examples.BP_Dynamic_Force_SkelMesh {
+        class BP_Dynamic_Force_SkelMesh_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            SkeletalMesh: UE.SkeletalMeshComponent;
+            ForceMesh: UE.StaticMeshComponent;
+            DefaultSceneRoot: UE.SceneComponent;
+            Sim: UE.Water.FluidSimulation.Blueprints.BP_FluidSim_01.BP_FluidSim_01_C;
+            ["FluidForceDynamic Settings"]: UE.Water.FluidSimulation.Blueprints.Structs.FluidForceDynamic.FluidForceDynamic;
+            WaterBody: UE.WaterBody;
+            ExecuteUbergraph_BP_Dynamic_Force_SkelMesh(EntryPoint: number) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_Dynamic_Force_SkelMesh_C;
+            static Load(InName: string): BP_Dynamic_Force_SkelMesh_C;
+        
+            __tid_BP_Dynamic_Force_SkelMesh_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 8E31FE6C4BEF3AA1380107ADF37B03C8
+    namespace Water.FluidSimulation.Blueprints.Examples.BP_Dynamic_Force_Component {
+        class BP_Dynamic_Force_Component_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ForceMesh: UE.StaticMeshComponent;
+            DefaultSceneRoot: UE.SceneComponent;
+            Sim: UE.Water.FluidSimulation.Blueprints.BP_FluidSim_01.BP_FluidSim_01_C;
+            Radius: number;
+            Strength: number;
+            Material: UE.MaterialInterface;
+            ["Map to Whole Fluid"]: boolean;
+            ["Show Mesh"]: boolean;
+            ["Oscillation Speed"]: number;
+            StartLoc: UE.Vector;
+            ["Osc Mag"]: number;
+            ExecuteUbergraph_BP_Dynamic_Force_Component(EntryPoint: number) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_Dynamic_Force_Component_C;
+            static Load(InName: string): BP_Dynamic_Force_Component_C;
+        
+            __tid_BP_Dynamic_Force_Component_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: B0CB75614177CE3B27919B9D1F4D4EC0
+    namespace Water.FluidSimulation.Blueprints.Libraries.PhysicsMacros {
+        class PhysicsMacros_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): PhysicsMacros_C;
+            static Load(InName: string): PhysicsMacros_C;
+        
+            __tid_PhysicsMacros_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: B3FFE5CC4D4D3BD2D26BB2956950C38E
+    namespace Water.FluidSimulation.Blueprints.Structs.FluidForceSocketInfo {
+        class FluidForceSocketInfo {
+            constructor();
+            constructor(SocketsandEndpoints: TMap<string, string>);
+            ["Sockets and Endpoints"]: TMap<string, string>;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_FluidForceSocketInfo_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 187F1B7F43D6120D8971A5927B327ED3
+    namespace Water.FluidSimulation.Blueprints.Structs.FluidForceImpulseTimedEffects {
+        class FluidForceImpulseTimedEffects {
+            constructor();
+            constructor(EnableWaterDropsEffect: boolean, EffectRadius: number, Strength: number, WaterDropsperSquareMeter: number, StartTimeOffset: number, Lifetime: number, StrengthoverLifePower: number, MaterialOverride: UE.MaterialInterface);
+            ["Enable Water Drops Effect"]: boolean;
+            ["Effect Radius"]: number;
+            Strength: number;
+            ["Water Drops per Square Meter"]: number;
+            ["Start Time Offset"]: number;
+            Lifetime: number;
+            ["Strength over Life Power"]: number;
+            ["Material Override"]: UE.MaterialInterface;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_FluidForceImpulseTimedEffects_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: AE6684F245944C2B38CBDA89E704A185
+    namespace Water.FluidSimulation.Blueprints.Structs.FluidForceImpulsePerInstanceData {
+        class FluidForceImpulsePerInstanceData {
+            constructor();
+            constructor(ImpulseSettings: UE.Water.FluidSimulation.Blueprints.Structs.FluidForceImpulse.FluidForceImpulse, ElapsedTime: number, StartOffset: number, IsSplashEffect: boolean);
+            ["Impulse Settings"]: UE.Water.FluidSimulation.Blueprints.Structs.FluidForceImpulse.FluidForceImpulse;
+            ["Elapsed Time"]: number;
+            ["Start Offset"]: number;
+            ["Is Splash Effect"]: boolean;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_FluidForceImpulsePerInstanceData_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 4C8A1E2547BB62C76A8E25BBAEDBA70E
+    namespace Water.FluidSimulation.Blueprints.Structs.FluidForceImpulse {
+        class FluidForceImpulse {
+            constructor();
+            constructor(WorldPosition: UE.Vector, ForceRadius: number, ForceStrength: number, MaterialOverride: UE.MaterialInterface, Lifetime: number, StrengthoverLifePower: number, TimedWaterDropSplashes: UE.Water.FluidSimulation.Blueprints.Structs.FluidForceImpulseTimedEffects.FluidForceImpulseTimedEffects);
+            ["World Position"]: UE.Vector;
+            ["Force Radius"]: number;
+            ["Force Strength"]: number;
+            MaterialOverride: UE.MaterialInterface;
+            Lifetime: number;
+            ["Strength over Life Power"]: number;
+            ["Timed Water Drop Splashes"]: UE.Water.FluidSimulation.Blueprints.Structs.FluidForceImpulseTimedEffects.FluidForceImpulseTimedEffects;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_FluidForceImpulse_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 135FC9484F16F0C02712E0857EBB5A2A
+    namespace Water.FluidSimulation.Blueprints.Structs.FluidForceDynamicPerInstanceData {
+        class FluidForceDynamicPerInstanceData {
+            constructor();
+            constructor(ForceInfo: UE.Water.FluidSimulation.Blueprints.Structs.FluidForceDynamic.FluidForceDynamic, ComponentLocation: UE.Vector, ComponentVelocity: UE.Vector, BoundsRadius: number, WaterLevel: number, SocketLocationMap: TMap<string, UE.Vector>, SocketVelocityMap: TMap<string, UE.Vector>);
+            ["Force Info"]: UE.Water.FluidSimulation.Blueprints.Structs.FluidForceDynamic.FluidForceDynamic;
+            ["Component Location"]: UE.Vector;
+            ["Component Velocity"]: UE.Vector;
+            ["Bounds Radius"]: number;
+            ["Water Level"]: number;
+            SocketLocationMap: TMap<string, UE.Vector>;
+            SocketVelocityMap: TMap<string, UE.Vector>;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_FluidForceDynamicPerInstanceData_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 0318B3FC4CCB168103477E950DB9494C
+    namespace Water.FluidSimulation.Blueprints.Structs.FluidForceDynamic {
+        class FluidForceDynamic {
+            constructor();
+            constructor(ForceType: UE.Water.FluidSimulation.Blueprints.Enums.FluidDynamicForceMeshType.FluidDynamicForceMeshType, ForceRadius: number, ForceStrength: number, ForceComponent: UE.SceneComponent, MaterialOverride: UE.MaterialInterface, SkeletalMeshSetup: UE.Water.FluidSimulation.Blueprints.Structs.FluidForceSocketInfo.FluidForceSocketInfo);
+            ["Force Type"]: UE.Water.FluidSimulation.Blueprints.Enums.FluidDynamicForceMeshType.FluidDynamicForceMeshType;
+            ["Force Radius"]: number;
+            ["Force Strength"]: number;
+            ["Force Component"]: UE.SceneComponent;
+            ["Material Override"]: UE.MaterialInterface;
+            ["Skeletal Mesh Setup"]: UE.Water.FluidSimulation.Blueprints.Structs.FluidForceSocketInfo.FluidForceSocketInfo;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_FluidForceDynamic_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 70297E5C421C405119497091F7C251B6
+    namespace Water.FluidSimulation.WaveFoam.WaveFoamRenderer {
+        class WaveFoamRenderer_C extends UE.LandmassActor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            StaticMesh: UE.StaticMeshComponent;
+            SceneCaptureComponent2D: UE.SceneCaptureComponent2D;
+            ["Foam RT A"]: UE.TextureRenderTarget2D;
+            ["Foam RT B"]: UE.TextureRenderTarget2D;
+            ["DrawWave MID"]: UE.MaterialInstanceDynamic;
+            idx: number;
+            ["FoamDiffuse MID"]: UE.MaterialInstanceDynamic;
+            Fade: number;
+            ["Time Bias"]: number;
+            Freeze: boolean;
+            FoamToneMapMID: UE.MaterialInstanceDynamic;
+            Res: number;
+            ["Wave RT"]: UE.TextureRenderTarget2D;
+            Waterbody: UE.WaterBody;
+            wave: UE.GerstnerWave;
+            Ticking: boolean;
+            ["Simulation World Size"]: number;
+            ["Allocate RTs"]() : void;
+            ["Create MID"]() : void;
+            CustomTick(DeltaSeconds: number) : void;
+            /**
+             * @deprecated Unsupported super overloads.
+             */
+            CustomTick_EditorOnly(DeltaSeconds: number) : void;
+            ExecuteUbergraph_WaveFoamRenderer(EntryPoint: number) : void;
+            Initialize() : void;
+            ["Start Tick"]() : void;
+            ["Stop Tick"]() : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): WaveFoamRenderer_C;
+            static Load(InName: string): WaveFoamRenderer_C;
+        
+            __tid_WaveFoamRenderer_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: A2563C624DAF18A748F9739D64DC1924
+    namespace Water.Materials.PostProcessing.UnderWaterPostProcessMesh {
+        class UnderWaterPostProcessMesh_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            StaticMesh: UE.StaticMeshComponent;
+            DefaultSceneRoot: UE.SceneComponent;
+            MID: UE.MaterialInstanceDynamic;
+            Enable: boolean;
+            ["Get Water Height Texture"]() : void;
+            ["Make MID"]() : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): UnderWaterPostProcessMesh_C;
+            static Load(InName: string): UnderWaterPostProcessMesh_C;
+        
+            __tid_UnderWaterPostProcessMesh_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: ASSOCIATION
+    namespace Game.Game.GameMap.Maps.StreamManager {
+        class StreamManager_C extends UE.LevelScriptActor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ExecuteUbergraph_StreamManager(EntryPoint: number) : void;
+            InpActEvt_Two_K2Node_InputDebugKeyEvent_0(Key: UE.Key, ActionValue: UE.InputActionValue) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): StreamManager_C;
+            static Load(InName: string): StreamManager_C;
+        
+            __tid_StreamManager_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 7FAAAE3D4F986CA9DD87E9AC245FD35A
+    namespace Game.Game.GameMap.Blueprint.Enemy.BT_Task.BTT_SetTargetActor {
+        class BTT_SetTargetActor_C extends UE.BTTask_BlueprintBase {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            ReceiveExecuteAI(OwnerController: $Nullable<UE.AIController>, ControlledPawn: $Nullable<UE.Pawn>) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BTT_SetTargetActor_C;
+            static Load(InName: string): BTT_SetTargetActor_C;
+        
+            __tid_BTT_SetTargetActor_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 0B6F5C7F4E88C55DD3108D83F5798254
+    namespace Game.Game.GameMap.Blueprint.Enemy.BP_BugEggCopilot.BP_BugEggCopilot {
+        class BP_BugEggCopilot_C extends UE.Game.Game.GameMap.Blueprint.Characters.BP_EnemyBase.BP_EnemyBase_C {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            SpatialPathFinding: UE.SpatialPathFinding;
+            ExecuteUbergraph_BP_BugEggCopilot(EntryPoint: number) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_BugEggCopilot_C;
+            static Load(InName: string): BP_BugEggCopilot_C;
+        
+            __tid_BP_BugEggCopilot_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 5CE2811044F10A1D7C0EB29C22E72143
+    namespace Game.Game.GameMap.Blueprint.Enemy.BP_BugEggCopilot.AIC_BugEggCopilot {
+        class AIC_BugEggCopilot_C extends UE.AIController {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ExecuteUbergraph_AIC_BugEggCopilot(EntryPoint: number) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): AIC_BugEggCopilot_C;
+            static Load(InName: string): AIC_BugEggCopilot_C;
+        
+            __tid_AIC_BugEggCopilot_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: A005A72A45253FECF1C5CC8DF9A6D354
+    namespace Game.Game.GameMap.Blueprint.Enemy.BT_Service.BTS_CachePlayerLocation {
+        class BTS_CachePlayerLocation_C extends UE.BTService_BlueprintBase {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            ReceiveTickAI(OwnerController: $Nullable<UE.AIController>, ControlledPawn: $Nullable<UE.Pawn>, DeltaSeconds: number) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BTS_CachePlayerLocation_C;
+            static Load(InName: string): BTS_CachePlayerLocation_C;
+        
+            __tid_BTS_CachePlayerLocation_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: ASSOCIATION
+    namespace Game.Debug.Test.ChuckTestMap {
+        class ChuckTestMap_C extends UE.LevelScriptActor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ["Trace Channel"]: UE.ETraceTypeQuery;
+            ExecuteUbergraph_ChuckTestMap(EntryPoint: number) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): ChuckTestMap_C;
+            static Load(InName: string): ChuckTestMap_C;
+        
+            __tid_ChuckTestMap_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 200922DF408E1CFAA29B659BCF695E4D
+    namespace Game.Game.GameMap.Blueprint.Enemy.BT_Task.BTT_FlyToTarget {
+        class BTT_FlyToTarget_C extends UE.BTTask_BlueprintBase {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            Target: UE.BlackboardKeySelector;
+            MoveSpeed: UE.BlackboardKeySelector;
+            AcceptanceRadius: number;
+            RotationInterpSpeed: number;
+            bShowDebug: boolean;
+            MinFlightHeight: number;
+            ReceiveExecuteAI(OwnerController: $Nullable<UE.AIController>, ControlledPawn: $Nullable<UE.Pawn>) : void;
+            ReceiveTickAI(OwnerController: $Nullable<UE.AIController>, ControlledPawn: $Nullable<UE.Pawn>, DeltaSeconds: number) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BTT_FlyToTarget_C;
+            static Load(InName: string): BTT_FlyToTarget_C;
+        
+            __tid_BTT_FlyToTarget_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 4FC4074A450315DD5B4D89B419325C91
+    namespace Game.Game.GameMap.Blueprint.Enemy.BT_Task.BTT_FindPatrolLocationInSky {
+        class BTT_FindPatrolLocationInSky_C extends UE.BTTask_BlueprintBase {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            SearchRadius: number;
+            MinHeight: number;
+            MaxHeight: number;
+            MaxAttempts: number;
+            ObstacleCheckRadius: number;
+            PatrolLocationKey: UE.BlackboardKeySelector;
+            bUseRelativeHeight: boolean;
+            bShowDebug: boolean;
+            ReceiveExecuteAI(OwnerController: $Nullable<UE.AIController>, ControlledPawn: $Nullable<UE.Pawn>) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BTT_FindPatrolLocationInSky_C;
+            static Load(InName: string): BTT_FindPatrolLocationInSky_C;
+        
+            __tid_BTT_FindPatrolLocationInSky_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 5E755AEF44140554132C44A6FD4439B2
+    namespace Game.Game.GameMap.Blueprint.Enemy.BT_Service.BTS_RotateToTarget {
+        class BTS_RotateToTarget_C extends UE.BTService_BlueprintBase {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            Target: UE.BlackboardKeySelector;
+            RotationInterpSpeed: number;
+            bYawOnly: boolean;
+            bShowDebug: boolean;
+            ReceiveTickAI(OwnerController: $Nullable<UE.AIController>, ControlledPawn: $Nullable<UE.Pawn>, DeltaSeconds: number) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BTS_RotateToTarget_C;
+            static Load(InName: string): BTS_RotateToTarget_C;
+        
+            __tid_BTS_RotateToTarget_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 28860AF647B2C5E3BE9B658CD470DF2C
+    namespace Game.Debug.StreamLoad.EQSTestACtor {
+        class EQSTestACtor_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            DefaultSceneRoot: UE.SceneComponent;
+            ExecuteUbergraph_EQSTestACtor(EntryPoint: number) : void;
+            Find() : void;
+            ["OnQueryFinishedEvent_事件"](QueryInstance: $Nullable<UE.EnvQueryInstanceBlueprintWrapper>, QueryStatus: UE.EEnvQueryStatus) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): EQSTestACtor_C;
+            static Load(InName: string): EQSTestACtor_C;
+        
+            __tid_EQSTestACtor_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 8772AC5D49734A776240A1A179032497
+    namespace Game.Game.GameMap.Blueprint.Actor.BP_DialoageTrrigger {
+        class BP_DialoageTrrigger_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            Sphere: UE.SphereComponent;
+            DefaultSceneRoot: UE.SceneComponent;
+            ["Trrigger Tag"]: UE.GameplayTag;
+            BndEvt__BP_DialoageTrrigger_Sphere_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature(OverlappedComponent: $Nullable<UE.PrimitiveComponent>, OtherActor: $Nullable<UE.Actor>, OtherComp: $Nullable<UE.PrimitiveComponent>, OtherBodyIndex: number, bFromSweep: boolean, SweepResult: UE.HitResult) : void;
+            ExecuteUbergraph_BP_DialoageTrrigger(EntryPoint: number) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_DialoageTrrigger_C;
+            static Load(InName: string): BP_DialoageTrrigger_C;
+        
+            __tid_BP_DialoageTrrigger_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 6A4543104D52C65B7C6EB599F2986CC0
+    namespace Game.Game.GameMap.Blueprint.Component.BPC_UITips {
+        class BPC_UITips_C extends UE.WidgetComponent {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ExecuteUbergraph_BPC_UITips(EntryPoint: number) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BPC_UITips_C;
+            static Load(InName: string): BPC_UITips_C;
+        
+            __tid_BPC_UITips_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 72DCD36C4FF1A3FCF840C79E25ED7B9C
+    namespace Game.Game.MenuMap.UMG.WB_Tips {
+        class WB_Tips_C extends UE.UserWidget {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): WB_Tips_C;
+            static Load(InName: string): WB_Tips_C;
+        
+            __tid_WB_Tips_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: C48B0A5641C46411E953259D138A0919
+    namespace Game.Debug.StreamLoad.NewBlueprint {
+        class NewBlueprint_C extends UE.EQSTestingPawn {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): NewBlueprint_C;
+            static Load(InName: string): NewBlueprint_C;
+        
+            __tid_NewBlueprint_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 64C4A834408D49FB7CF13395508FA7FC
+    namespace Game.Game.GameMap.Map.L1$45$skybox {
+        class L1$45$skybox_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            StaticMesh: UE.StaticMeshComponent;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): L1$45$skybox_C;
+            static Load(InName: string): L1$45$skybox_C;
+        
+            __tid_L1$45$skybox_C_0__: boolean;
         }
         
     }

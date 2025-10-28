@@ -10,6 +10,7 @@
 
 #include "AbilitySystemComponent.h"
 #include "AbilitySystemInterface.h"
+#include "Game/Gameplay/Player/SuperPlayerController.h"
 #include "Kismet/GameplayStatics.h"
 
 #ifdef NEED_DEBUG
@@ -47,6 +48,11 @@ void UGameSystemLibrary::Game_GetAllActorsOfClass(UObject* WorldContext, TSubcla
 	TArray<AActor*>& OutActors)
 {
 	UGameplayStatics::GetAllActorsOfClass(WorldContext, ActorClass, OutActors);
+}
+
+UPlayerBaseData* UGameSystemLibrary::GetPlayerData()
+{
+	return ASuperPlayerController::PlayerData_Static; 
 }
 
 

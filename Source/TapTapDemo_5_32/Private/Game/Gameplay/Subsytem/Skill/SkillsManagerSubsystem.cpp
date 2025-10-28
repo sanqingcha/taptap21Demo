@@ -8,7 +8,8 @@
 #include "Engine/World.h"
 
 #include <random>
-#include <asio/execution/connect.hpp>
+
+const float USkillsManagerSubsystem::AdditionalParamForAttack = 10.0f;
 
 void USkillsManagerSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
@@ -31,7 +32,7 @@ USkillNode* USkillsManagerSubsystem::NewSkillNode(const FSkillNodeInfo& NodeInfo
 	return Node;
 }
 
-void USkillsManagerSubsystem::DeleteSkillNode(USkillNode* Node)
+void USkillsManagerSubsystem::DeleteSkillNode(USkillNode* Node, OnBranchNode Branch)
 {
 	HashToNode.Remove(Node->GetHashID());
 	
@@ -40,24 +41,31 @@ void USkillsManagerSubsystem::DeleteSkillNode(USkillNode* Node)
 	FlushParentLoopStartNodeWithSelf(Node);
 	
 	if (Node->GetParentNode())
-		DisconnectNode(Node->GetParentNode(), Node);
+		DisconnectNode(Node->GetParentNode(), Node, Branch);
 	
 	Node->MarkAsGarbage();
 }
 
-bool USkillsManagerSubsystem::ConnectNode(USkillNode* ParentNode, USkillNode* ChildNode)
+bool USkillsManagerSubsystem::ConnectNode(USkillNode* ParentNode, USkillNode* ChildNode, OnBranchNode Branch)
 {
 	ParentNode->AddChildNode(ChildNode);
 	ChildNode->SetParentNode(ParentNode);
 	FlushParentLoopStartNodeWithSelf(ChildNode);
+	if (ParentNode->GetNodeType() == ESkillNodeType::ParamNode)
+		DfsUpdateForwardParam(ChildNode);
+	else
+		UpdateTimeDelay(ParentNode);
 	return true;
 }
 
-void USkillsManagerSubsystem::DisconnectNode(USkillNode* ParentNode, USkillNode* ChildNode)
+void USkillsManagerSubsystem::DisconnectNode(USkillNode* ParentNode, USkillNode* ChildNode, OnBranchNode Branch)
 {
 	ParentNode->RemoveChildNode(ChildNode);
 	FlushParentLoopStartNode(ChildNode);
+	UpdateTimeDelay(ParentNode);
 	ChildNode->SetParentNode(nullptr);
+	ChildNode->SetAccumulativeInfo(FAccumulativeInfo::ZeroValue);
+	DfsUpdateForwardParam(ChildNode);
 }
 
 void USkillsManagerSubsystem::UpdateLoopEndNodes(TArray<USkillNode*>& LoopEndArray, USkillNode* LoopStartNode)
@@ -151,11 +159,41 @@ void USkillsManagerSubsystem::FlushParentLoopStartNode(USkillNode* _Node)
 	}
 }
 
-void USkillsManagerSubsystem::FlushParentLoopStartNodeWithSelf(USkillNode* Node)
+void USkillsManagerSubsystem::FlushParentLoopStartNodeWithSelf(USkillNode* _Node)
 {
-	if (Node->GetNodeType() == ESkillNodeType::LoopStartNode)
-		UpdateLoopEndNodes(Node->GetLoopEndNodesRef(), Node);
+	if (_Node->GetNodeType() == ESkillNodeType::LoopStartNode)
+		UpdateLoopEndNodes(_Node->GetLoopEndNodesRef(), _Node);
 
-	FlushParentLoopStartNode(Node);
+	FlushParentLoopStartNode(_Node);
 }
 
+void USkillsManagerSubsystem::DfsUpdateForwardParam(USkillNode* _Node)
+{
+	if (!_Node) return;
+
+	// 如果父节点是参数节点，就把信息传下来
+	FAccumulativeInfo AccumulativeInfo = FAccumulativeInfo::ZeroValue;
+	if (_Node->GetParentNode() && _Node->GetParentNode()->GetNodeType() == ESkillNodeType::ParamNode)
+		AccumulativeInfo = _Node->GetParentNode()->GetAccumulativeInfo();
+
+	_Node->SetAccumulativeInfo(_Node->GetAccumulativeInfo() + AccumulativeInfo);
+
+	// 如果已经找到第一个普通节点，处理并返回
+	if (_Node->GetNodeType() != ESkillNodeType::ParamNode)
+	{
+		UpdateTimeDelay(_Node);
+		return;
+	}
+	
+	DfsUpdateForwardParam(_Node->GetFirstChildNode());
+}
+
+void USkillsManagerSubsystem::UpdateTimeDelay(USkillNode* _UpdateStartNode)
+{
+	USkillNode* CurrentNode = _UpdateStartNode;
+	while (CurrentNode)
+	{
+		CurrentNode->CalculateDelayTime();
+		CurrentNode = CurrentNode->GetParentNode();
+	}
+}

@@ -4,59 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
+
+#include "Game/Gameplay/Skills/SkillType.h"
+
 #include "SkillNode.generated.h"
 
 
-UENUM()
-enum class ESkillNodeType
-{
-	NullNode = 0, // 空类型
-	StartNode, // 起始类型
-	GenerateNode, // 生成物类型
-	BuffNode, // buff类型
-	BranchNode, // 分支类型
-	LoopStartNode, // 循环起始类型
-	LoopEndNode // 循环结束类型
-};
-
-UENUM()
-enum class EGeneratedType
-{
-	None = 0, // 空类型
-	StandardBullet, // 标准子弹
-	EnhancedBullet, // 强化子弹
-	Explosion // 爆炸
-};
-
-
-USTRUCT()
-struct FSkillNodeInfo
-{
-	GENERATED_BODY()
-
-	ESkillNodeType NodeType = ESkillNodeType::NullNode; // 节点类型
-	int32 DelayTime = 0; // 延迟时间
-	int32 OutPinCount = 0; // 输出引脚数量
-
-	int32 Damage = 0; // 伤害
-	int32 Radius = 0; // 半径
-	int32 Range = 0; // 射程
-
-	EGeneratedType GeneratedType = EGeneratedType::None; // 生成物
-
-	float BuffDurationTime = 1.0f; // buff持续时间
-	int32 BuffValue = 1; // buff值
-
-	float BranchValue = 0.4f; // 分支值
-
-	int32 ParamIntValue = 0; // 整型参数
-	float ParamFloatValue = 0.0f; // 浮点型参数
-	
-	int32 LoopCount = 3; // 循环次数
-	
-};
-
-
+class UExecuteSkillComponent;
 /**
  * 
  */
@@ -66,16 +20,23 @@ class TAPTAPDEMO_5_32_API USkillNode : public UObject
 	GENERATED_BODY()
 
 public:
+	static const FName Tag_SkillComponent;
+	
 	void Initialize(const int32 _HashID, const FSkillNodeInfo& _NodeInfo);
 
 	void SetDefaultValue();
 	
-	void AddChildNode(USkillNode* Node);
-	void RemoveChildNode(USkillNode* Node);
+	bool AddChildNode(USkillNode* Node, OnBranchNode Branch = OnBranchNode::No);
+	void RemoveChildNode(USkillNode* Node, OnBranchNode Branch = OnBranchNode::No);
 
-	virtual void Trigger(const UObject* Target);
-	virtual void Ability() { }
-	virtual bool Branch();
+	/**
+	 * 触发后续节点
+	 */
+	void Delivery(const AActor* Target);
+
+	virtual void Trigger(const AActor* Target);
+	virtual void Ability(const AActor* Target) { }
+	virtual bool Branch(const AActor* Target);
 
 	template<typename Func>
 	void ForEachChild(Func&& TarFunc) const
@@ -86,9 +47,11 @@ public:
 		}
 	}
 
-	bool HasChild() const;
+	int32 CalculateDelayTime();
 
 #pragma region UTIL
+	
+	bool HasChild() const;
 	
 	void SetParentNode(USkillNode* Node);
 	USkillNode* GetParentNode() const;
@@ -105,11 +68,17 @@ public:
 
 	USkillNode* GetFirstChildNode();
 
+	FAccumulativeInfo GetAccumulativeInfo() const;
+	void SetAccumulativeInfo(const FAccumulativeInfo& Info);
+
 	TArray<USkillNode*>& GetLoopEndNodesRef();
+
+	void SetBranchTrueNode(USkillNode* Node);
+	void SetBranchFalseNode(USkillNode* Node);
 
 #pragma endregion
 
-private:
+protected:
 	UPROPERTY()
 	TArray<USkillNode*> ChildNodes;
 
@@ -127,6 +96,17 @@ private:
 
 	UPROPERTY()
 	FSkillNodeInfo NodeInfo;
+
+	UPROPERTY()
+	FAccumulativeInfo AccumulativeInfo;
+
+	UPROPERTY()
+	USkillNode* BranchTrueNode;
+
+	UPROPERTY()
+	USkillNode* BranchFalseNode;
 	
 	int32 AllDelayTime = 0;
+
+	UExecuteSkillComponent* GetTargetExecuteSkillComponent(const AActor* Target) const;
 };

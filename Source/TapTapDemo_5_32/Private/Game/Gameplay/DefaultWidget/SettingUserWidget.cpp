@@ -33,9 +33,11 @@ void USettingUserWidget::NativeConstruct()
 	/**角色控制*/
 	const FPlayerControlSettings& PlayerControlSettings = SettingSystem->GetPlayerControlSettings();
 	CameraLagSpeed_Text->SetText(FText::AsNumber(PlayerControlSettings.CameraDelaySpeed));
+	CheckTime_Slider->SetValue(PlayerControlSettings.CheckTime*2);
+	
 	AddCameraLagSpeed_Bt->OnPressed.AddDynamic(this,&USettingUserWidget::AddCameraLagSpeed_Bt_Pressed);
 	ReduceCameraLagSpeed_Bt->OnPressed.AddDynamic(this,&USettingUserWidget::ReduceCameraLagSpeed_Bt_Pressed);
-	
+	CheckTime_Slider->OnValueChanged.AddDynamic(this,&USettingUserWidget::OnCheckTimeSliderChanged);
 }
 
 void USettingUserWidget::OnReturnButtonPressed()
@@ -44,6 +46,11 @@ void USettingUserWidget::OnReturnButtonPressed()
 	{
 		OnReturnButtonDelegate.Execute(FInputActionValue());
 	}
+}
+
+void USettingUserWidget::OnCheckTimeSliderChanged(float Percent)
+{
+	SettingSystem->SetCheckTime(Percent*0.5);
 }
 
 void USettingUserWidget::OnAmbientVolumeSliderChanged(float Percent)

@@ -13,6 +13,7 @@
 #include "Game/Gas/Attribute/AttributeSetBase.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Kismet/KismetSystemLibrary.h"
 
 
 // Sets default values
@@ -72,6 +73,12 @@ USpringArmComponent* APlayerCharacter::GetSpringArmComponent_Implementation()
 void APlayerCharacter::CallJump_Implementation()
 {
 	Jump();
+}
+
+void APlayerCharacter::Die_Implementation()
+{
+	Super::Die_Implementation();
+	UKismetSystemLibrary::PrintString(GetWorld(),FString::Printf(TEXT("Dead")));
 }
 
 void APlayerCharacter::OnPlayerControlSettingChanged(const FPlayerControlSettings& NewSettings)

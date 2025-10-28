@@ -98,45 +98,72 @@ class BTS_PlayerPerception {
                 DebugDrawDuration, 3.0, new UE.Vector(0, 1, 0), new UE.Vector(1, 0, 0), false);
             }
         }
-        // 计算距离
-        const Distance = UE.KismetMathLibrary.Vector_Distance(AIPawnLocation, PlayerLocation);
-        // 如果距离超过检测范围，清空目标并返回
-        if (Distance > DetectionRange) {
+        // === 球形碰撞检测 ===
+        // 使用球形重叠检测范围内的所有 Actor
+        const OverlappedActors = (0, puerts_1.$ref)(UE.NewArray(UE.Actor));
+        const ActorsToIgnore = UE.NewArray(UE.Actor);
+        ActorsToIgnore.Add(ControlledPawn); // 忽略敌人自己
+        const bOverlapFound = UE.KismetSystemLibrary.SphereOverlapActors(World, AIPawnLocation, DetectionRange, UE.NewArray(UE.EObjectTypeQuery), // 空数组，检测所有类型
+        UE.Character.StaticClass(), // 只检测Character类
+        ActorsToIgnore, OverlappedActors);
+        // 检查是否检测到玩家
+        let bPlayerInRange = false;
+        if (bOverlapFound && OverlappedActors) {
+            const Actors = (0, puerts_1.$unref)(OverlappedActors);
+            const ActorCount = Actors.Num();
+            for (let i = 0; i < ActorCount; i++) {
+                const Actor = Actors.Get(i);
+                if (Actor === PlayerCharacter) {
+                    bPlayerInRange = true;
+                    break;
+                }
+            }
+        }
+        // 如果玩家不在范围内，清除目标并返回
+        if (!bPlayerInRange) {
             BlackboardComp.ClearValue("TargetActor");
             return;
         }
         // === 视野角度检测 ===
         // 如果SightAngle >= 360，表示360度全方位检测，跳过角度检查
-        if (SightAngle < 360.0) {
-            // 获取AI的前向向量
-            const AIForwardVector = ControlledPawn.GetActorForwardVector();
-            // 计算从AI指向玩家的方向向量
-            const ToPlayerVector = UE.KismetMathLibrary.Subtract_VectorVector(PlayerLocation, AIPawnLocation);
-            const ToPlayerDirection = UE.KismetMathLibrary.Normal(ToPlayerVector);
-            // 计算两个向量之间的夹角（度）
-            const DotProduct = UE.KismetMathLibrary.Dot_VectorVector(AIForwardVector, ToPlayerDirection);
-            const AngleBetween = UE.KismetMathLibrary.DegAcos(DotProduct);
-            // 检查玩家是否在视野角度范围内
-            const HalfSightAngle = SightAngle / 2.0;
-            if (AngleBetween > HalfSightAngle) {
-                // 玩家不在视野范围内
-                BlackboardComp.ClearValue("TargetActor");
-                return;
-            }
-        }
+        // if (SightAngle < 360.0) {
+        //     // 获取AI的前向向量，并投影到水平面（Z=0）
+        //     const AIForwardVector = ControlledPawn.GetActorForwardVector();
+        //     const AIForwardVector2D = new UE.Vector(AIForwardVector.X, AIForwardVector.Y, 0);
+        //     const AIForwardNormalized = UE.KismetMathLibrary.Normal(AIForwardVector2D);
+        //     // 计算从AI指向玩家的方向向量，并投影到水平面
+        //     const ToPlayerVector = UE.KismetMathLibrary.Subtract_VectorVector(PlayerLocation, AIPawnLocation);
+        //     const ToPlayerVector2D = new UE.Vector(ToPlayerVector.X, ToPlayerVector.Y, 0);
+        //     const ToPlayerDirection = UE.KismetMathLibrary.Normal(ToPlayerVector2D);
+        //     // 计算水平面上两个向量之间的夹角（度）
+        //     const DotProduct = UE.KismetMathLibrary.Dot_VectorVector(AIForwardNormalized, ToPlayerDirection);
+        //     const AngleBetween = UE.KismetMathLibrary.DegAcos(DotProduct);
+        //     // 检查玩家是否在视野角度范围内
+        //     const HalfSightAngle = SightAngle / 2.0;
+        //     if (AngleBetween > HalfSightAngle) {
+        //         BlackboardComp.ClearValue("TargetActor");
+        //         return;
+        //     }
+        // }
         // 如果SightAngle >= 360，直接进入射线检测（全方位感知）
-        // 距离和角度都在范围内，进行视线检测
-        // 从AI眼睛位置发射射线到玩家位置
+        // === 射线检测 ===
+        // 从敌人中心点向玩家中心点发射射线(已在ActorsToIgnore中屏蔽自己)
         const StartLocation = AIPawnLocation.op_Addition(new UE.Vector(0, 0, EyeHeight));
         const EndLocation = PlayerLocation.op_Addition(new UE.Vector(0, 0, EyeHeight));
-        // 准备射线检测
         const HitResult = (0, puerts_1.$ref)(undefined);
-        const TraceChannel = UE.ETraceTypeQuery.Visibility; // 使用可见性通道
-        // 创建空的Actor数组用于忽略列表
-        const ActorsToIgnore = [];
-        // 执行射线检测
+        const TraceChannel = UE.ETraceTypeQuery.Visibility;
         const DebugType = bShowDebug ? UE.EDrawDebugTrace.ForDuration : UE.EDrawDebugTrace.None;
-        const bHit = UE.KismetSystemLibrary.LineTraceSingle(World, StartLocation, EndLocation, TraceChannel, false, ActorsToIgnore, DebugType, HitResult, true);
+        const bHit = UE.KismetSystemLibrary.LineTraceSingle(World, StartLocation, EndLocation, TraceChannel, false, ActorsToIgnore, // 已经包含敌人自己,会被忽略
+        DebugType, HitResult, true);
+        // 绘制敌人眼睛位置的调试球体
+        if (bShowDebug) {
+            UE.KismetSystemLibrary.DrawDebugSphere(World, StartLocation, 10.0, // 半径10cm
+            12, // 分段数
+            new UE.LinearColor(1, 0, 1, 1), // 品红色
+            0.1, // 持续时间
+            2.0 // 线条粗细
+            );
+        }
         if (bHit && HitResult) {
             const Hit = (0, puerts_1.$unref)(HitResult);
             const HitActor = Hit.GetActor();
