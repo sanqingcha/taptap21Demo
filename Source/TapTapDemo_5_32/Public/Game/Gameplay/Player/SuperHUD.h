@@ -54,6 +54,7 @@ private:
 	
 	uint8 isShowCursor		:1 = true;
 	uint8 isInBuildSpace	:1 = false;
+	uint8 haveBind :1 = false;
 protected:
 	/**储存玩家基本信息*/
 	TObjectPtr<UPlayerBaseData> PlayerData;

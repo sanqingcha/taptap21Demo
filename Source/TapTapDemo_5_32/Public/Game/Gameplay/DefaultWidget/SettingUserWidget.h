@@ -75,8 +75,24 @@ public:
 	UButton* AddCameraLagSpeed_Bt;
 	UPROPERTY(BlueprintReadWrite,meta = (BindWidget))
 	UButton* ReduceCameraLagSpeed_Bt;
+
+	UFUNCTION()
+	void AddTextLagSpeed_Bt_Pressed();
+	UFUNCTION()
+	void ReduceTextLagSpeed_Bt_Pressed();
+	UPROPERTY(BlueprintReadWrite,meta = (BindWidget))
+	UTextBlock* TextLagSpeed_Text;
+	UPROPERTY(BlueprintReadWrite,meta = (BindWidget))
+	UButton* AddTextLagSpeed_Bt;
+	UPROPERTY(BlueprintReadWrite,meta = (BindWidget))
+	UButton* ReduceTextLagSpeed_Bt;
+
 	
-	
+	/**MouseSensitivity*/
+	UFUNCTION()
+	void OnRotSensitivityChanged(float NewValue);
+	UPROPERTY(BlueprintReadWrite,meta = (BindWidget))
+	USlider* RotSensitivity_Slider;
 private:
 	UGameSettingSubsystem* SettingSystem;
 };

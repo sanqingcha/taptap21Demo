@@ -56,6 +56,7 @@ protected:
 	FString CurrText;
 	int32 CurrTextIndex;
 	bool isDelaying = false;
+	UPROPERTY()
 	UAudioComponent* LastSound = nullptr;
 	UGameSettingSubsystem* GameSettingSubsys;
 

@@ -3,9 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
 #include "SkillNodeManager.generated.h"
 
+enum class ESkillNodeType;
 /**
  * 
  */
@@ -13,5 +13,7 @@ UCLASS()
 class TAPTAPDEMO_5_32_API USkillNodeManager : public UObject
 {
 	GENERATED_BODY()
+	public:
+	//void NewObject(ESkillNodeType Ty)
 	
 };

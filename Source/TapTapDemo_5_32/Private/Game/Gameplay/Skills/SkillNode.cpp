@@ -3,6 +3,11 @@
 
 #include "Game/Gameplay/Skills/SkillNode.h"
 
+#include "Game/Gameplay/Component/SkillComponent/ExecuteSkillComponent.h"
+#include "Game/Gameplay/Subsytem/Skill/SkillsManagerSubsystem.h"
+
+#include "GameFramework/Actor.h"
+
 
 const FName USkillNode::Tag_SkillComponent = "SkillComponent";
 
@@ -13,6 +18,10 @@ void USkillNode::Initialize(const int32 _HashID, const FSkillNodeInfo& _NodeInfo
 	NodeInfo = _NodeInfo;
 
 	SetDefaultValue();
+
+	SkillsManagerSubsystem = USkillsManagerSubsystem::Get(this);
+
+	checkf(SkillsManagerSubsystem, TEXT("Millenarysnow : SkillNode cant get SkillManagerSubsystem"));
 }
 
 void USkillNode::SetDefaultValue()
@@ -71,8 +80,22 @@ void USkillNode::RemoveChildNode(USkillNode* Node, OnBranchNode Branch)
 
 void USkillNode::Delivery(const AActor* Target)
 {
+	if (!Target) return;
+	
 	if (NodeInfo.NodeType != ESkillNodeType::BranchNode)
 	{
+		if (NodeInfo.NodeType == ESkillNodeType::LoopEndNode)
+		{
+			UExecuteSkillComponent* SkillComponent = Target->FindComponentByTag<UExecuteSkillComponent>(USkillNode::Tag_SkillComponent);
+			if (!SkillComponent) return;
+
+			if (LoopStartNode && SkillComponent->HasLoopCountKey(LoopStartNode->GetHashID()) && SkillComponent->GetLoopCount(LoopStartNode->GetHashID()) > 0)
+			{
+				LoopStartNode->Delivery(Target);
+				return;
+			}
+		}
+
 		for (const auto& Element : ChildNodes)
 		{
 			Element->Trigger(Target);
@@ -80,15 +103,50 @@ void USkillNode::Delivery(const AActor* Target)
 	}
 	else
 	{
-		if (Branch(Target)) BranchTrueNode->Trigger(Target);
-		else BranchFalseNode->Trigger(Target);
+		/*
+		if (Branch(Target))
+		{
+			if (BranchTrueNode)
+				BranchTrueNode->Trigger(Target);
+		}
+		else
+		{
+			if (BranchFalseNode)
+				BranchFalseNode->Trigger(Target);
+		}
+		*/
+
+		for (const auto& Element : ChildNodes)
+		{
+			Element->Trigger(Target);
+		}
 	}
 }
 
 void USkillNode::Trigger(const AActor* Target)
 {
+	if (!SkillsManagerSubsystem->GetCanRun()) return;
+	
 	this->Ability(Target);
+	
+	if (NodeInfo.NodeType == ESkillNodeType::LoopStartNode)
+	{
+		UExecuteSkillComponent* SkillComponent = Target->FindComponentByTag<UExecuteSkillComponent>(USkillNode::Tag_SkillComponent);
+		if (!SkillComponent) return;
+		
+		if (!SkillComponent->HasLoopCountKey(GetHashID()))
+		{
+			SkillComponent->SetLoopCount(GetHashID(), NodeInfo.LoopCount);
+		}
 
+		SkillComponent->DecrementLoopCount(GetHashID());
+
+		if (SkillComponent->GetLoopCount(GetHashID()) == 0)
+		{
+			SkillComponent->DeleteLoopCountKey(GetHashID());
+		}
+	}
+	
 	if (NodeInfo.SwitchTargetType == ESwitchTargetType::Unchanged)
 		Delivery(Target);
 }
@@ -102,8 +160,10 @@ int32 USkillNode::CalculateDelayTime()
 {
 	/**
 	 * 参数节点本身不添加累加延迟
+	 * 如果不是参数节点，就施加累加减少的延迟
 	 */
-	int32 DelayTime = NodeInfo.DelayTime + (GetNodeType() == ESkillNodeType::ParamNode ? 0 : AccumulativeInfo.AccReduceDelayTimeValue);
+	float ReduceDelayTimeValue = std::max(1.0f - AccumulativeInfo.AccReduceDelayTimeValue, 0.0f);
+	int32 DelayTime = (GetNodeType() == ESkillNodeType::ParamNode) ? 0 : ReduceDelayTimeValue * NodeInfo.DelayTime;
 
 	for (const auto& Element : ChildNodes)
 	{
@@ -195,6 +255,21 @@ void USkillNode::SetBranchTrueNode(USkillNode* Node)
 void USkillNode::SetBranchFalseNode(USkillNode* Node)
 {
 	BranchFalseNode = Node;
+}
+
+USkillNode* USkillNode::GetBranchTrueNode()
+{
+	return BranchTrueNode;
+}
+
+USkillNode* USkillNode::GetBranchFalseNode()
+{
+	return BranchFalseNode;
+}
+
+const FSkillNodeInfo& USkillNode::GetNodeInfo() const
+{
+	return NodeInfo;
 }
 
 UExecuteSkillComponent* USkillNode::GetTargetExecuteSkillComponent(const AActor* Target) const

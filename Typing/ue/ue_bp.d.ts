@@ -1838,6 +1838,21 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
+// __TYPE_DECL_START: 4205CCBB454A1F9F82B8EE8E4DBD36F7
+    namespace Engine.Tutorial.SubEditors.TutorialAssets.TutorialAnimationBlueprint {
+        class AnimBlueprintGeneratedMutableData extends UE.AnimBlueprintMutableData {
+            constructor();
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_AnimBlueprintGeneratedMutableData_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
 // __TYPE_DECL_START: 5D77494845BE182F6F80FC90A2B91275
     namespace Engine.Tutorial.SubEditors.TutorialAssets.Character.TutorialTPP_AnimBlueprint {
         class AnimBlueprintGeneratedMutableData extends UE.AnimBlueprintMutableData {
@@ -10521,6 +10536,76 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
+// __TYPE_DECL_START: ASSOCIATION
+    namespace Engine.PythonTypes {
+        class OnActivateInput__PythonCallable extends UE.PythonCallableForDelegate {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): OnActivateInput__PythonCallable;
+            static Load(InName: string): OnActivateInput__PythonCallable;
+        
+            __tid_OnActivateInput__PythonCallable_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: ASSOCIATION
+    namespace Engine.PythonTypes {
+        class OnBuildSpaceActionPressed__PythonCallable extends UE.PythonCallableForDelegate {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): OnBuildSpaceActionPressed__PythonCallable;
+            static Load(InName: string): OnBuildSpaceActionPressed__PythonCallable;
+        
+            __tid_OnBuildSpaceActionPressed__PythonCallable_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: ASSOCIATION
+    namespace Engine.PythonTypes {
+        class OnStreamLoadOver_BP__PythonCallable extends UE.PythonCallableForDelegate {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): OnStreamLoadOver_BP__PythonCallable;
+            static Load(InName: string): OnStreamLoadOver_BP__PythonCallable;
+        
+            __tid_OnStreamLoadOver_BP__PythonCallable_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: ASSOCIATION
+    namespace Engine.PythonTypes {
+        class OnMapChanged__PythonCallable extends UE.PythonCallableForDelegate {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): OnMapChanged__PythonCallable;
+            static Load(InName: string): OnMapChanged__PythonCallable;
+        
+            __tid_OnMapChanged__PythonCallable_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: ASSOCIATION
+    namespace Engine.PythonTypes {
+        class OnGetInOrOutSpaceMap__PythonCallable extends UE.PythonCallableForDelegate {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): OnGetInOrOutSpaceMap__PythonCallable;
+            static Load(InName: string): OnGetInOrOutSpaceMap__PythonCallable;
+        
+            __tid_OnGetInOrOutSpaceMap__PythonCallable_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
 // __TYPE_DECL_START: 39609A434878985EEBF2CE96734F69A8
     namespace Game.Game.GameMap.Blueprint.Enemy.BT_Task.BTT_FindPatrolLocation {
         class BTT_FindPatrolLocation_C extends UE.BTTask_BlueprintBase {
@@ -10556,7 +10641,7 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: 1FFFA7C64541F17E110D8CB33B987D83
+// __TYPE_DECL_START: E77E2F7C44FF4A613BD0CB8CD222F290
     namespace Game.Game.GameMap.Blueprint.Enemy.BT_Task.BTT_MeleeAttack {
         class BTT_MeleeAttack_C extends UE.BTTask_BlueprintBase {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
@@ -10566,29 +10651,6 @@ declare module "ue" {
             static Load(InName: string): BTT_MeleeAttack_C;
         
             __tid_BTT_MeleeAttack_C_0__: boolean;
-        }
-        
-    }
-
-// __TYPE_DECL_END
-// __TYPE_DECL_START: 010071094D048908474AB2968EBD3A23
-    namespace Game.Debug.Test.Test {
-        class Test_C extends UE.Actor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            Spline: UE.SplineComponent;
-            SplineMesh: UE.SplineMeshComponent;
-            Sphere: UE.SphereComponent;
-            DefaultSceneRoot: UE.SceneComponent;
-            ["Gameplay Effect Class"]: UE.Class;
-            Sound: UE.SoundBase;
-            BndEvt__Test_Sphere_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature(OverlappedComponent: $Nullable<UE.PrimitiveComponent>, OtherActor: $Nullable<UE.Actor>, OtherComp: $Nullable<UE.PrimitiveComponent>, OtherBodyIndex: number, bFromSweep: boolean, SweepResult: UE.HitResult) : void;
-            ExecuteUbergraph_Test(EntryPoint: number) : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): Test_C;
-            static Load(InName: string): Test_C;
-        
-            __tid_Test_C_0__: boolean;
         }
         
     }
@@ -10616,7 +10678,7 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: 30D0CFC74C4BB53319E491803C2A6A19
+// __TYPE_DECL_START: 4A01B96B4706134486A166BBA265F47A
     namespace Game.Game.GameMap.Blueprint.Player.BP_PC {
         class BP_PC_C extends UE.SuperPlayerController {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
@@ -10661,7 +10723,7 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: D2DA3439420C8B3FC5D3EBBBC560E252
+// __TYPE_DECL_START: D22EE48B4134E5A81804AE844E65FF42
     namespace Game.Game.GameMap.Blueprint.Enemy.BP_BugEgg.BP_BugEgg {
         class BP_BugEgg_C extends UE.Game.Game.GameMap.Blueprint.Characters.BP_EnemyBase.BP_EnemyBase_C {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
@@ -10749,20 +10811,6 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: F2BF794046C0194D0E9621B333221174
-    namespace Game.Debug.Test.NewWidgetBlueprint {
-        class NewWidgetBlueprint_C extends UE.UserWidget {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): NewWidgetBlueprint_C;
-            static Load(InName: string): NewWidgetBlueprint_C;
-        
-            __tid_NewWidgetBlueprint_C_0__: boolean;
-        }
-        
-    }
-
-// __TYPE_DECL_END
 // __TYPE_DECL_START: 419F39A741E5AB388541EE9F947FCC6F
     namespace Game.Debug.Tool.EWB_Tool1 {
         class EWB_Tool1_C extends UE.EditorUtilityWidget {
@@ -10814,7 +10862,7 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: DC4EC58E4B4B21B457C3BAAD46D79DA7
+// __TYPE_DECL_START: 5E66FCE24FDCE2EBFC606E849F8FAFA4
     namespace Game.Game.GameMap.Blueprint.Enemy.BT_Decorator.BTD_IsAtTarget {
         class BTD_IsAtTarget_C extends UE.BTDecorator_BlueprintBase {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
@@ -10848,7 +10896,7 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: 72C9BE5940E6476B74DE11AE504861BD
+// __TYPE_DECL_START: 0C84BE3F4252238AD4EDABBF2983D5CC
     namespace Game.Game.GameMap.Blueprint.Characters.Protagonist.BP_PlayerCharacter {
         class BP_PlayerCharacter_C extends UE.PlayerCharacter {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
@@ -10881,31 +10929,7 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: 156C24F84F80C486B77CDC8A959DCF55
-    namespace Game.Game.GameMap.Blueprint.Enemy.BP_Enemy {
-        class BP_Enemy_C extends UE.Character {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            DataTableName: string;
-            DataTable: UE.Game.Game.GameMap.DataAsset.DT.S_Enemy.S_Enemy;
-            ["Key Name"]: string;
-            ExecuteUbergraph_BP_Enemy(EntryPoint: number) : void;
-            InitBlackBoardValue(BlackBoard: $Nullable<UE.BlackboardComponent>, DataTabel: UE.Game.Game.GameMap.DataAsset.DT.S_Enemy.S_Enemy) : void;
-            /*
-             *Event when play begins for this actor.
-             */
-            ReceiveBeginPlay() : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): BP_Enemy_C;
-            static Load(InName: string): BP_Enemy_C;
-        
-            __tid_BP_Enemy_C_0__: boolean;
-        }
-        
-    }
-
-// __TYPE_DECL_END
-// __TYPE_DECL_START: 78AFA23D4711C294DC8BCDB8383102F6
+// __TYPE_DECL_START: DA1777BB4C4947D19EAB6F9FFA41D37C
     namespace Game.Game.GameMap.Blueprint.Enemy.BP_BugEggShooter.BP_BugEggShooter {
         class BP_BugEggShooter_C extends UE.Game.Game.GameMap.Blueprint.Characters.BP_EnemyBase.BP_EnemyBase_C {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
@@ -10966,21 +10990,7 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: 6718E7A64AA394F89A591BB97B5FC054
-    namespace Game.Debug.Test.NewBlueprint1 {
-        class NewBlueprint1_C extends UE.GameplayEffect {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): NewBlueprint1_C;
-            static Load(InName: string): NewBlueprint1_C;
-        
-            __tid_NewBlueprint1_C_0__: boolean;
-        }
-        
-    }
-
-// __TYPE_DECL_END
-// __TYPE_DECL_START: 58791022495DFAA737C52596AE93B492
+// __TYPE_DECL_START: BEE3BA004513FC012C601481D3914281
     namespace Game.Game.GameMap.Blueprint.Characters.BP_EnemyBase {
         class BP_EnemyBase_C extends UE.EnemyCharacter {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
@@ -10995,6 +11005,10 @@ declare module "ue" {
             ExecuteUbergraph_BP_EnemyBase(EntryPoint: number) : void;
             InitBlackBoardValue(BlackBoard: $Nullable<UE.BlackboardComponent>, DataTabel: UE.Game.Game.GameMap.DataAsset.DT.S_Enemy.S_Enemy) : void;
             /*
+             *为true就是进入BuildSpace，需要暂停，为false就是解除暂停
+             */
+            OnStop_BP(getin: boolean) : void;
+            /*
              *Event when play begins for this actor.
              */
             ReceiveBeginPlay() : void;
@@ -11003,27 +11017,6 @@ declare module "ue" {
             static Load(InName: string): BP_EnemyBase_C;
         
             __tid_BP_EnemyBase_C_0__: boolean;
-        }
-        
-    }
-
-// __TYPE_DECL_END
-// __TYPE_DECL_START: E9A424AF4F59D02B833E988A70E4EFAC
-    namespace Game.Debug.Test.TestActor {
-        class TestActor_C extends UE.Actor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            DefaultSceneRoot: UE.SceneComponent;
-            ExecuteUbergraph_TestActor(EntryPoint: number) : void;
-            /*
-             *Event when play begins for this actor.
-             */
-            ReceiveBeginPlay() : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): TestActor_C;
-            static Load(InName: string): TestActor_C;
-        
-            __tid_TestActor_C_0__: boolean;
         }
         
     }
@@ -11044,7 +11037,7 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: 257FA4864CA02D98A6B7A8BD2986B9BB
+// __TYPE_DECL_START: F177108A4F75ABAD48DA1CB0E99BBF59
     namespace Game.Game.GameMap.Blueprint.Gas.GE.BP_EnemyDefaultAttack {
         class BP_EnemyDefaultAttack_C extends UE.GameplayEffect {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
@@ -11058,11 +11051,15 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: 6E679D5F4C3DF47BD504E2BAF98AB878
+// __TYPE_DECL_START: 8C986CCC47039341F0CBA3A00E0F2945
     namespace Game.Game.GameMap.Blueprint.Enemy.BP_BugEggJumper.BP_BugEggJumper {
         class BP_BugEggJumper_C extends UE.Game.Game.GameMap.Blueprint.Characters.BP_EnemyBase.BP_EnemyBase_C {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
             UberGraphFrame: UE.PointerToUberGraphFrame;
+            OnLandedPosition: UE.SceneComponent;
+            OnJumperLandedComponent: UE.Game.Game.GameMap.Blueprint.Enemy.BP_BugEggJumper.BT_OnJumperLandedComponent.BT_OnJumperLandedComponent_C;
+            Attack: UE.SphereComponent;
+            BndEvt__BP_BugEggJumper_Attack_K2Node_ComponentBoundEvent_1_ComponentBeginOverlapSignature__DelegateSignature(OverlappedComponent: $Nullable<UE.PrimitiveComponent>, OtherActor: $Nullable<UE.Actor>, OtherComp: $Nullable<UE.PrimitiveComponent>, OtherBodyIndex: number, bFromSweep: boolean, SweepResult: UE.HitResult) : void;
             ExecuteUbergraph_BP_BugEggJumper(EntryPoint: number) : void;
             /*
              *Event when play begins for this actor.
@@ -11102,7 +11099,7 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: FD625FE149EA0D2708F02F98379CDAC7
+// __TYPE_DECL_START: A3773DE44540FDE3DA23CC9157CCCD9E
     namespace Game.Game.GameMap.Blueprint.Enemy.BT_Service.BTS_DiscreteJump {
         class BTS_DiscreteJump_C extends UE.BTService_BlueprintBase {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
@@ -11111,6 +11108,10 @@ declare module "ue" {
             IntervalRandomOffset: number;
             JumpTime: number;
             bShowDebug: boolean;
+            JumpEffect: UE.NiagaraSystem;
+            EffectDuration: number;
+            OnLandedDispatcher: $MulticastDelegate<() => void>;
+            OnLandedDispatcher__DelegateSignature() : void;
             ReceiveActivationAI(OwnerController: $Nullable<UE.AIController>, ControlledPawn: $Nullable<UE.Pawn>) : void;
             ReceiveDeactivationAI(OwnerController: $Nullable<UE.AIController>, ControlledPawn: $Nullable<UE.Pawn>) : void;
             ReceiveTickAI(OwnerController: $Nullable<UE.AIController>, ControlledPawn: $Nullable<UE.Pawn>, DeltaSeconds: number) : void;
@@ -11119,33 +11120,6 @@ declare module "ue" {
             static Load(InName: string): BTS_DiscreteJump_C;
         
             __tid_BTS_DiscreteJump_C_0__: boolean;
-        }
-        
-    }
-
-// __TYPE_DECL_END
-// __TYPE_DECL_START: 3205546F4B03EB70ED13E98C7A62AD57
-    namespace Game.Debug.Test.TestSpatialPathFinding {
-        class TestSpatialPathFinding_C extends UE.Pawn {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            SpatialPathFinding: UE.SpatialPathFinding;
-            SphereMesh: UE.StaticMeshComponent;
-            Sphere: UE.SphereComponent;
-            FloatingPawnMovement: UE.FloatingPawnMovement;
-            DefaultSceneRoot: UE.SceneComponent;
-            Target: UE.Actor;
-            Speed: UE.Vector;
-            ExecuteUbergraph_TestSpatialPathFinding(EntryPoint: number) : void;
-            /*
-             *Event called every frame, if ticking is enabled
-             */
-            ReceiveTick(DeltaSeconds: number) : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): TestSpatialPathFinding_C;
-            static Load(InName: string): TestSpatialPathFinding_C;
-        
-            __tid_TestSpatialPathFinding_C_0__: boolean;
         }
         
     }
@@ -11180,24 +11154,36 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: C946D81042A4CC1B71D072A988BF77AB
+// __TYPE_DECL_START: BAF5B97F459BE19F42213D8132F95FAB
     namespace Game.Game.GameMap.Blueprint.Actor.BP_SkillNodeActor {
         class BP_SkillNodeActor_C extends UE.SkillNodeActor {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
             UberGraphFrame: UE.PointerToUberGraphFrame;
-            Sphere2: UE.SphereComponent;
-            Connect3: UE.SceneComponent;
-            Sphere1: UE.SphereComponent;
-            Sphere: UE.SphereComponent;
-            Connect1: UE.SceneComponent;
             Connect2: UE.SceneComponent;
-            Cube: UE.StaticMeshComponent;
-            NeedUpdate: boolean;
+            Connect1: UE.SceneComponent;
+            Sphere2: UE.SphereComponent;
+            Sphere1: UE.SphereComponent;
+            LocalMaterial: TArray<UE.MaterialInterface>;
+            isStart: boolean;
+            ["Start Type"]: UE.EStartNodeType;
+            ["New Mesh"]: TSoftObjectPtr<UE.StaticMesh>;
             ExecuteUbergraph_BP_SkillNodeActor(EntryPoint: number) : void;
             /*
-             *Event called every frame, if ticking is enabled
+             *TODO::
              */
-            ReceiveTick(DeltaSeconds: number) : void;
+            Intial() : void;
+            MouseTouch(Touch: boolean) : void;
+            OnLoaded_98DC9A6F4EA9C9E49D11059F50523AE4(Loaded: $Nullable<UE.Object>) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            SetSelectState(Selecting: boolean) : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
             static StaticClass(): Class;
             static Find(OrigInName: string, Outer?: Object): BP_SkillNodeActor_C;
             static Load(InName: string): BP_SkillNodeActor_C;
@@ -11208,7 +11194,7 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: 646211B145CC9F9CEE288AB0E15083E4
+// __TYPE_DECL_START: B3CB88B94132B2E9B94BAAA8896B7B0C
     namespace Game.Game.GameMap.Blueprint.Actor.BP_VisSplineActor {
         class BP_VisSplineActor_C extends UE.SplineVisualizeActor {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
@@ -11219,7 +11205,6 @@ declare module "ue" {
             Node3: UE.Game.Game.GameMap.Blueprint.Actor.BP_SkillNodeActor.BP_SkillNodeActor_C;
             Node4: UE.Game.Game.GameMap.Blueprint.Actor.BP_SkillNodeActor.BP_SkillNodeActor_C;
             ExecuteUbergraph_BP_VisSplineActor(EntryPoint: number) : void;
-            InpActEvt_F_K2Node_InputDebugKeyEvent_0(Key: UE.Key, ActionValue: UE.InputActionValue) : void;
             /*
              *Event when play begins for this actor.
              */
@@ -11480,20 +11465,12 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: 282C6DC94473C1C6FF413AA993DAEC70
+// __TYPE_DECL_START: 277323F84095C2F00DAB418DB7CE2135
     namespace Game.Game.GameMap.Blueprint.UMG.WB_Setting {
         class WB_Setting_C extends UE.SettingUserWidget {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            AddCameraLagSpeed_Bt: UE.Button;
-            CameraLagSpeed_Text: UE.TextBlock;
             CameraLagSpeed_Text_1: UE.TextBlock;
-            Exit_Button: UE.Button;
-            Menu_Button: UE.Button;
-            Option_Button: UE.Button;
-            ReduceCameraLagSpeed_Bt: UE.Button;
-            Return_Button: UE.Button;
-            Slider_3: UE.Slider;
-            Slider_4: UE.Slider;
+            CameraLagSpeed_Text_3: UE.TextBlock;
             TextBlock_152: UE.TextBlock;
             static StaticClass(): Class;
             static Find(OrigInName: string, Outer?: Object): WB_Setting_C;
@@ -11576,156 +11553,6 @@ declare module "ue" {
             static Load(InName: string): WB_Window_C;
         
             __tid_WB_Window_C_0__: boolean;
-        }
-        
-    }
-
-// __TYPE_DECL_END
-// __TYPE_DECL_START: 3589DF8E483F2B768819C498714A3D4F
-    namespace Game.Debug.StreamLoad.DebugGM {
-        class DebugGM_C extends UE.GameModeBase {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            DefaultSceneRoot: UE.SceneComponent;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): DebugGM_C;
-            static Load(InName: string): DebugGM_C;
-        
-            __tid_DebugGM_C_0__: boolean;
-        }
-        
-    }
-
-// __TYPE_DECL_END
-// __TYPE_DECL_START: F149802A4E5CD40581DD9389C49BE6A6
-    namespace Game.Debug.Test.SplineNode {
-        class SplineNode_C extends UE.SkillNodeActor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            Sphere1: UE.StaticMeshComponent;
-            Sphere: UE.StaticMeshComponent;
-            DefaultSceneRoot: UE.SceneComponent;
-            Condition: boolean;
-            Condition_0: boolean;
-            ExecuteUbergraph_SplineNode(EntryPoint: number) : void;
-            /*
-             *Event when play begins for this actor.
-             */
-            ReceiveBeginPlay() : void;
-            /*
-             *Event called every frame, if ticking is enabled
-             */
-            ReceiveTick(DeltaSeconds: number) : void;
-            Update() : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): SplineNode_C;
-            static Load(InName: string): SplineNode_C;
-        
-            __tid_SplineNode_C_0__: boolean;
-        }
-        
-    }
-
-// __TYPE_DECL_END
-// __TYPE_DECL_START: 45F83B0A48F0F065EFDAE88CCC8048AC
-    namespace Game.Debug.Test.sPLINEmESH {
-        class sPLINEmESH_C extends UE.Actor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            SplineMesh: UE.SplineMeshComponent;
-            DefaultSceneRoot: UE.SceneComponent;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): sPLINEmESH_C;
-            static Load(InName: string): sPLINEmESH_C;
-        
-            __tid_sPLINEmESH_C_0__: boolean;
-        }
-        
-    }
-
-// __TYPE_DECL_END
-// __TYPE_DECL_START: 5A40315A48D33E72336891BF0828BCAA
-    namespace Game.Debug.Test.NewWidgetBlueprint1 {
-        class NewWidgetBlueprint1_C extends UE.UserWidget {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            Slider_27: UE.Slider;
-            /*
-             *Called after the underlying slate widget is constructed.  Depending on how the slate object is used
-             *this event may be called multiple times due to adding and removing from the hierarchy.
-             *If you need a true called-once-when-created event, use OnInitialized.
-             */
-            Construct() : void;
-            ExecuteUbergraph_NewWidgetBlueprint1(EntryPoint: number) : void;
-            P(Value: number) : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): NewWidgetBlueprint1_C;
-            static Load(InName: string): NewWidgetBlueprint1_C;
-        
-            __tid_NewWidgetBlueprint1_C_0__: boolean;
-        }
-        
-    }
-
-// __TYPE_DECL_END
-// __TYPE_DECL_START: 24CDBD1D4EF4F662DE5B88AFFC1502A0
-    namespace Game.Debug.Test.Connect {
-        class Connect_C extends UE.Actor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            Billboard: UE.BillboardComponent;
-            DefaultSceneRoot: UE.SceneComponent;
-            ACtorOnce: UE.Game.Debug.Test.SplineNode.SplineNode_C;
-            ACtorTwo: UE.Game.Debug.Test.SplineNode.SplineNode_C;
-            Condition: boolean;
-            NewVar: number;
-            ExecuteUbergraph_Connect(EntryPoint: number) : void;
-            InpActEvt_One_K2Node_InputDebugKeyEvent_0(Key: UE.Key, ActionValue: UE.InputActionValue) : void;
-            /*
-             *Event when play begins for this actor.
-             */
-            ReceiveBeginPlay() : void;
-            /*
-             *Event called every frame, if ticking is enabled
-             */
-            ReceiveTick(DeltaSeconds: number) : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): Connect_C;
-            static Load(InName: string): Connect_C;
-        
-            __tid_Connect_C_0__: boolean;
-        }
-        
-    }
-
-// __TYPE_DECL_END
-// __TYPE_DECL_START: E6A3BD824579EDD0867B96980F55F623
-    namespace Game.Debug.Test.BPSplineMeshTest {
-        class BPSplineMeshTest_C extends UE.Actor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            DefaultSceneRoot: UE.SceneComponent;
-            ExecuteUbergraph_BPSplineMeshTest(EntryPoint: number) : void;
-            Spawn() : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): BPSplineMeshTest_C;
-            static Load(InName: string): BPSplineMeshTest_C;
-        
-            __tid_BPSplineMeshTest_C_0__: boolean;
-        }
-        
-    }
-
-// __TYPE_DECL_END
-// __TYPE_DECL_START: B16832A143EC2A282A9309824DB99E63
-    namespace Game.Debug.Test.BP_SplineVisualActor {
-        class BP_SplineVisualActor_C extends UE.SplineVisualizeActor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            Billboard: UE.BillboardComponent;
-            DefaultSceneRoot: UE.SceneComponent;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): BP_SplineVisualActor_C;
-            static Load(InName: string): BP_SplineVisualActor_C;
-        
-            __tid_BP_SplineVisualActor_C_0__: boolean;
         }
         
     }
@@ -13977,27 +13804,6 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: ASSOCIATION
-    namespace Game.Game.GameMap.Maps.StreamManager {
-        class StreamManager_C extends UE.LevelScriptActor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            ExecuteUbergraph_StreamManager(EntryPoint: number) : void;
-            InpActEvt_Two_K2Node_InputDebugKeyEvent_0(Key: UE.Key, ActionValue: UE.InputActionValue) : void;
-            /*
-             *Event when play begins for this actor.
-             */
-            ReceiveBeginPlay() : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): StreamManager_C;
-            static Load(InName: string): StreamManager_C;
-        
-            __tid_StreamManager_C_0__: boolean;
-        }
-        
-    }
-
-// __TYPE_DECL_END
 // __TYPE_DECL_START: 7FAAAE3D4F986CA9DD87E9AC245FD35A
     namespace Game.Game.GameMap.Blueprint.Enemy.BT_Task.BTT_SetTargetActor {
         class BTT_SetTargetActor_C extends UE.BTTask_BlueprintBase {
@@ -14013,12 +13819,13 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: 0B6F5C7F4E88C55DD3108D83F5798254
+// __TYPE_DECL_START: DECD585B40538D2C10896A89D5D780DD
     namespace Game.Game.GameMap.Blueprint.Enemy.BP_BugEggCopilot.BP_BugEggCopilot {
         class BP_BugEggCopilot_C extends UE.Game.Game.GameMap.Blueprint.Characters.BP_EnemyBase.BP_EnemyBase_C {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
             UberGraphFrame: UE.PointerToUberGraphFrame;
             SpatialPathFinding: UE.SpatialPathFinding;
+            MT: UE.MaterialInstanceDynamic;
             ExecuteUbergraph_BP_BugEggCopilot(EntryPoint: number) : void;
             /*
              *Event when play begins for this actor.
@@ -14069,28 +13876,7 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: ASSOCIATION
-    namespace Game.Debug.Test.ChuckTestMap {
-        class ChuckTestMap_C extends UE.LevelScriptActor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            ["Trace Channel"]: UE.ETraceTypeQuery;
-            ExecuteUbergraph_ChuckTestMap(EntryPoint: number) : void;
-            /*
-             *Event when play begins for this actor.
-             */
-            ReceiveBeginPlay() : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): ChuckTestMap_C;
-            static Load(InName: string): ChuckTestMap_C;
-        
-            __tid_ChuckTestMap_C_0__: boolean;
-        }
-        
-    }
-
-// __TYPE_DECL_END
-// __TYPE_DECL_START: 200922DF408E1CFAA29B659BCF695E4D
+// __TYPE_DECL_START: 105E630645DD42F267F2D2AC3246C837
     namespace Game.Game.GameMap.Blueprint.Enemy.BT_Task.BTT_FlyToTarget {
         class BTT_FlyToTarget_C extends UE.BTTask_BlueprintBase {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
@@ -14100,6 +13886,8 @@ declare module "ue" {
             RotationInterpSpeed: number;
             bShowDebug: boolean;
             MinFlightHeight: number;
+            StartTime: UE.BlackboardKeySelector;
+            BaseHeight: UE.BlackboardKeySelector;
             ReceiveExecuteAI(OwnerController: $Nullable<UE.AIController>, ControlledPawn: $Nullable<UE.Pawn>) : void;
             ReceiveTickAI(OwnerController: $Nullable<UE.AIController>, ControlledPawn: $Nullable<UE.Pawn>, DeltaSeconds: number) : void;
             static StaticClass(): Class;
@@ -14154,30 +13942,7 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: 28860AF647B2C5E3BE9B658CD470DF2C
-    namespace Game.Debug.StreamLoad.EQSTestACtor {
-        class EQSTestACtor_C extends UE.Actor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            DefaultSceneRoot: UE.SceneComponent;
-            ExecuteUbergraph_EQSTestACtor(EntryPoint: number) : void;
-            Find() : void;
-            ["OnQueryFinishedEvent_事件"](QueryInstance: $Nullable<UE.EnvQueryInstanceBlueprintWrapper>, QueryStatus: UE.EEnvQueryStatus) : void;
-            /*
-             *Event when play begins for this actor.
-             */
-            ReceiveBeginPlay() : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): EQSTestACtor_C;
-            static Load(InName: string): EQSTestACtor_C;
-        
-            __tid_EQSTestACtor_C_0__: boolean;
-        }
-        
-    }
-
-// __TYPE_DECL_END
-// __TYPE_DECL_START: 8772AC5D49734A776240A1A179032497
+// __TYPE_DECL_START: 4505A96F4D139F75ADECC49ED699CBEE
     namespace Game.Game.GameMap.Blueprint.Actor.BP_DialoageTrrigger {
         class BP_DialoageTrrigger_C extends UE.Actor {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
@@ -14185,6 +13950,7 @@ declare module "ue" {
             Sphere: UE.SphereComponent;
             DefaultSceneRoot: UE.SceneComponent;
             ["Trrigger Tag"]: UE.GameplayTag;
+            AutoDestroy: boolean;
             BndEvt__BP_DialoageTrrigger_Sphere_K2Node_ComponentBoundEvent_0_ComponentBeginOverlapSignature__DelegateSignature(OverlappedComponent: $Nullable<UE.PrimitiveComponent>, OtherActor: $Nullable<UE.Actor>, OtherComp: $Nullable<UE.PrimitiveComponent>, OtherBodyIndex: number, bFromSweep: boolean, SweepResult: UE.HitResult) : void;
             ExecuteUbergraph_BP_DialoageTrrigger(EntryPoint: number) : void;
             static StaticClass(): Class;
@@ -14197,7 +13963,7 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: 6A4543104D52C65B7C6EB599F2986CC0
+// __TYPE_DECL_START: 3CCDBC3242F6782FE703CCAAAFA27D8F
     namespace Game.Game.GameMap.Blueprint.Component.BPC_UITips {
         class BPC_UITips_C extends UE.WidgetComponent {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
@@ -14213,8 +13979,8 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: 72DCD36C4FF1A3FCF840C79E25ED7B9C
-    namespace Game.Game.MenuMap.UMG.WB_Tips {
+// __TYPE_DECL_START: 51739BF843F4ED6EB7321F9BC3AC3247
+    namespace Game.Game.GameMap.Blueprint.UMG.WB_Tips {
         class WB_Tips_C extends UE.UserWidget {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
             static StaticClass(): Class;
@@ -14227,15 +13993,726 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: C48B0A5641C46411E953259D138A0919
-    namespace Game.Debug.StreamLoad.NewBlueprint {
-        class NewBlueprint_C extends UE.EQSTestingPawn {
+// __TYPE_DECL_START: 8E943D9A4CF1B308412A8387E1BB3C1E
+    namespace Game.Game.GameMap.Blueprint.Enemy.BP_EnemyBullet {
+        class BP_EnemyBullet_C extends UE.Actor {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ProjectileMovement: UE.ProjectileMovementComponent;
+            Niagara: UE.NiagaraComponent;
+            Sphere: UE.SphereComponent;
+            Pawn: UE.Actor;
+            Level: number;
+            Time: number;
+            ExecuteUbergraph_BP_EnemyBullet(EntryPoint: number) : void;
+            /*
+             *Event when this actor overlaps another actor, for example a player walking into a trigger.
+             *For events when objects have a blocking collision, for example a player hitting a wall, see 'Hit' events.
+             *@note Components on both this and the other Actor must have bGenerateOverlapEvents set to true to generate overlap events.
+             */
+            ReceiveActorBeginOverlap(OtherActor: $Nullable<UE.Actor>) : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_EnemyBullet_C;
+            static Load(InName: string): BP_EnemyBullet_C;
+        
+            __tid_BP_EnemyBullet_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: E08D4E324DF0CEE7F7C7FC868DB363D2
+    namespace Game.Asset.Mesh.Enemy.AB_BugFly {
+        class AB_BugFly_C extends UE.AnimInstance {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            AnimBlueprintExtension_PropertyAccess: UE.AnimSubsystemInstance;
+            AnimBlueprintExtension_Base: UE.AnimSubsystemInstance;
+            AnimGraphNode_Root: UE.AnimNode_Root;
+            AnimGraphNode_SequencePlayer: UE.AnimNode_SequencePlayer;
+            AnimGraphNode_StateResult: UE.AnimNode_StateResult;
+            AnimGraphNode_StateMachine: UE.AnimNode_StateMachine;
+            Speed: number;
+            AnimGraph(AnimGraph: $Ref<UE.PoseLink>) : void;
+            /*
+             *Executed when the Animation is updated
+             */
+            BlueprintUpdateAnimation(DeltaTimeX: number) : void;
+            ExecuteUbergraph_AB_BugFly(EntryPoint: number) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): AB_BugFly_C;
+            static Load(InName: string): AB_BugFly_C;
+        
+            __tid_AB_BugFly_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: E08D4E324DF0CEE7F7C7FC868DB363D2
+    namespace Game.Asset.Mesh.Enemy.AB_BugFly {
+        class AnimBlueprintGeneratedConstantData extends UE.AnimBlueprintConstantData {
+            constructor();
+            constructor(__NameProperty_18: string, __BoolProperty_19: boolean, __FloatProperty_20: number, __StructProperty_21: UE.InputScaleBiasClampConstants, __FloatProperty_22: number, __BoolProperty_23: boolean, __EnumProperty_24: UE.EAnimSyncMethod, __ByteProperty_25: UE.EAnimGroupRole, __NameProperty_26: string, __NameProperty_27: string, __IntProperty_28: number, __StructProperty_29: UE.AnimNodeFunctionRef, AnimBlueprintExtension_PropertyAccess: UE.AnimSubsystem_PropertyAccess, AnimBlueprintExtension_Base: UE.AnimSubsystem_Base);
+            __NameProperty_18: string;
+            __BoolProperty_19: boolean;
+            __FloatProperty_20: number;
+            __StructProperty_21: UE.InputScaleBiasClampConstants;
+            __FloatProperty_22: number;
+            __BoolProperty_23: boolean;
+            __EnumProperty_24: UE.EAnimSyncMethod;
+            __ByteProperty_25: UE.EAnimGroupRole;
+            __NameProperty_26: string;
+            __NameProperty_27: string;
+            __IntProperty_28: number;
+            __StructProperty_29: UE.AnimNodeFunctionRef;
+            AnimBlueprintExtension_PropertyAccess: UE.AnimSubsystem_PropertyAccess;
+            AnimBlueprintExtension_Base: UE.AnimSubsystem_Base;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_AnimBlueprintGeneratedConstantData_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: E08D4E324DF0CEE7F7C7FC868DB363D2
+    namespace Game.Asset.Mesh.Enemy.AB_BugFly {
+        class AnimBlueprintGeneratedMutableData extends UE.AnimBlueprintMutableData {
+            constructor();
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_AnimBlueprintGeneratedMutableData_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 5DC61F924A72991361E537A8AD4F4FB0
+    namespace Game.Asset.Mesh.Enemy.AB_RotBug {
+        class AB_RotBug_C extends UE.AnimInstance {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            AnimBlueprintExtension_PropertyAccess: UE.AnimSubsystemInstance;
+            AnimBlueprintExtension_Base: UE.AnimSubsystemInstance;
+            AnimGraphNode_Root: UE.AnimNode_Root;
+            AnimGraphNode_SequencePlayer: UE.AnimNode_SequencePlayer;
+            AnimGraphNode_StateResult: UE.AnimNode_StateResult;
+            AnimGraphNode_StateMachine: UE.AnimNode_StateMachine;
+            Speed: number;
+            AnimGraph(AnimGraph: $Ref<UE.PoseLink>) : void;
+            /*
+             *Executed when the Animation is updated
+             */
+            BlueprintUpdateAnimation(DeltaTimeX: number) : void;
+            ExecuteUbergraph_AB_RotBug(EntryPoint: number) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): AB_RotBug_C;
+            static Load(InName: string): AB_RotBug_C;
+        
+            __tid_AB_RotBug_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 5DC61F924A72991361E537A8AD4F4FB0
+    namespace Game.Asset.Mesh.Enemy.AB_RotBug {
+        class AnimBlueprintGeneratedConstantData extends UE.AnimBlueprintConstantData {
+            constructor();
+            constructor(__NameProperty_18: string, __BoolProperty_19: boolean, __FloatProperty_20: number, __StructProperty_21: UE.InputScaleBiasClampConstants, __FloatProperty_22: number, __BoolProperty_23: boolean, __EnumProperty_24: UE.EAnimSyncMethod, __ByteProperty_25: UE.EAnimGroupRole, __NameProperty_26: string, __NameProperty_27: string, __IntProperty_28: number, __StructProperty_29: UE.AnimNodeFunctionRef, AnimBlueprintExtension_PropertyAccess: UE.AnimSubsystem_PropertyAccess, AnimBlueprintExtension_Base: UE.AnimSubsystem_Base);
+            __NameProperty_18: string;
+            __BoolProperty_19: boolean;
+            __FloatProperty_20: number;
+            __StructProperty_21: UE.InputScaleBiasClampConstants;
+            __FloatProperty_22: number;
+            __BoolProperty_23: boolean;
+            __EnumProperty_24: UE.EAnimSyncMethod;
+            __ByteProperty_25: UE.EAnimGroupRole;
+            __NameProperty_26: string;
+            __NameProperty_27: string;
+            __IntProperty_28: number;
+            __StructProperty_29: UE.AnimNodeFunctionRef;
+            AnimBlueprintExtension_PropertyAccess: UE.AnimSubsystem_PropertyAccess;
+            AnimBlueprintExtension_Base: UE.AnimSubsystem_Base;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_AnimBlueprintGeneratedConstantData_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 5DC61F924A72991361E537A8AD4F4FB0
+    namespace Game.Asset.Mesh.Enemy.AB_RotBug {
+        class AnimBlueprintGeneratedMutableData extends UE.AnimBlueprintMutableData {
+            constructor();
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_AnimBlueprintGeneratedMutableData_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 2482DF7B41684E162DA0A4BA368635D9
+    namespace Game.Game.GameMap.Blueprint.Enemy.BP_EnemyRotateAttack {
+        class BP_EnemyRotateAttack_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            DefaultSceneRoot: UE.SceneComponent;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_EnemyRotateAttack_C;
+            static Load(InName: string): BP_EnemyRotateAttack_C;
+        
+            __tid_BP_EnemyRotateAttack_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 9DA437554239267453FA57AD816D0310
+    namespace Game.Game.GameMap.Blueprint.Dialoage.DE_ShowFirstSkillPos {
+        class DE_ShowFirstSkillPos_C extends UE.DialoageTrriggerEventBase {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ExecuteUbergraph_DE_ShowFirstSkillPos(EntryPoint: number) : void;
+            OnTrriggerBP(PlayerData: $Nullable<UE.PlayerBaseData>) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): DE_ShowFirstSkillPos_C;
+            static Load(InName: string): DE_ShowFirstSkillPos_C;
+        
+            __tid_DE_ShowFirstSkillPos_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 3EBA492547426F16B28C5B81E06EBAAE
+    namespace Game.Game.GameMap.Blueprint.Actor.BP_EnemySpawnArea {
+        class BP_EnemySpawnArea_C extends UE.EnemySpawnArea {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            Cube: UE.StaticMeshComponent;
+            DefaultSceneRoot: UE.SceneComponent;
+            SpawnInterval: number;
+            FlyingHeight: number;
+            MaxEnemyCount: number;
+            SpawnArea: UE.BoxComponent;
+            SpawnRadius: number;
+            ExecuteUbergraph_BP_EnemySpawnArea(EntryPoint: number) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            ReceiveEndPlay(EndPlayReason: UE.EEndPlayReason) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_EnemySpawnArea_C;
+            static Load(InName: string): BP_EnemySpawnArea_C;
+        
+            __tid_BP_EnemySpawnArea_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 24EE71CF4CC82CFBE313A8AE938E3B6D
+    namespace Game.Game.GameMap.Blueprint.Dialoage.DE_StartSpawnEnemy {
+        class DE_StartSpawnEnemy_C extends UE.DialoageTrriggerEventBase {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ExecuteUbergraph_DE_StartSpawnEnemy(EntryPoint: number) : void;
+            OnTrriggerBP(PlayerData: $Nullable<UE.PlayerBaseData>) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): DE_StartSpawnEnemy_C;
+            static Load(InName: string): DE_StartSpawnEnemy_C;
+        
+            __tid_DE_StartSpawnEnemy_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 9F41D763425DFFB5A2419D8D6F41DF69
+    namespace Game.Game.GameMap.Blueprint.Actor.BP_Camera {
+        class BP_Camera_C extends UE.SingleCameraActor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_Camera_C;
+            static Load(InName: string): BP_Camera_C;
+        
+            __tid_BP_Camera_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 133F68A942C2306D5609259ABEEDA4FE
+    namespace Game.Game.GameMap.BP.RainbowCat {
+        class RainbowCat_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            Rainbow1: UE.NiagaraComponent;
+            e: UE.StaticMeshComponent;
+            DefaultSceneRoot: UE.SceneComponent;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): RainbowCat_C;
+            static Load(InName: string): RainbowCat_C;
+        
+            __tid_RainbowCat_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 40FE53D9401E8882ED3DF9B6463AA46B
+    namespace Game.Game.GameMap.Map.light {
+        class light_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            PointLight: UE.PointLightComponent;
+            DefaultSceneRoot: UE.SceneComponent;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): light_C;
+            static Load(InName: string): light_C;
+        
+            __tid_light_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 46C0BB304315A0651601879822026425
+    namespace Game.Game.GameMap.BP.ErrrorBox {
+        class ErrrorBox_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            Box_73E198BD: UE.StaticMeshComponent;
+            DefaultSceneRoot: UE.SceneComponent;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): ErrrorBox_C;
+            static Load(InName: string): ErrrorBox_C;
+        
+            __tid_ErrrorBox_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 9A57B6FD4D7D1417E6619DB11CB7697E
+    namespace Game.Game.GameMap.Blueprint.UMG.WB_SkillNodeDetial {
+        class WB_SkillNodeDetial_C extends UE.SkillNodeWidget {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ShowDetial: UE.WidgetAnimation;
+            tex_BranchValue: UE.TextBlock;
+            tex_BuffTime: UE.TextBlock;
+            tex_BuffValue: UE.TextBlock;
+            Tex_Damage: UE.TextBlock;
+            Tex_Delay: UE.TextBlock;
+            Tex_FirstName: UE.TextBlock;
+            Tex_LoopCount: UE.TextBlock;
+            Tex_OutPinCount: UE.TextBlock;
+            Tex_paramFloatvalue: UE.TextBlock;
+            tex_ParamintValue: UE.TextBlock;
+            Tex_radiu: UE.TextBlock;
+            Tex_Secendname: UE.TextBlock;
+            Vis: boolean;
+            Data: UE.SkillNodeInfo;
+            ActivateDetial() : void;
+            /*
+             *Called after the underlying slate widget is constructed.  Depending on how the slate object is used
+             *this event may be called multiple times due to adding and removing from the hierarchy.
+             *If you need a true called-once-when-created event, use OnInitialized.
+             */
+            Construct() : void;
+            DeactivateDetial() : void;
+            ExecuteUbergraph_WB_SkillNodeDetial(EntryPoint: number) : void;
+            initial(Detial: UE.NodeSaveData) : void;
+            Overlay_29_Event(Overlay_29: $Nullable<UE.Overlay>) : void;
+            SequenceEvent__ENTRYPOINTWB_SkillNodeDetial(Overlay_29: $Nullable<UE.Overlay>) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): WB_SkillNodeDetial_C;
+            static Load(InName: string): WB_SkillNodeDetial_C;
+        
+            __tid_WB_SkillNodeDetial_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 5B3513EA4053EE3C1F4274BD65F76A70
+    namespace Game.Game.GameMap.Blueprint.Dialoage.DE_SpawnDialoageTrrigger {
+        class DE_SpawnDialoageTrrigger_C extends UE.DialoageTrriggerEventBase {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ExecuteUbergraph_DE_SpawnDialoageTrrigger(EntryPoint: number) : void;
+            OnTrriggerBP(PlayerData: $Nullable<UE.PlayerBaseData>) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): DE_SpawnDialoageTrrigger_C;
+            static Load(InName: string): DE_SpawnDialoageTrrigger_C;
+        
+            __tid_DE_SpawnDialoageTrrigger_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 9E26630147B394414DEF82AD88CA9C5B
+    namespace Game.Game.GameMap.Blueprint.Enemy.BP_AttackFX {
+        class BP_AttackFX_C extends UE.ActorComponent {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_AttackFX_C;
+            static Load(InName: string): BP_AttackFX_C;
+        
+            __tid_BP_AttackFX_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 9F27C39C446945155555B195681B3257
+    namespace Game.Game.GameMap.Blueprint.Enemy.BP_HitCameraShake {
+        class BP_HitCameraShake_C extends UE.CameraShakeBase {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_HitCameraShake_C;
+            static Load(InName: string): BP_HitCameraShake_C;
+        
+            __tid_BP_HitCameraShake_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: CC0F8F6142EBD7DE19F938ACD7CD8CCB
+    namespace Game.Game.GameMap.Blueprint.Enemy.BP_BugEggJumper.BT_OnJumperLandedComponent {
+        class BT_OnJumperLandedComponent_C extends UE.ActorComponent {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            Niagara: UE.NiagaraSystem;
+            TargetPositionComp: UE.SceneComponent;
+            OnLanded() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BT_OnJumperLandedComponent_C;
+            static Load(InName: string): BT_OnJumperLandedComponent_C;
+        
+            __tid_BT_OnJumperLandedComponent_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 7AFF084445CE44F8C019B78641674C88
+    namespace Game.Game.GameMap.Blueprint.Actor.BP_DialoageTrriggerStone {
+        class BP_DialoageTrriggerStone_C extends UE.Game.Game.GameMap.Blueprint.Actor.BP_DialoageTrriggerBox.BP_DialoageTrriggerBox_C {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            woodbox: UE.StaticMeshComponent;
+            cs: UE.StaticMeshComponent;
+            qqpenguin: UE.StaticMeshComponent;
+            Stone_06: UE.StaticMeshComponent;
+            ExecuteUbergraph_BP_DialoageTrriggerStone(EntryPoint: number) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_DialoageTrriggerStone_C;
+            static Load(InName: string): BP_DialoageTrriggerStone_C;
+        
+            __tid_BP_DialoageTrriggerStone_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 9D946D1141C3FDA1C5E460B9F8C2F5A1
+    namespace Game.Game.GameMap.Blueprint.Actor.BP_DialoageTrriggerBox {
+        class BP_DialoageTrriggerBox_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            Box: UE.BoxComponent;
+            DefaultSceneRoot: UE.SceneComponent;
+            ["Trrigger Tag"]: UE.GameplayTag;
+            AutoDestroy: boolean;
+            BndEvt__BP_DialoageTrriggerAirWall_Box_K2Node_ComponentBoundEvent_1_ComponentBeginOverlapSignature__DelegateSignature(OverlappedComponent: $Nullable<UE.PrimitiveComponent>, OtherActor: $Nullable<UE.Actor>, OtherComp: $Nullable<UE.PrimitiveComponent>, OtherBodyIndex: number, bFromSweep: boolean, SweepResult: UE.HitResult) : void;
+            ExecuteUbergraph_BP_DialoageTrriggerBox(EntryPoint: number) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_DialoageTrriggerBox_C;
+            static Load(InName: string): BP_DialoageTrriggerBox_C;
+        
+            __tid_BP_DialoageTrriggerBox_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: E84040E9465AFF6944563CA7FB26959A
+    namespace Game.Game.GameMap.Blueprint.Actor.BP_DialoageTrriggerAirWall {
+        class BP_DialoageTrriggerAirWall_C extends UE.Game.Game.GameMap.Blueprint.Actor.BP_DialoageTrriggerBox.BP_DialoageTrriggerBox_C {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            Plane: UE.StaticMeshComponent;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_DialoageTrriggerAirWall_C;
+            static Load(InName: string): BP_DialoageTrriggerAirWall_C;
+        
+            __tid_BP_DialoageTrriggerAirWall_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 68202DF7445731E8A98D42A7F4926E88
+    namespace Game.Game.GameMap.Blueprint.Dialoage.DE_SpawnStone4 {
+        class DE_SpawnStone4_C extends UE.DialoageTrriggerEventBase {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ExecuteUbergraph_DE_SpawnStone4(EntryPoint: number) : void;
+            OnTrriggerBP(PlayerData: $Nullable<UE.PlayerBaseData>) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): DE_SpawnStone4_C;
+            static Load(InName: string): DE_SpawnStone4_C;
+        
+            __tid_DE_SpawnStone4_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: C5274D2443A2639EBD378C87675846F1
+    namespace Game.Game.GameMap.Blueprint.Dialoage.DE_SpawnStone3 {
+        class DE_SpawnStone3_C extends UE.DialoageTrriggerEventBase {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ExecuteUbergraph_DE_SpawnStone3(EntryPoint: number) : void;
+            OnTrriggerBP(PlayerData: $Nullable<UE.PlayerBaseData>) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): DE_SpawnStone3_C;
+            static Load(InName: string): DE_SpawnStone3_C;
+        
+            __tid_DE_SpawnStone3_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 8AAFDACE44515E115B1F8BB5D1844975
+    namespace Game.Game.GameMap.Blueprint.Dialoage.DE_SpawnStone2 {
+        class DE_SpawnStone2_C extends UE.DialoageTrriggerEventBase {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ExecuteUbergraph_DE_SpawnStone2(EntryPoint: number) : void;
+            OnTrriggerBP(PlayerData: $Nullable<UE.PlayerBaseData>) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): DE_SpawnStone2_C;
+            static Load(InName: string): DE_SpawnStone2_C;
+        
+            __tid_DE_SpawnStone2_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 2123DE1D43142891168056BA0A7B816F
+    namespace Game.Game.GameMap.Blueprint.Dialoage.DE_SpawnStone1 {
+        class DE_SpawnStone1_C extends UE.DialoageTrriggerEventBase {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ExecuteUbergraph_DE_SpawnStone1(EntryPoint: number) : void;
+            OnTrriggerBP(PlayerData: $Nullable<UE.PlayerBaseData>) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): DE_SpawnStone1_C;
+            static Load(InName: string): DE_SpawnStone1_C;
+        
+            __tid_DE_SpawnStone1_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: C64774CE4925691115D67F91309F0BAD
+    namespace Game.Game.GameMap.Blueprint.Dialoage.DE_SpawnStone {
+        class DE_SpawnStone_C extends UE.DialoageTrriggerEventBase {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ExecuteUbergraph_DE_SpawnStone(EntryPoint: number) : void;
+            OnTrriggerBP(PlayerData: $Nullable<UE.PlayerBaseData>) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): DE_SpawnStone_C;
+            static Load(InName: string): DE_SpawnStone_C;
+        
+            __tid_DE_SpawnStone_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 24C578B94710AD03EB6EBA80BC07182E
+    namespace Game.Game.GameMap.Blueprint.Enemy.BT_Task.BTT_BeforeAttack {
+        class BTT_BeforeAttack_C extends UE.BTTask_BlueprintBase {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ExecuteUbergraph_BTT_BeforeAttack(EntryPoint: number) : void;
+            /*
+             *Alternative AI version of ReceiveAbort
+             *    @see ReceiveAbort for more details
+             *    @Note that if both generic and AI event versions are implemented only the more
+             *    suitable one will be called, meaning the AI version if called for AI, generic one otherwise
+             */
+            ReceiveAbortAI(OwnerController: $Nullable<UE.AIController>, ControlledPawn: $Nullable<UE.Pawn>) : void;
+            /*
+             *Alternative AI version of ReceiveExecute
+             *     @see ReceiveExecute for more details
+             *    @Note that if both generic and AI event versions are implemented only the more
+             *    suitable one will be called, meaning the AI version if called for AI, generic one otherwise
+             */
+            ReceiveExecuteAI(OwnerController: $Nullable<UE.AIController>, ControlledPawn: $Nullable<UE.Pawn>) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BTT_BeforeAttack_C;
+            static Load(InName: string): BTT_BeforeAttack_C;
+        
+            __tid_BTT_BeforeAttack_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: ASSOCIATION
+    namespace Game.Debug.Test.NewTest {
+        class NewTest_C extends UE.LevelScriptActor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): NewTest_C;
+            static Load(InName: string): NewTest_C;
+        
+            __tid_NewTest_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 682F794C4781C7CC445E599624AF9F17
+    namespace Game.Game.GameMap.Blueprint.Enemy.BT_Task.BTT_JumpAndMove {
+        class BTT_JumpAndMove_C extends UE.BTTask_BlueprintBase {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            TargetActor: UE.BlackboardKeySelector;
+            JumpMaxHeight: UE.BlackboardKeySelector;
+            DownwardForceMultiplier: number;
+            AirMoveSpeed: number;
+            bShowDebug: boolean;
+            JumpEffect: UE.NiagaraSystem;
+            JumpInterval: number;
+            JumpIntervalOffset: number;
+            ReceiveExecuteAI(OwnerController: $Nullable<UE.AIController>, ControlledPawn: $Nullable<UE.Pawn>) : void;
+            ReceiveTickAI(OwnerController: $Nullable<UE.AIController>, ControlledPawn: $Nullable<UE.Pawn>, DeltaSeconds: number) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BTT_JumpAndMove_C;
+            static Load(InName: string): BTT_JumpAndMove_C;
+        
+            __tid_BTT_JumpAndMove_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: ASSOCIATION
+    namespace Game.Game.GameMap.Maps.StreamManager {
+        class StreamManager_C extends UE.LevelScriptActor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ExecuteUbergraph_StreamManager(EntryPoint: number) : void;
+            InpActEvt_K_K2Node_InputDebugKeyEvent_0(Key: UE.Key, ActionValue: UE.InputActionValue) : void;
+            OnLoad() : void;
+            OnPressed(isInBuildSpace: boolean) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            Temp() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): StreamManager_C;
+            static Load(InName: string): StreamManager_C;
+        
+            __tid_StreamManager_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 693635A942C2E8CA52C4B9981AA3B256
+    namespace Game.Debug.StreamLoad.NewBlueprint {
+        class NewBlueprint_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            DefaultSceneRoot: UE.SceneComponent;
             static StaticClass(): Class;
             static Find(OrigInName: string, Outer?: Object): NewBlueprint_C;
             static Load(InName: string): NewBlueprint_C;
         
             __tid_NewBlueprint_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: D2AD279A4FBE9CD05203F4A77EEA6AA2
+    namespace Game.Game.GameMap.Blueprint.Dialoage.DE_SpawnFirstEnemy {
+        class DE_SpawnFirstEnemy_C extends UE.DialoageTrriggerEventBase {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ExecuteUbergraph_DE_SpawnFirstEnemy(EntryPoint: number) : void;
+            OnTrriggerBP(PlayerData: $Nullable<UE.PlayerBaseData>) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): DE_SpawnFirstEnemy_C;
+            static Load(InName: string): DE_SpawnFirstEnemy_C;
+        
+            __tid_DE_SpawnFirstEnemy_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: E41A7E1C47DA7818DA84058033413571
+    namespace Game.Game.GameMap.Blueprint.Dialoage.DE_EnableInput {
+        class DE_EnableInput_C extends UE.DialoageTrriggerEventBase {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ExecuteUbergraph_DE_EnableInput(EntryPoint: number) : void;
+            OnTrriggerBP(PlayerData: $Nullable<UE.PlayerBaseData>) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): DE_EnableInput_C;
+            static Load(InName: string): DE_EnableInput_C;
+        
+            __tid_DE_EnableInput_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
+// __TYPE_DECL_START: 55EB0FA24C9485F16E7BB09AFD56053A
+    namespace Game.Game.GameMap.Blueprint.Dialoage.DE_DisnableInput {
+        class DE_DisnableInput_C extends UE.DialoageTrriggerEventBase {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ExecuteUbergraph_DE_DisnableInput(EntryPoint: number) : void;
+            OnTrriggerBP(PlayerData: $Nullable<UE.PlayerBaseData>) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): DE_DisnableInput_C;
+            static Load(InName: string): DE_DisnableInput_C;
+        
+            __tid_DE_DisnableInput_C_0__: boolean;
         }
         
     }

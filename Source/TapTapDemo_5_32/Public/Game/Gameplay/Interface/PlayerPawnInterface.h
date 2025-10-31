@@ -7,6 +7,7 @@
 #include "PlayerPawnInterface.generated.h"
 
 DECLARE_DELEGATE_OneParam(FOnInputChanged,bool Activate);
+DECLARE_DELEGATE_OneParam(FOnRotSensitivityChanged,float Sensitivity);
 
 class USpringArmComponent;
 // This class does not need to be modified.
@@ -26,5 +27,5 @@ public:
 	void CallJump();
 
 	virtual FOnInputChanged& GetInputChangedDelegate() = 0;
-	
+	virtual FOnRotSensitivityChanged& GetRotSensitivityChangedDelegate() = 0;
 };

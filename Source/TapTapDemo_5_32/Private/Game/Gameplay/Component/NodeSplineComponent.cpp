@@ -119,7 +119,7 @@ void UNodeSplineComponent::DeactiveSpline()
 		if (ConnectNodeData[0]&&ConnectNodeData[1])
 		{
 			USkillsManagerSubsystem* Skillmanager = USkillsManagerSubsystem::Get(GetWorld());
-			//TODO::Skillmanager->DisconnectNode(ConnectNodeData[0]->GetSkillNode(),ConnectNodeData[1]->GetSkillNode());
+			Skillmanager->DisconnectNode(ConnectNodeData[0]->GetSkillNode(),ConnectNodeData[1]->GetSkillNode());
 			ConnectNodeData[0]->OnlyRemoveSplineData(GetTypeHash(this));
 			ConnectNodeData[1]->OnlyRemoveSplineData(GetTypeHash(this));
 		}

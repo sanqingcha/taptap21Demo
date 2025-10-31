@@ -10,7 +10,11 @@
 #include "SkillNode.generated.h"
 
 
+class USkillsManagerSubsystem;
 class UExecuteSkillComponent;
+class AActor;
+
+
 /**
  * 
  */
@@ -37,6 +41,7 @@ public:
 	virtual void Trigger(const AActor* Target);
 	virtual void Ability(const AActor* Target) { }
 	virtual bool Branch(const AActor* Target);
+	virtual void Start() { }
 
 	template<typename Func>
 	void ForEachChild(Func&& TarFunc) const
@@ -76,6 +81,11 @@ public:
 	void SetBranchTrueNode(USkillNode* Node);
 	void SetBranchFalseNode(USkillNode* Node);
 
+	USkillNode* GetBranchTrueNode();
+	USkillNode* GetBranchFalseNode();
+
+	const FSkillNodeInfo& GetNodeInfo() const;
+
 #pragma endregion
 
 protected:
@@ -89,7 +99,7 @@ protected:
 	USkillNode* LoopStartNode = nullptr;
 
 	UPROPERTY()
-	USkillNode* ParentNode;
+	USkillNode* ParentNode = nullptr;
 
 	UPROPERTY()
 	int32 HashID;
@@ -101,12 +111,15 @@ protected:
 	FAccumulativeInfo AccumulativeInfo;
 
 	UPROPERTY()
-	USkillNode* BranchTrueNode;
+	USkillNode* BranchTrueNode = nullptr;
 
 	UPROPERTY()
-	USkillNode* BranchFalseNode;
+	USkillNode* BranchFalseNode = nullptr;
 	
 	int32 AllDelayTime = 0;
 
 	UExecuteSkillComponent* GetTargetExecuteSkillComponent(const AActor* Target) const;
+
+	UPROPERTY()
+	USkillsManagerSubsystem* SkillsManagerSubsystem = nullptr;
 };

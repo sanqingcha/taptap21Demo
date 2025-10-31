@@ -13,6 +13,7 @@
 #include "Game/Gas/Attribute/AttributeSetBase.h"
 #include "Game/Gameplay/Player/Data/SkillInputAsset.h"
 #include "Game/Gameplay/Subsytem/GISubSystem/MapSteamLoadSystem.h"
+#include "Game/Gameplay/Subsytem/Skill/SkillsRuntimeSubsystem.h"
 
 UPlayerBaseData* ASuperPlayerController::PlayerData_Static = nullptr;
 
@@ -29,6 +30,10 @@ void ASuperPlayerController::BeginPlay()
 	InitialHUD();
 	InitialPawn();
 	intialControl();
+
+	SkillRuntimeSys = GetGameInstance()->GetSubsystem<USkillsRuntimeSubsystem>();
+	check(SkillRuntimeSys);
+	
 }
 
 void ASuperPlayerController::intialControl()
@@ -72,7 +77,7 @@ void ASuperPlayerController::CheckResource()
 	check(MoveAction);
 	check(RotateAction);
 	check(JumpAction);
-	check(ShootAction);
+	check(SkillActionsData);
 }
 
 void ASuperPlayerController::InitialPawn()
@@ -81,6 +86,7 @@ void ASuperPlayerController::InitialPawn()
 	PlayerPawnInterface = Cast<IPlayerPawnInterface> (GetPawn());
 	check(PlayerPawnInterface);
 	PlayerPawnInterface->GetInputChangedDelegate().BindUObject(this,&ASuperPlayerController::OnPlayerInputMappingChanged);
+	PlayerPawnInterface->GetRotSensitivityChangedDelegate().BindUObject(this,&ASuperPlayerController::OnRotSensitivityChanged);
 }
 
 void ASuperPlayerController::OnPlayerInputMappingChanged(bool Activate)
@@ -119,13 +125,13 @@ void ASuperPlayerController::SetupInputComponent()
 		EnhancedInputComp->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ASuperPlayerController::Move_Action);
 		EnhancedInputComp->BindAction(RotateAction, ETriggerEvent::Triggered, this, &ASuperPlayerController::Rotate_Action);
 		EnhancedInputComp->BindAction(JumpAction, ETriggerEvent::Started, this, &ASuperPlayerController::Jump_Action);
-		EnhancedInputComp->BindAction(ShootAction,ETriggerEvent::Started,this,&ASuperPlayerController::Shoot_Action);
+		EnhancedInputComp->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ASuperPlayerController::Jump_Action);
 		
 		if (SkillActionsData!=nullptr)
 		{
 			for (auto& i : SkillActionsData->SkillInputData)
 			{
-				EnhancedInputComp->BindAction(i.Value.SkillInputAction, i.Value.TrriggerType, this, &ThisClass::TryUseSkill,i.Key);
+				EnhancedInputComp->BindAction(i.SkillInputAction, ETriggerEvent::Started, this, &ThisClass::TryUseSkill,i.Type);
 				//TODO::初始化技能头模块数量以及映射到技能模块,使用Tag标记每个创建开始模块;
 			}
 		}
@@ -147,7 +153,7 @@ void ASuperPlayerController::Rotate_Action(const FInputActionValue& Value)
 {
 	if (AbilitySysComp&&AbilitySysComp->HasMatchingGameplayTag(Game::Input::Game_Input_RotateBlock)){return;}
 
-	const FVector2D InputValue = Value.Get<FVector2D>();
+	const FVector2D InputValue = Value.Get<FVector2D>()*RotMut;
 	AddYawInput(InputValue.X);
 	AddPitchInput(InputValue.Y);
 }
@@ -159,16 +165,13 @@ void ASuperPlayerController::Jump_Action(const FInputActionValue& Value)
 	IPlayerPawnInterface::Execute_CallJump(GetPawn());
 }
 
-void ASuperPlayerController::Shoot_Action(const FInputActionValue& Value)
-{
-	if (AbilitySysComp&&AbilitySysComp->HasMatchingGameplayTag(Game::Input::Game_Input_AttackBlock)){return;}
-	UE_LOG(LogTemp,Warning,TEXT("Shooting"));
-}
 
-void ASuperPlayerController::TryUseSkill(FGameplayTag Tag)
+
+void ASuperPlayerController::TryUseSkill(EStartNodeType Type)
 {
-	//TODO::尝试释放对应模块技能
-	unimplemented();
-	UE_LOG(LogTemp,Warning,TEXT("TryUseSkill :: Tag = %s"), * Tag.ToString());
+	if (AbilitySysComp&&AbilitySysComp->HasMatchingGameplayTag(Game::Input::Game_Input_MoveBlock)){return;}
+	if (AbilitySysComp&&AbilitySysComp->HasMatchingGameplayTag(Game::Input::Game_Input_AttackBlock)){return;}
+
+	SkillRuntimeSys->TriggerStartNode(Type);
 }
 

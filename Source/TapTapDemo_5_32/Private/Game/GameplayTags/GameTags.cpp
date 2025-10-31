@@ -16,18 +16,44 @@ namespace  Game
 	}
 	namespace  Input
 	{
+		
+		
+		
 		UE_DEFINE_GAMEPLAY_TAG_COMMENT(Game_Input_MoveBlock,
 			"Game.Input.MoveBlock",
-			"Tag for PlayerInput");
+			"BlockInput")
 		UE_DEFINE_GAMEPLAY_TAG_COMMENT(Game_Input_RotateBlock,
-			"Game.Input.RotatorBlock",
-			"Tag for PlayerInput");
+			"Game.Input.RotateBlock",
+			"BlockInput")
 		UE_DEFINE_GAMEPLAY_TAG_COMMENT(Game_Input_JumpBlock,
 			"Game.Input.JumpBlock",
-			"Tag for PlayerInput");
+			"BlockInput")
 		UE_DEFINE_GAMEPLAY_TAG_COMMENT(Game_Input_AttackBlock,
 			"Game.Input.AttackBlock",
-			"Tag for PlayerInput");
+			"BlockInput")
+		
+		
+		UE_DEFINE_GAMEPLAY_TAG_COMMENT(Game_Input_StartNode,
+			"Game.Input.StartNode",
+			"InputTag")
+		UE_DEFINE_GAMEPLAY_TAG_COMMENT(Game_Input_GenerateNode,
+			"Game.Input.GenerateNode",
+			"InputTag")
+		UE_DEFINE_GAMEPLAY_TAG_COMMENT(Game_Input_BuffNode,
+			"Game.Input.BuffNode",
+			"InputTag")
+		UE_DEFINE_GAMEPLAY_TAG_COMMENT(Game_Input_BranchNode,
+			"Game.Input.BranchNode",
+			"InputTag")
+		UE_DEFINE_GAMEPLAY_TAG_COMMENT(Game_Input_ParamNode,
+			"Game.Input.ParamNode",
+			"InputTag")
+		UE_DEFINE_GAMEPLAY_TAG_COMMENT(Game_Input_LoopStartNode,
+			"Game.Input.LoopStartNode",
+			"InputTag")
+		UE_DEFINE_GAMEPLAY_TAG_COMMENT(Game_Input_LoopEndNode,
+			"GameInput_LoopEndNode",
+			"InputTag") 
 	}
 
 	namespace Actor

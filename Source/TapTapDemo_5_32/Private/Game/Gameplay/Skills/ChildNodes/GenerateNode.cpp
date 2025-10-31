@@ -15,9 +15,11 @@ void UGenerateNode::Ability(const AActor* Target)
 		
 		FNodeGenerateValueFinal GenerateValueFinal;
 
+		GenerateValueFinal.GeneratedType = NodeInfo.GeneratedType;
 		GenerateValueFinal.Damage = NodeInfo.Damage * (AccumulativeInfo.AccDamageValue + 1.0f) * USkillsManagerSubsystem::AdditionalParamForAttack;
 		GenerateValueFinal.Radius = NodeInfo.Radius * (AccumulativeInfo.RadiusValue + 1.0f);
 
+		ExecuteSkillComponent->SetCurrentSkillNode(this);
 		ExecuteSkillComponent->GenerateItem(GenerateValueFinal);
 	}
 }

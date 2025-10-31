@@ -22,10 +22,10 @@ class BTT_FlyToTarget implements BTT_FlyToTarget {
     bShowDebug: boolean;
 
 
-    private StartTime: number = 0;
+    StartTime:UE.BlackboardKeySelector;
 
     /** 基准高度（任务开始时的高度） */
-    private BaseHeight: number = 0;
+    BaseHeight:UE.BlackboardKeySelector;
 
     ReceiveExecuteAI(OwnerController: $Nullable<UE.AIController>, ControlledPawn: $Nullable<UE.Pawn>): void {
         if (!OwnerController || !ControlledPawn) {
@@ -34,18 +34,23 @@ class BTT_FlyToTarget implements BTT_FlyToTarget {
             return;
         }
 
+        const BlackboardComp = OwnerController.Blackboard;
+        if (!BlackboardComp) {
+            if (this.bShowDebug) {
+                console.error("BTS_FlyToTarget: Blackboard component not found");
+            }
+            return;
+        }
+
         const World = ControlledPawn.GetWorld();
         if (World) {
-            this.StartTime = UE.KismetSystemLibrary.GetGameTimeInSeconds(World);
+            BlackboardComp.SetValueAsFloat(this.StartTime.SelectedKeyName,0);
         }
 
         // 记录初始高度作为基准高度
         const InitialLocation = ControlledPawn.K2_GetActorLocation();
-        this.BaseHeight = InitialLocation.Z;
+        BlackboardComp.SetValueAsFloat(this.BaseHeight.SelectedKeyName,InitialLocation.Z);
 
-        if (this.bShowDebug) {
-            console.log(`BTT_FlyToTarget: Task started, 基准高度=${this.BaseHeight.toFixed(0)}`);
-        }
     }
 
     private GetTargetLocation(BlackboardComp: UE.BlackboardComponent): $Nullable<UE.Vector> {
@@ -165,7 +170,7 @@ class BTT_FlyToTarget implements BTT_FlyToTarget {
         // 【检测超时】
         if (this.TaskTimeout > 0) {
             const CurrentTime = UE.KismetSystemLibrary.GetGameTimeInSeconds(World);
-            const ElapsedTime = CurrentTime - this.StartTime;
+            const ElapsedTime = CurrentTime - BlackboardComp.GetValueAsFloat(this.StartTime.SelectedKeyName);
 
             if (ElapsedTime >= this.TaskTimeout) {
                 console.warn(`BTT_FlyToTarget: 任务超时！耗时=${ElapsedTime.toFixed(1)}s, 超时限制=${this.TaskTimeout.toFixed(1)}s`);
@@ -178,12 +183,8 @@ class BTT_FlyToTarget implements BTT_FlyToTarget {
         let NewLocation = UE.KismetMathLibrary.Add_VectorVector(CurrentLocation, MoveVelocity);
 
         // 【最低高度限制 - 不能低于初始位置】
-        if (NewLocation.Z < this.BaseHeight) {
-            NewLocation.Z = this.BaseHeight;
-
-            if (this.bShowDebug) {
-                console.log(`BTT_FlyToTarget: 限制高度到基准线 (基准=${this.BaseHeight.toFixed(0)}, 尝试高度=${CurrentLocation.Z.toFixed(0)})`);
-            }
+        if (NewLocation.Z < BlackboardComp.GetValueAsFloat(this.BaseHeight.SelectedKeyName)) {
+            NewLocation.Z = BlackboardComp.GetValueAsFloat(this.BaseHeight.SelectedKeyName);
         }
 
         ControlledPawn.K2_SetActorLocation(NewLocation, false, undefined, false);
@@ -257,7 +258,7 @@ class BTT_FlyToTarget implements BTT_FlyToTarget {
             // 每秒输出一次调试信息
             const CurrentTime = UE.KismetSystemLibrary.GetGameTimeInSeconds(World);
             if (Math.floor(CurrentTime) !== Math.floor(CurrentTime - DeltaSeconds)) {
-                const heightDiff = NewLocation.Z - this.BaseHeight;
+                const heightDiff = NewLocation.Z - BlackboardComp.GetValueAsFloat(this.BaseHeight.SelectedKeyName);
                 console.log(`BTT_FlyToTarget: 距离=${DistanceToTarget.toFixed(0)}, 速度=${Speed.toFixed(0)}, 当前高度=${NewLocation.Z.toFixed(0)}, 高度差=${heightDiff.toFixed(0)}`);
             }
         }

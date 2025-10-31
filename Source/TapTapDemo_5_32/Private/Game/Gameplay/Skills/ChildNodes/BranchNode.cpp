@@ -10,6 +10,7 @@ bool UBranchNode::Branch(const AActor* Target)
 	if (NodeInfo.NodeType == ESkillNodeType::BranchNode)
 	{
 		UExecuteSkillComponent* SkillComponent = GetTargetExecuteSkillComponent(Target);
+		ensureMsgf(SkillComponent, TEXT("Millenarysnow : BranchNode cant get SkillComponent"));
 		if (!SkillComponent) return false;
 		
 		switch (NodeInfo.BranchType)

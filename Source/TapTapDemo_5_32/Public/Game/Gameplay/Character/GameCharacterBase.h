@@ -9,6 +9,7 @@
 #include "GameCharacterBase.generated.h"
 
 
+class UExecuteSkillComponent;
 class UGameplayEffect;
 class UAttributeSet;
 class UAbilitySystemComponent;
@@ -25,4 +26,12 @@ public:
 	virtual void Die_Implementation() override{};
 	
 	FORCEINLINE virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override{check(0) ;return nullptr;};
+	FORCEINLINE virtual UCharacterMovementComponent* GetCharacterMovementComp() override;
+
+	virtual void BindAttributeDelegate(){check(0)};
+
+	/**Skill*/
+	UPROPERTY(EditAnywhere,BlueprintReadOnly)
+	TObjectPtr<UExecuteSkillComponent> ExecuteComp;
+	/**end*/
 };

@@ -6,7 +6,7 @@
 
 #include "SkillType.generated.h"
 
-UENUM()
+UENUM(BlueprintType)
 enum class ESkillNodeType
 {
 	NullNode = 0, // 空类型
@@ -19,55 +19,72 @@ enum class ESkillNodeType
 	LoopEndNode // 循环结束类型
 };
 
-UENUM()
+UENUM(BlueprintType)
 enum class ESwitchTargetType
 {
 	Unchanged = 0,
 	Changed
 };
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FSkillNodeInfo
 {
 	GENERATED_BODY()
 
 	// ----- 公有信息 -----
+	UPROPERTY(BlueprintReadOnly)
 	ESkillNodeType NodeType = ESkillNodeType::NullNode; // 节点类型
+	UPROPERTY(BlueprintReadOnly)
 	ESwitchTargetType SwitchTargetType = ESwitchTargetType::Unchanged; // 对象是否变化（是否需要回传）
-	int32 DelayTime = 0; // 延迟时间
+	UPROPERTY(BlueprintReadOnly)
+	float DelayTime = 0; // 延迟时间
+	UPROPERTY(BlueprintReadOnly)
 	int32 OutPinCount = 0; // 输出引脚数量
-	EStartNodeType StartNodeType;
-	EBranchType BranchType;
-	EGeneratedType GeneratedType;
-	EParamType ParamType;
-	EBuffType BuffType;
+	UPROPERTY(BlueprintReadOnly)
+	EStartNodeType StartNodeType = EStartNodeType::None;
+	UPROPERTY(BlueprintReadOnly)
+	EBranchType BranchType = EBranchType::None;
+	UPROPERTY(BlueprintReadOnly)
+	EGeneratedType GeneratedType = EGeneratedType::None;
+	UPROPERTY(BlueprintReadOnly)
+	EParamType ParamType = EParamType::None;
+	UPROPERTY(BlueprintReadOnly)
+	EBuffType BuffType = EBuffType::None;
 	// ----- 公有信息 -----
 
 	// ----- 生成物信息 -----
-	float Damage = 0; // 伤害
-	float Radius = 0; // 半径
+	UPROPERTY(BlueprintReadOnly)
+	float Damage = 1.0f; // 伤害
+	UPROPERTY(BlueprintReadOnly)
+	float Radius = 1.0f; // 半径
 	// ----- 生成物信息 -----
 
 	// ----- 增益信息 -----
+	UPROPERTY(BlueprintReadOnly)
 	float BuffDurationTime = 1.0f; // buff持续时间
+	UPROPERTY(BlueprintReadOnly)
 	float BuffValue = 1.0f; // buff值
 	// ----- 增益信息 -----
 
 	// ----- 分支信息 -----
+	UPROPERTY(BlueprintReadOnly)
 	float BranchValue = 0.4f; // 分支值
 	// ----- 分支信息 -----
 	
 	// ----- 参数信息 -----
-	int32 ParamIntValue; // 整型参数
-	float ParamFloatValue; // 浮点型参数
+	UPROPERTY(BlueprintReadOnly)
+	int32 ParamIntValue = 0; // 整型参数
+	UPROPERTY(BlueprintReadOnly)
+	float ParamFloatValue = 1.0f; // 浮点型参数
 	// ----- 参数信息 -----	
 
 	// ----- 循环信息 -----
+	UPROPERTY(BlueprintReadOnly)
 	int32 LoopCount = 3; // 循环次数
 	// ----- 循环信息 -----
 };
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FAccumulativeInfo
 {
 	GENERATED_BODY()
@@ -99,7 +116,7 @@ struct FAccumulativeInfo
 	}
 };
 
-UENUM()
+UENUM(BlueprintType)
 enum class OnBranchNode // 判断当前节点是否链接在分支节点上
 {
 	No = 0,
@@ -107,19 +124,23 @@ enum class OnBranchNode // 判断当前节点是否链接在分支节点上
 	FaL
 };
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FNodeBuffValueFinal // 结算后用于传给组件的buff信息
 {
 	GENERATED_BODY()
-
+	UPROPERTY(BlueprintReadWrite)
 	EBuffType BuffType = EBuffType::None;
+	UPROPERTY(BlueprintReadWrite)
 	float BuffDurationTime = 1.0f; // buff持续时间
+	UPROPERTY(BlueprintReadWrite)
 	float Strength = 1.0f; // 伤害提升
+	UPROPERTY(BlueprintReadWrite)
 	float Radius = 1.0f; // 半径
+	UPROPERTY(BlueprintReadWrite)
 	float Accelerate = 1.0f; // 加速
 };
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FNodeGenerateValueFinal // 结算后用于传给组件的生成物信息
 {
 	GENERATED_BODY()

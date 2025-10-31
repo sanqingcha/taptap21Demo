@@ -8,6 +8,7 @@
 #include "Game/Gameplay/Interface/SkillNodeWidgetInterface.h"
 #include "Game/Gameplay/Subsytem/Skill/SkillsManagerSubsystem.h"
 #include "Game/Gameplay/Skills/SkillNode.h"
+#include "Game/Gameplay/Subsytem/Skill/SkillGeneratorSubsystem.h"
 #include "Game/GameplayTags/GameTags.h"
 
 ASkillNodeActor::ASkillNodeActor()
@@ -42,24 +43,30 @@ void ASkillNodeActor::BeginPlay()
 void ASkillNodeActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	
+	//if (Data.NodeData){int32 Temp = Data.NodeData->Node->GetHashID();};
+		
 	if (isNeedUpdateSpline)
 	{
 		UpdateSpline();
 	}
 }
 
-void ASkillNodeActor::IntialSkillNode(bool haveHead)
+void ASkillNodeActor::IntialSkillNode(FNodeSaveData& Node)
 {
 	/***/
 	/*//TODO::
 	 * 初始化FConnectPackage 
 	 * 并且初始化ConnectData;
 	 */
-	Data.NodePtr = nullptr;//TODO::初始化;
-	Data.NodeHash = 0;//TODO::初始化;
-	Data.MaxConnectCount = FMath::RandRange(1,3);//TODO::初始化;
-	Data.CanConnectHead = haveHead;
-};
+	Data.NodeData = Node;
+	Data.NodeHash = Data.NodeData.Node->GetHashID();;
+	Data.MaxConnectCount = Data.NodeData.Node->GetNodeInfo().OutPinCount;
+	Data.CanConnectHead = Data.NodeData.Node->GetNodeType()!=ESkillNodeType::StartNode;
+
+	Intial();
+}
+
 
 /*void ASkillNodeActor::SetSpline(const struct FSplineConnectData& Data, uint32 Hash)
 {
@@ -82,7 +89,7 @@ bool ASkillNodeActor::CanConnect(ESplineConnectType ConnectType)
 	{
 	case ESplineConnectType::Head :
 		{
-			if (!Data.CanConnectHead && (!HeadConnect.HaveConnect))
+			if (Data.CanConnectHead && (!HeadConnect.HaveConnect))
 			{
 				return true;
 			};

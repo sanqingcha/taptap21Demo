@@ -7,19 +7,17 @@
 #include "AttributeSet.h"
 #include "AttributeSetBase.generated.h"
 
-
-#define ATTRIBUTE_ACCESSORS(ClassName, PropertyName) \
-GAMEPLAYATTRIBUTE_PROPERTY_GETTER(ClassName, PropertyName) \
-GAMEPLAYATTRIBUTE_VALUE_GETTER(PropertyName) \
-GAMEPLAYATTRIBUTE_VALUE_SETTER(PropertyName) \
-GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)
-
+#define ATTRIBUTE_ACCESSORS(ClassName, PropertyName)           \
+	GAMEPLAYATTRIBUTE_PROPERTY_GETTER(ClassName, PropertyName) \
+	GAMEPLAYATTRIBUTE_VALUE_GETTER(PropertyName)               \
+	GAMEPLAYATTRIBUTE_VALUE_SETTER(PropertyName)               \
+	GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)
 
 /**
- * 
+ *
  */
 
-DECLARE_MULTICAST_DELEGATE_OneParam(FOnHPPercentChange,float);
+DECLARE_MULTICAST_DELEGATE_OneParam(FOnHPPercentChange, float);
 
 UCLASS()
 class TAPTAPDEMO_5_32_API UAttributeSetBase : public UAttributeSet
@@ -31,75 +29,99 @@ UCLASS()
 class TAPTAPDEMO_5_32_API UPlayerAttribute : public UAttributeSet
 {
 	GENERATED_BODY()
-	public:
-	UPlayerAttribute(){};
-	virtual void PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData& Data) override;
-	
-	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category = "PlayerAttribute")
+public:
+	UPlayerAttribute() {};
+	virtual void PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData &Data) override;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerAttribute")
 	FGameplayAttributeData Health;
 	ATTRIBUTE_ACCESSORS(UPlayerAttribute, Health);
-	
-	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category = "PlayerAttribute")
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerAttribute")
 	FGameplayAttributeData MaxHealth;
 	ATTRIBUTE_ACCESSORS(UPlayerAttribute, MaxHealth);
-	
-	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category = "PlayerAttribute")
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerAttribute")
 	FGameplayAttributeData Level;
 	ATTRIBUTE_ACCESSORS(UPlayerAttribute, Level);
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerAttribute")
+	FGameplayAttributeData MaxSpeed;
+	ATTRIBUTE_ACCESSORS(UPlayerAttribute, MaxSpeed);
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerAttribute")
+	FGameplayAttributeData Attack;
+	ATTRIBUTE_ACCESSORS(UPlayerAttribute, Attack);
+	
+	/** 受击时的相机震动类（在蓝图中配置，不要在 C++ 中硬编码） */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerAttribute")
+	TSubclassOf<class UCameraShakeBase> HitCameraShakeClass;
+
+	/** 受击震动强度倍率 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerAttribute")
+	float HitShakeScale = 1.0f;
+
 	FOnHPPercentChange OnHPPercentChangeDelegate;
 	const float GetHPPercent();
+
+protected:
+	/** 触发受击相机震动 */
+	void TriggerHitCameraShake(const struct FGameplayEffectModCallbackData &Data);
+
+private:
+	/** 上一次的生命值（用于检测受击） */
+	float PreviousHealth = -1.0f;
 };
 
 UCLASS()
-class TAPTAPDEMO_5_32_API  UEnemyAttribute: public UAttributeSet
+class TAPTAPDEMO_5_32_API UEnemyAttribute : public UAttributeSet
 {
 	GENERATED_BODY()
 public:
-	UEnemyAttribute(){};
-	virtual void PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData& Data) override;
-	
-	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category = "EnemyAttribute")
+	UEnemyAttribute() {};
+	virtual void PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData &Data) override;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "EnemyAttribute")
 	FGameplayAttributeData Health;
 	ATTRIBUTE_ACCESSORS(UEnemyAttribute, Health);
-	
-	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category = "EnemyAttribute")
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "EnemyAttribute")
 	FGameplayAttributeData MaxHealth;
 	ATTRIBUTE_ACCESSORS(UEnemyAttribute, MaxHealth);
-	
-	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category = "EnemyAttribute")
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "EnemyAttribute")
 	FGameplayAttributeData Level;
 	ATTRIBUTE_ACCESSORS(UEnemyAttribute, Level);
 
-	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category = "EnemyAttribute")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "EnemyAttribute")
 	FGameplayAttributeData AttackPower;
 	ATTRIBUTE_ACCESSORS(UEnemyAttribute, AttackPower);
-	
-    UPROPERTY(EditAnywhere,BlueprintReadOnly,Category = "EnemyAttribute")
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "EnemyAttribute")
 	FGameplayAttributeData MaxSpeed;
 	ATTRIBUTE_ACCESSORS(UEnemyAttribute, MaxSpeed);
-	
-	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category = "EnemyAttribute")
-	FGameplayAttributeData AttackCoolDown ;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "EnemyAttribute")
+	FGameplayAttributeData AttackCoolDown;
 	ATTRIBUTE_ACCESSORS(UEnemyAttribute, AttackCoolDown);
-	
-	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category = "EnemyAttribute")
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "EnemyAttribute")
 	FGameplayAttributeData ProjectileMaxSpeed;
 	ATTRIBUTE_ACCESSORS(UEnemyAttribute, ProjectileMaxSpeed);
-	
-	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category = "EnemyAttribute")
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "EnemyAttribute")
 	FGameplayAttributeData JumpMaxHigh;
 	ATTRIBUTE_ACCESSORS(UEnemyAttribute, JumpMaxHigh);
-	
-	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category = "EnemyAttribute")
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "EnemyAttribute")
 	FGameplayAttributeData FlyMaxHigh;
 	ATTRIBUTE_ACCESSORS(UEnemyAttribute, FlyMaxHigh);
-	
-	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category = "EnemyAttribute")
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "EnemyAttribute")
 	FGameplayAttributeData AttackRandiu;
 	ATTRIBUTE_ACCESSORS(UEnemyAttribute, AttackRandiu);
 
-	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category = "EnemyAttribute")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "EnemyAttribute")
 	FGameplayAttributeData CheckRandiu;
 	ATTRIBUTE_ACCESSORS(UEnemyAttribute, CheckRandiu);
 };

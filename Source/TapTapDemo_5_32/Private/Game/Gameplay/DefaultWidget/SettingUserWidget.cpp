@@ -7,7 +7,10 @@
 #include "Components/Button.h"
 #include "Components/Slider.h"
 #include "Components/TextBlock.h"
+#include "Game/Gameplay/Player/SuperPlayerController.h"
 #include "Game/Gameplay/Subsytem/GISubSystem/SoundSettingSubsystem.h"
+
+
 
 void USettingUserWidget::NativeConstruct()
 {
@@ -34,10 +37,22 @@ void USettingUserWidget::NativeConstruct()
 	const FPlayerControlSettings& PlayerControlSettings = SettingSystem->GetPlayerControlSettings();
 	CameraLagSpeed_Text->SetText(FText::AsNumber(PlayerControlSettings.CameraDelaySpeed));
 	CheckTime_Slider->SetValue(PlayerControlSettings.CheckTime*2);
+	TextLagSpeed_Text->SetText(FText::AsNumber(PlayerControlSettings.TextLag));
 	
 	AddCameraLagSpeed_Bt->OnPressed.AddDynamic(this,&USettingUserWidget::AddCameraLagSpeed_Bt_Pressed);
 	ReduceCameraLagSpeed_Bt->OnPressed.AddDynamic(this,&USettingUserWidget::ReduceCameraLagSpeed_Bt_Pressed);
 	CheckTime_Slider->OnValueChanged.AddDynamic(this,&USettingUserWidget::OnCheckTimeSliderChanged);
+
+	AddTextLagSpeed_Bt->OnPressed.AddDynamic(this,&USettingUserWidget::AddTextLagSpeed_Bt_Pressed);
+	ReduceTextLagSpeed_Bt->OnPressed.AddDynamic(this,&USettingUserWidget::ReduceTextLagSpeed_Bt_Pressed);
+	
+	/**inputSensitivity*/
+	const FInputSensitivity& InputSensitivity = SettingSystem->GetInputSensitivity();
+	RotSensitivity_Slider->SetValue(InputSensitivity.RotatorSensitivity);
+
+	RotSensitivity_Slider->OnValueChanged.AddDynamic(this,&USettingUserWidget::OnRotSensitivityChanged);
+
+	
 }
 
 void USettingUserWidget::OnReturnButtonPressed()
@@ -85,5 +100,26 @@ void USettingUserWidget::ReduceCameraLagSpeed_Bt_Pressed()
 	if (PlayerControlSettings.CameraDelaySpeed-1<0) return;
 	SettingSystem->SetCameraDelaySpeed(PlayerControlSettings.CameraDelaySpeed-1);
 	CameraLagSpeed_Text->SetText(FText::AsNumber(PlayerControlSettings.CameraDelaySpeed));
+}
+
+void USettingUserWidget::AddTextLagSpeed_Bt_Pressed()
+{
+	const FPlayerControlSettings& PlayerControlSettings = SettingSystem->GetPlayerControlSettings();
+	if (PlayerControlSettings.TextLag+1>50)return;
+	SettingSystem->SetTextLag(PlayerControlSettings.TextLag+1);
+	TextLagSpeed_Text->SetText(FText::AsNumber(PlayerControlSettings.TextLag));
+}
+
+void USettingUserWidget::ReduceTextLagSpeed_Bt_Pressed()
+{
+	const FPlayerControlSettings& PlayerControlSettings = SettingSystem->GetPlayerControlSettings();
+	if (PlayerControlSettings.TextLag-1<0) return;
+	SettingSystem->SetTextLag(PlayerControlSettings.TextLag-1);
+	TextLagSpeed_Text->SetText(FText::AsNumber(PlayerControlSettings.TextLag));
+}
+
+void USettingUserWidget::OnRotSensitivityChanged(float NewValue)
+{
+	SettingSystem->SetRotatorSensitivity(NewValue);
 }
 

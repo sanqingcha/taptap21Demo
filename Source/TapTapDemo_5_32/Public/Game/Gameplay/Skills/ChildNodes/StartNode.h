@@ -13,5 +13,9 @@ UCLASS()
 class TAPTAPDEMO_5_32_API UStartNode : public USkillNode
 {
 	GENERATED_BODY()
-	
+
+public:
+	//~ Begin USkillNode Interface.
+	virtual void Start() override;
+	//~ End USkillNode Interface.
 };

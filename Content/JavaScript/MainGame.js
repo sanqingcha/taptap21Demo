@@ -8,7 +8,6 @@ require("./Map/Blueprint/Enemy/BT_Decorator/BTD_IsAtTarget");
 require("./Map/Blueprint/Enemy/BT_Task/BTT_ClearLastKnownLocation");
 require("./Map/Blueprint/Enemy/BT_Task/BTT_RandomMoveAroundTarget");
 require("./Map/Blueprint/Enemy/BT_Task/BTT_ShootAttack");
-require("./Map/Blueprint/Enemy/BP_Enemy");
 require("./Map/Blueprint/Characters/BP_EnemyBase");
 require("./Map/Blueprint/Enemy/BT_Service/BTS_DiscreteJump");
 require("./Map/Blueprint/Enemy/BT_Task/BTT_SetTargetActor");
@@ -16,4 +15,7 @@ require("./Map/Blueprint/Enemy/BT_Service/BTS_CachePlayerLocation");
 require("./Map/Blueprint/Enemy/BT_Task/BTT_FlyToTarget");
 require("./Map/Blueprint/Enemy/BT_Task/BTT_FindPatrolLocationInSky");
 require("./Map/Blueprint/Enemy/BT_Service/BTS_RotateToTarget");
+require("./Map/Blueprint/Enemy/BT_Task/BTT_BeforeAttack");
+require("./Map/Blueprint/Enemy/BT_Task/BTT_JumpAndMove");
+require("./Map/Blueprint/Actor/BP_EnemySpawnArea");
 //# sourceMappingURL=MainGame.js.map

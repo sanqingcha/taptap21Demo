@@ -4,14 +4,30 @@
 
 #include "CoreMinimal.h"
 #include "Game/Gameplay/Component/NodeSplineComponent.h"
-#include "Game/Gameplay/Interface/NodeSplineInterface.h"
 #include "Game/Gameplay/Interface/SkillNodeInteractInterface.h"
+#include "Game/Gameplay/Subsytem/Skill/SkillGeneratorSubsystem.h"
 #include "GameFramework/Actor.h"
 #include "SkillNodeActor.generated.h"
 
+struct FNodeSaveData;
+enum class EBranchType;
+enum class ESkillNodeType;
 class ISkillNodeWidgetInterface;
 class UWidgetComponent;
 class USkillNode;
+
+USTRUCT(BlueprintType)
+struct FSkillNodeData
+{
+	GENERATED_BODY()
+	UPROPERTY(BlueprintReadOnly)
+	FNodeSaveData NodeData ;
+	uint8 MaxConnectCount = 1;
+	uint32 NodeHash = 0;
+	bool CanConnectHead  = false;
+	
+};
+
 
 UCLASS()
 class TAPTAPDEMO_5_32_API ASkillNodeActor : public AActor , public ISkillNodeInteractInterface
@@ -20,13 +36,15 @@ class TAPTAPDEMO_5_32_API ASkillNodeActor : public AActor , public ISkillNodeInt
 	
 public:	
 	ASkillNodeActor();
-
+	
+	UFUNCTION(BlueprintCallable)
+	void IntialSkillNode(UPARAM(ref) FNodeSaveData & Node); //TODO::
+	UFUNCTION(BlueprintImplementableEvent)
+	void Intial();
 protected:
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
-	UFUNCTION(BlueprintCallable)
-	void IntialSkillNode(bool haveHead = true /**BaseData*/); //TODO::
-	
+
 public:
 	virtual bool CanConnect(ESplineConnectType ConnectType) override;
 	virtual void OnlyRemoveSplineData(uint32 Hash) override;
@@ -70,7 +88,7 @@ public:
 	
 	virtual void BreakHead() override;
 	virtual void ConnectFaildTips() override;
-	virtual USkillNode* GetSkillNode() override{return Data.NodePtr;};
+	virtual USkillNode* GetSkillNode() override{return Data.NodeData.Node;};
 protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void MouseTouch(bool Touch);
@@ -79,14 +97,7 @@ protected:
 	
 	int32 GetCurrentConnectCount();
 	
-	struct FSkillNodeData
-	{
-		UPROPERTY()
-		TObjectPtr<USkillNode> NodePtr;
-		uint8 MaxConnectCount = 1;
-		uint32 NodeHash = 0;
-		bool CanConnectHead  = false; 
-	};
+
 	struct FConnectPackage
 	{
 		UNodeSplineComponent* SplineComp;
@@ -97,6 +108,6 @@ protected:
 private:
 	FConnectPackage HeadConnect;
 	TMap<uint32, FConnectPackage> TailSplines;
-	
+	UPROPERTY(BlueprintReadOnly,meta = (AllowPrivateAccess = true))
 	FSkillNodeData Data;
 };

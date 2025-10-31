@@ -18,7 +18,7 @@ struct FOnceDialoageData
 {
 	GENERATED_BODY()
 	/**相对于上一句话，间隔时间延迟多久后再触发*/
-	UPROPERTY(EditAnywhere, BlueprintReadOnly,Category = "Dialoage",meta = (ClampMin = "0.01",ClampMax = "3.0"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly,Category = "Dialoage",meta = (ClampMin = "0.01"))
 	float Delay = 0.01f;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly,Category = "Dialoage")
 	FString Dialoage;

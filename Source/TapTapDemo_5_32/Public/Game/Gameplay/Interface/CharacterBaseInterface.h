@@ -6,6 +6,7 @@
 #include "UObject/Interface.h"
 #include "CharacterBaseInterface.generated.h"
 
+class UCharacterMovementComponent;
 // This class does not need to be modified.
 UINTERFACE(MinimalAPI)
 class UCharacterBaseInterface : public UInterface
@@ -24,4 +25,5 @@ class TAPTAPDEMO_5_32_API ICharacterBaseInterface
 public:
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void Die();
+	virtual UCharacterMovementComponent* GetCharacterMovementComp() = 0;
 };

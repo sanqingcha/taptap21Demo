@@ -12,6 +12,7 @@
 #include "Game/Gameplay/Interface/SkillNodeInteractInterface.h"
 #include "Game/Gameplay/Player/Data/PlayerBaseData.h"
 #include "Game/Gameplay/Subsytem/GISubSystem/SoundSettingSubsystem.h"
+#include "Game/Gameplay/Subsytem/Skill/SkillGeneratorSubsystem.h"
 #include "Game/Gameplay/Subsytem/Skill/SplineSpawnSystem.h"
 #include "Game/GameplayTags/GameTags.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -42,6 +43,9 @@ void ASingleCameraActor::BeginPlay()
 	UGameSettingSubsystem* GameSettingSubsystem = GetGameInstance()->GetSubsystem<UGameSettingSubsystem>();
 	CheckTime = GameSettingSubsystem->GetCheckTime();
 	GameSettingSubsystem->GetCheckTimeDelegate().BindLambda([this](float Newvalue){CheckTime = Newvalue;});
+
+	USkillGeneratorSubsystem* SkillGeneratorSubSys = GetGameInstance()->GetSubsystem<USkillGeneratorSubsystem>();
+	SkillGeneratorSubSys->RegisterCenterCheckPos(GetActorLocation());
 }
 void ASingleCameraActor::Tick(float DeltaTime)
 {
@@ -338,6 +342,7 @@ void ASingleCameraActor::DeactivateCamera(UPlayerBaseData* inPlayerData)
 	PlayerData->EnhancedInputSys->RemoveMappingContext(Mapping);
 	OnActivateInputDelegate.Broadcast(false);
 	PlayerData->PC->SetShowMouseCursor(false);
+	//if ()
 }
 
 void ASingleCameraActor::BindMapping(bool isActivate)

@@ -37,7 +37,7 @@ void ASuperHUD::OnGameStart_Implementation()
 {
 	UMapSteamLoadSystem::GetOnStreamLoadOverDelegate().RemoveDynamic(this,&ASuperHUD::OnGameStart);
 	PlayerData->EnhancedInputSys->AddMappingContext(HUDMapping,0);
-	PlayerData->EnhancedInputComp->BindAction(ESCAction,ETriggerEvent::Started,this,&ASuperHUD::PressedESC);
+	PlayerData->EnhancedInputComp->BindAction(ESCAction,ETriggerEvent::Completed,this,&ASuperHUD::PressedESC);
 }
 
 UViewModeUserWidget* ASuperHUD::CreateViewModeUUserWidget(TSubclassOf<UViewModeUserWidget> WidgetClass,int32 ZOrder)
@@ -50,6 +50,8 @@ UViewModeUserWidget* ASuperHUD::CreateViewModeUUserWidget(TSubclassOf<UViewModeU
 
 void ASuperHUD::RegisterSwitchBuildSpaceAction()
 {
+	if (haveBind)return;
+	haveBind = true;
 	PlayerData->EnhancedInputComp->BindAction(BuildSpaceAction,ETriggerEvent::Started,this,&ASuperHUD::PressedBuildSpace);
 }
 

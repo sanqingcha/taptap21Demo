@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "jsx": "react",
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "baseUrl": "TypeScript",
+    "typeRoots": ["Typing", "./node_modules/@types"],
+    "outDir": "Content/JavaScript"
+  },
+  "include": ["TypeScript/**/*"]
+}

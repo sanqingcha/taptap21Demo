@@ -9,6 +9,9 @@
 #include "Game/Gameplay/Interface/PlayerPawnInterface.h"
 #include "PlayerCharacter.generated.h"
 
+struct FMapAssetData;
+struct FInputSensitivity;
+struct FOnAttributeChangeData;
 class UCameraRegisterComponent;
 class UGameSettingSubsystem;
 struct FPlayerControlSettings;
@@ -29,8 +32,13 @@ public:
 	virtual void CallJump_Implementation() override;
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override{return PlayerAbilitySysComp;};
 	virtual void Die_Implementation() override;
-	
-	
+	virtual void BindAttributeDelegate() override;
+private:
+	void OnSpeedChanged( const FOnAttributeChangeData& Data);
+	void OnHealthChanged( const FOnAttributeChangeData& Data);
+	UFUNCTION()
+	void OnMapChanged(const FMapAssetData& Data);
+public:
 	UFUNCTION()
 	virtual void OnPlayerControlSettingChanged(const FPlayerControlSettings& NewSettings); 
 	virtual void ActivateCamera(UPlayerBaseData* inPlayerData) override;
@@ -57,8 +65,14 @@ public:
 	TObjectPtr<UCameraComponent> CameraComp;
 	/**end*/
 
-	FOnInputChanged OnInputChanged;
-	virtual FOnInputChanged& GetInputChangedDelegate() override{return OnInputChanged;};
+	FOnInputChanged OnInputChangedDelegate;
+	virtual FOnInputChanged& GetInputChangedDelegate() override{return OnInputChangedDelegate;};
+	FOnRotSensitivityChanged OnRotSensitivityChangedDelegate;
+	virtual FOnRotSensitivityChanged& GetRotSensitivityChangedDelegate() override{return OnRotSensitivityChangedDelegate;};
+
+	
 private:
+	void OnSensitivityChanged(const FInputSensitivity& Newvalue);
+
 	UGameSettingSubsystem* GameSettingSubsys;
 };

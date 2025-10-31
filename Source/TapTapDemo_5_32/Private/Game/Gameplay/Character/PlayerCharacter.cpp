@@ -3,12 +3,12 @@
 
 #include "Game/Gameplay/Character/PlayerCharacter.h"
 
-#include "CborTypes.h"
 #include "Camera/CameraComponent.h"
 #include "Game/Gameplay/Component/CameraRegisterComponent.h"
 #include "Game/Gameplay/Component/DialoageComponent.h"
 #include "Game/Gameplay/Subsytem/GISubSystem/MapSteamLoadSystem.h"
 #include "Game/Gameplay/Subsytem/GISubSystem/SoundSettingSubsystem.h"
+#include "Game/Gameplay/Subsytem/GISubSystem/Data/MapSingleAsset.h"
 #include "Game/GameplayTags/GameTags.h"
 #include "Game/Gas/Attribute/AttributeSetBase.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -47,6 +47,10 @@ APlayerCharacter::APlayerCharacter()
 	CameraRegisterCompoent = CreateDefaultSubobject<UCameraRegisterComponent>(TEXT("CameraRegisterComponent"));
 	
 	GetCharacterMovement()->bOrientRotationToMovement = false;
+
+
+
+	
 }
 
 void APlayerCharacter::BeginPlay()
@@ -55,14 +59,18 @@ void APlayerCharacter::BeginPlay()
 	Tags.Add(Game::Character::Game_Character_Player.GetTag().GetTagName());
 	
 	//PlayerAbilitySysComp->InitAbilityActorInfo(this,this);
-	GameSettingSubsys = GetGameInstance()->GetSubsystem<UGameSettingSubsystem>();
+	UGameInstance* GI =  GetGameInstance();
+	
+	GameSettingSubsys = GI->GetSubsystem<UGameSettingSubsystem>();
 	if (ensure(GameSettingSubsys))
 	{
 		GameSettingSubsys->SetCameraDelaySpeed(SpringArmComp->CameraLagSpeed);
 		GameSettingSubsys->GetPlayerControlChangedDelegate().AddUObject(this,&APlayerCharacter::OnPlayerControlSettingChanged);
+		GameSettingSubsys->GetInputSensitivityDelegate().AddUObject(this,&APlayerCharacter::OnSensitivityChanged);
 	}
 
-	GetGameInstance()->GetSubsystem<UMapSteamLoadSystem>()->SetCurrentCamera(this);
+	GI->GetSubsystem<UMapSteamLoadSystem>()->SetCurrentCamera(this);
+	UMapSteamLoadSystem::GetOnMapChangedDelegate().AddDynamic(this,&APlayerCharacter::OnMapChanged);
 }
 
 USpringArmComponent* APlayerCharacter::GetSpringArmComponent_Implementation()
@@ -77,29 +85,59 @@ void APlayerCharacter::CallJump_Implementation()
 
 void APlayerCharacter::Die_Implementation()
 {
-	Super::Die_Implementation();
-	UKismetSystemLibrary::PrintString(GetWorld(),FString::Printf(TEXT("Dead")));
+	UKismetSystemLibrary::PrintString(GetWorld(),FString::Printf(TEXT("PlayerDead")));
+}
+
+void APlayerCharacter::BindAttributeDelegate()
+{
+	PlayerAbilitySysComp->GetGameplayAttributeValueChangeDelegate(UPlayerAttribute::GetMaxSpeedAttribute()).AddUObject(this,&APlayerCharacter::OnSpeedChanged);
+	PlayerAbilitySysComp->GetGameplayAttributeValueChangeDelegate(UPlayerAttribute::GetHealthAttribute()).AddUObject(this,&APlayerCharacter::OnHealthChanged);
+}
+
+void APlayerCharacter::OnSpeedChanged(const FOnAttributeChangeData& Data)
+{
+	GetCharacterMovement()->MaxWalkSpeed = Data.NewValue;
+}
+
+void APlayerCharacter::OnHealthChanged(const FOnAttributeChangeData& Data)
+{
+	if (Data.NewValue<=0)
+	{
+		ICharacterBaseInterface::Execute_Die(this);
+	}
+}
+
+void APlayerCharacter::OnMapChanged(const FMapAssetData& Data)
+{
+	SetActorTransform(Data.MapStartTransform);
 }
 
 void APlayerCharacter::OnPlayerControlSettingChanged(const FPlayerControlSettings& NewSettings)
 {
 	SpringArmComp->CameraLagSpeed = NewSettings.CameraDelaySpeed;
+	DialoageWidgetRoot->CameraLagSpeed = NewSettings.TextLag;
 }
 
 void APlayerCharacter::ActivateCamera(UPlayerBaseData* inPlayerData)
 {
-	if (OnInputChanged.IsBound())
+	if (GetInputChangedDelegate().IsBound())
 	{
-		OnInputChanged.Execute(true);
+		GetInputChangedDelegate().Execute(true);
 	}
 }
 
 void APlayerCharacter::DeactivateCamera(UPlayerBaseData* inPlayerData)
 {
-	if (OnInputChanged.IsBound())
+	if (GetInputChangedDelegate().IsBound())
 	{
-		OnInputChanged.Execute(false);
+		GetInputChangedDelegate().Execute(false);
 	}
 }
+
+void APlayerCharacter::OnSensitivityChanged(const FInputSensitivity& Newvalue)
+{
+	GetRotSensitivityChangedDelegate().Execute(Newvalue.RotatorSensitivity);
+}
+
 
 

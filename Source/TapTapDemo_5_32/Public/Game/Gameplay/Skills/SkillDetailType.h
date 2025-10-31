@@ -6,7 +6,7 @@
 
 // ------ 各类型节点的具体种类 ------ 
 
-UENUM()
+UENUM(BlueprintType)
 enum class EStartNodeType // 起始节点具体类型
 {
 	None = 0,
@@ -17,7 +17,7 @@ enum class EStartNodeType // 起始节点具体类型
 	RightButton
 };
 
-UENUM()
+UENUM(BlueprintType)
 enum class EBranchType // 分支具体类型
 {
 	None = 0,
@@ -25,7 +25,7 @@ enum class EBranchType // 分支具体类型
 	InAir
 };
 
-UENUM()
+UENUM(BlueprintType)
 enum class EGeneratedType // 生成物具体类型
 {
 	None = 0, // 空类型
@@ -34,8 +34,8 @@ enum class EGeneratedType // 生成物具体类型
 	Explosion // 爆炸
 };
 
-UENUM()
-enum class EParamType // 参数具体类型
+UENUM(BlueprintType)
+enum class EParamType :uint8// 参数具体类型
 {
 	None = 0,
 	Damage,
@@ -44,7 +44,7 @@ enum class EParamType // 参数具体类型
 	Radius
 };
 
-UENUM()
+UENUM(BlueprintType)
 enum class EBuffType // 增益具体类型
 {
 	None = 0,

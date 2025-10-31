@@ -4,10 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "EnhancedInputComponent.h"
-#include "GameplayTagContainer.h"
 #include "Engine/DataAsset.h"
 #include "SkillInputAsset.generated.h"
 
+enum class EStartNodeType;
 class UInputAction;
 /**
  * 
@@ -19,10 +19,7 @@ struct FSkillInputData
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TObjectPtr<UInputAction> SkillInputAction;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FName SkillModuleName;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	ETriggerEvent TrriggerType = ETriggerEvent::Started;
-	
+	EStartNodeType Type;
 };
 
 
@@ -32,5 +29,5 @@ class TAPTAPDEMO_5_32_API USkillInputAsset : public UDataAsset
 	GENERATED_BODY()
 	public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TMap<FGameplayTag,FSkillInputData> SkillInputData;
+	TArray<FSkillInputData> SkillInputData;
 };

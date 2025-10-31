@@ -28,7 +28,7 @@ void USplineSpawnSystem::RegisterSplineActor(ASplineVisualizeActor* inSplineVisA
 
 		USkillsManagerSubsystem* Skillmanager = USkillsManagerSubsystem::Get(GetWorld());
 		
-		Success = true;//Skillmanager->ConnectNode(HeadSkill,TailSkill);
+		Success = Skillmanager->ConnectNode(HeadSkill,TailSkill);
 
 		if (Success==false)
 		{

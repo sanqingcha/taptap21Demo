@@ -40,6 +40,18 @@ void UGameSettingSubsystem::SetCameraDelaySpeed(float NewValue)
 	GetPlayerControlChangedDelegate().Broadcast(PlayerControlSettings);
 }
 
+void UGameSettingSubsystem::SetTextLag(float NewValue)
+{
+	PlayerControlSettings.TextLag = NewValue;
+	GetPlayerControlChangedDelegate().Broadcast(PlayerControlSettings);
+}
+
+void UGameSettingSubsystem::SetRotatorSensitivity(float NewValue)
+{
+	InputSensitivity.RotatorSensitivity = NewValue;
+	GetInputSensitivityDelegate().Broadcast(InputSensitivity);
+}
+
 void UGameSettingSubsystem::SetCheckTime(float NewValue)
 {
 	PlayerControlSettings.CheckTime = NewValue;
